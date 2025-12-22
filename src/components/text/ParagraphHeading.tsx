@@ -4,7 +4,7 @@ import { Typography } from '@mui/material';
 interface Props {
   type: 'heading' | 'subheading';
   content?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 const ParagraphHeading: React.FC<Props> = ({ type, content, children }) => {
