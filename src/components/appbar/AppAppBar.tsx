@@ -62,8 +62,10 @@ const AppAppBar: React.FC = () => {
           <Typography
             variant={'h6'}
             component={'div'}
+            color={'text.secondary'}
             sx={{
               flexGrow: 1,
+              fontWeight: 'bold',
               display: {
                 xs: 'none',
                 sm: 'block',
@@ -74,7 +76,7 @@ const AppAppBar: React.FC = () => {
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: '#fff' }}>
+              <Button key={item} sx={{ color: 'text.secondary' }}>
                 {item}
               </Button>
             ))}
