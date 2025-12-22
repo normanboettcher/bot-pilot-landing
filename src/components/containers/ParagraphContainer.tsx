@@ -6,7 +6,12 @@ import React from 'react';
 const ParagraphContainer: React.FC = () => {
   return (
     <>
-      <Box display="flex">
+      <Box
+        display="flex"
+        sx={{
+          backgroundColor: 'background.default',
+        }}
+      >
         <Stack>
           <ParagraphHeadingContainer />
           <WelcomeParagraph />

@@ -9,7 +9,7 @@ const ParagraphHeadingContainer: React.FC = () => {
       <Box
         sx={{
           width: '15px',
-          backgroundColor: '#7593A2',
+          backgroundColor: 'secondary.main',
           marginTop: '0.3rem',
         }}
       />
