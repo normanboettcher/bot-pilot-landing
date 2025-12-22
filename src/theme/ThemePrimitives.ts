@@ -192,6 +192,7 @@ export const lightColorSchemes = {
       main: brand[500],
       light: brand[300],
       dark: brand[700],
+      secondary: brand[500],
     },
   },
 };
