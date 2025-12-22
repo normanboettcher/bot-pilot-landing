@@ -1,14 +1,15 @@
-import ParagraphContainer from '@/components/containers/ParagraphContainer.tsx';
-import { ThemeProvider } from '@mui/material';
-import theme from '@/components/Theme.ts';
-import WelcomeTextHeading from '@/components/decoration/TextDecoration.tsx';
+import ParagraphContainer from './components/containers/ParagraphContainer.tsx';
+import React from 'react';
+import AppTheme from './theme/AppTheme.tsx';
+import { CssBaseline } from '@mui/material';
 
 function App() {
   return (
     <>
-      <ThemeProvider theme={theme}>
+      <AppTheme>
+        <CssBaseline />
         <ParagraphContainer />
-      </ThemeProvider>
+      </AppTheme>
     </>
   );
 }
