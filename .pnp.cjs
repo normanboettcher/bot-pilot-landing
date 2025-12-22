@@ -41,8 +41,10 @@ const RAW_RUNTIME_STATE =
           ["eslint-plugin-react-hooks", "virtual:d55c68965250ed4636fc7620bee9e957884eabcb1156d639a382bb61ac4c8b21b11780c11154f7a186738e775947726beba74ef937ffd5b064f78c64681c3bcf#npm:7.0.1"],\
           ["eslint-plugin-react-refresh", "virtual:d55c68965250ed4636fc7620bee9e957884eabcb1156d639a382bb61ac4c8b21b11780c11154f7a186738e775947726beba74ef937ffd5b064f78c64681c3bcf#npm:0.4.26"],\
           ["globals", "npm:16.5.0"],\
+          ["prettier", "npm:3.7.4"],\
           ["react", "npm:19.2.3"],\
           ["react-dom", "virtual:d55c68965250ed4636fc7620bee9e957884eabcb1156d639a382bb61ac4c8b21b11780c11154f7a186738e775947726beba74ef937ffd5b064f78c64681c3bcf#npm:19.2.3"],\
+          ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
           ["vite", "virtual:d55c68965250ed4636fc7620bee9e957884eabcb1156d639a382bb61ac4c8b21b11780c11154f7a186738e775947726beba74ef937ffd5b064f78c64681c3bcf#npm:7.3.0"]\
         ],\
         "linkType": "SOFT"\
@@ -1737,8 +1739,10 @@ const RAW_RUNTIME_STATE =
           ["eslint-plugin-react-hooks", "virtual:d55c68965250ed4636fc7620bee9e957884eabcb1156d639a382bb61ac4c8b21b11780c11154f7a186738e775947726beba74ef937ffd5b064f78c64681c3bcf#npm:7.0.1"],\
           ["eslint-plugin-react-refresh", "virtual:d55c68965250ed4636fc7620bee9e957884eabcb1156d639a382bb61ac4c8b21b11780c11154f7a186738e775947726beba74ef937ffd5b064f78c64681c3bcf#npm:0.4.26"],\
           ["globals", "npm:16.5.0"],\
+          ["prettier", "npm:3.7.4"],\
           ["react", "npm:19.2.3"],\
           ["react-dom", "virtual:d55c68965250ed4636fc7620bee9e957884eabcb1156d639a382bb61ac4c8b21b11780c11154f7a186738e775947726beba74ef937ffd5b064f78c64681c3bcf#npm:19.2.3"],\
+          ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
           ["vite", "virtual:d55c68965250ed4636fc7620bee9e957884eabcb1156d639a382bb61ac4c8b21b11780c11154f7a186738e775947726beba74ef937ffd5b064f78c64681c3bcf#npm:7.3.0"]\
         ],\
         "linkType": "SOFT"\
@@ -3117,6 +3121,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["prettier", [\
+      ["npm:3.7.4", {\
+        "packageLocation": "./.yarn/unplugged/prettier-npm-3.7.4-78f94d4194/node_modules/prettier/",\
+        "packageDependencies": [\
+          ["prettier", "npm:3.7.4"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["proc-log", [\
       ["npm:6.1.0", {\
         "packageLocation": "../../.yarn/berry/cache/proc-log-npm-6.1.0-84e609b3f4-10c0.zip/node_modules/proc-log/",\
@@ -3489,6 +3502,15 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["prelude-ls", "npm:1.2.1"],\
           ["type-check", "npm:0.4.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["typescript", [\
+      ["patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5", {\
+        "packageLocation": "../../.yarn/berry/cache/typescript-patch-6fda4d02cf-10c0.zip/node_modules/typescript/",\
+        "packageDependencies": [\
+          ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
         "linkType": "HARD"\
       }]\
