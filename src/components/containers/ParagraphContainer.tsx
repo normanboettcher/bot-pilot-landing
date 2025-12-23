@@ -1,7 +1,7 @@
 import { Stack, Box } from '@mui/material';
 import ParagraphHeadingContainer from './ParagraphHeadingContainer.tsx';
-import WelcomeParagraph from '../text/WelcomeParagraph.tsx';
 import React from 'react';
+import WelcomeParagraph from '../text/welcome/WelcomeParagraph.tsx';
 
 const ParagraphContainer: React.FC = () => {
   return (

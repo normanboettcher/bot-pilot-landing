@@ -1,39 +1,35 @@
 import React from 'react';
-import { Typography } from '@mui/material';
+import { Box } from '@mui/material';
+import { alpha, useTheme } from '@mui/material/styles';
 
-interface Props {
-  text: string;
+type Props = {
+  children: React.ReactNode;
   color?: string;
-}
+};
 
-const TextDecoration: React.FC<Props> = ({ text, color }) => {
+const TextDecoration: React.FC<Props> = ({ children, color }) => {
+  const theme = useTheme();
+
+  const highlightColor = color ?? alpha(theme.palette.secondary.main, 0.8);
+
   return (
-    <Typography
+    <Box
+      component="span"
       sx={{
-        fontSize: 'inherit',
-        fontWeight: 'inherit',
-        position: 'relative',
-        display: 'inline-block',
-        zIndex: 1,
+        display: 'inline',
+        font: 'inherit',
+        color: 'inherit',
+        lineHeight: 'inherit',
+        whiteSpace: 'nowrap',
 
-        '&::after': {
-          content: '""',
-          position: 'absolute',
-          left: 0,
-          right: 0,
+        boxShadow: `inset 0 -0.55em 0 ${highlightColor}`,
 
-          height: '0.8em',
-
-          bottom: '-0.01em',
-
-          backgroundColor: color,
-          zIndex: -1,
-          borderRadius: '2px',
-        },
+        px: '0.10em',
       }}
     >
-      {text}
-    </Typography>
+      {children}
+    </Box>
   );
 };
+
 export default TextDecoration;
