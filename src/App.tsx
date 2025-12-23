@@ -4,6 +4,7 @@ import AppTheme from './theme/AppTheme.tsx';
 import { Box, CssBaseline } from '@mui/material';
 import Hero from './components/hero/Hero.tsx';
 import AppAppBar from './components/appbar/AppAppBar.tsx';
+import ContactUsButton from './components/buttons/ContactUs.tsx';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <AppAppBar />
           <Hero />
           <ParagraphContainer />
+          <ContactUsButton />
         </Box>
       </AppTheme>
     </>

@@ -147,10 +147,10 @@ export const lightColorSchemes = {
   light: {
     palette: {
       primary: {
-        main: brand[500],
-        light: brand[300],
-        dark: brand[700],
-        contrastText: neutral[50],
+        main: neutral[500],
+        light: neutral[300],
+        dark: neutral[700],
+        contrastText: brand[50],
       },
       secondary: {
         main: brand[600],
