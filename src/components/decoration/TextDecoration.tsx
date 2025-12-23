@@ -10,7 +10,7 @@ type Props = {
 const TextDecoration: React.FC<Props> = ({ children, color }) => {
   const theme = useTheme();
 
-  const highlightColor = color ?? alpha(theme.palette.secondary.main, 0.8);
+  const highlightColor = color ?? alpha(theme.palette.secondary.main, 0.4);
 
   return (
     <Box
@@ -22,9 +22,9 @@ const TextDecoration: React.FC<Props> = ({ children, color }) => {
         lineHeight: 'inherit',
         whiteSpace: 'nowrap',
 
-        boxShadow: `inset 0 -0.55em 0 ${highlightColor}`,
+        boxShadow: `inset 0 -0.6em 0 ${highlightColor}`,
 
-        px: '0.10em',
+        px: '0.1em',
       }}
     >
       {children}
