@@ -1,26 +1,22 @@
 import React from 'react';
-import { Stack, Box } from '@mui/material';
+import { Stack } from '@mui/material';
 import ParagraphHeading from '../text/ParagraphHeading.tsx';
-import { headings } from '../../config/Headings.ts';
-import WelcomeParagraphSubheading from '../text/welcome/WelcomeParagraphSubheading.tsx';
-const ParagraphHeadingContainer: React.FC = () => {
+import HeadingDecoration from '../decoration/HeadingDecoration.tsx';
+
+interface Props {
+  heading: string;
+  subheading?: string | React.ReactNode;
+}
+
+const ParagraphHeadingContainer: React.FC<Props> = ({ heading, subheading }) => {
   return (
-    <Box display="flex">
-      <Box
-        sx={{
-          width: '15px',
-          backgroundColor: 'secondary.main',
-          marginTop: '0.3rem',
-        }}
-      />
-      <Stack direction={'column'} pl={1} spacing={0}>
-        <ParagraphHeading
-          type={'heading'}
-          content={headings.welcomeParagraph.heading}
-        />
-        <WelcomeParagraphSubheading />
+    <Stack direction={'row'} alignItems={'center'}>
+      <HeadingDecoration />
+      <Stack direction={'column'} pl={1} spacing={-1} justifyContent={'center'}>
+        <ParagraphHeading type={'heading'} content={heading} />
+        {subheading}
       </Stack>
-    </Box>
+    </Stack>
   );
 };
 

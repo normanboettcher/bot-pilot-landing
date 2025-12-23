@@ -5,6 +5,9 @@ import { Box, CssBaseline } from '@mui/material';
 import Hero from './components/hero/Hero.tsx';
 import AppAppBar from './components/appbar/AppAppBar.tsx';
 import ContactUsButton from './components/buttons/ContactUs.tsx';
+import WelcomeParagraphHeading from './components/containers/WelcomeParagraphHeading.tsx';
+import WelcomeParagraphContent from './components/text/welcome/WelcomeParagraphContent.tsx';
+import AdvantagesHeading from './components/vorteile/AdvantagesHeading.tsx';
 
 function App() {
   return (
@@ -23,8 +26,12 @@ function App() {
         >
           <AppAppBar />
           <Hero />
-          <ParagraphContainer />
+          <ParagraphContainer
+            heading={<WelcomeParagraphHeading />}
+            content={<WelcomeParagraphContent />}
+          />
           <ContactUsButton />
+          <ParagraphContainer heading={<AdvantagesHeading />} content={<></>} />
         </Box>
       </AppTheme>
     </>

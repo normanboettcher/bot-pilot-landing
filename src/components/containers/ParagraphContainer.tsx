@@ -1,9 +1,12 @@
 import { Stack, Box } from '@mui/material';
-import ParagraphHeadingContainer from './ParagraphHeadingContainer.tsx';
 import React from 'react';
-import WelcomeParagraph from '../text/welcome/WelcomeParagraph.tsx';
 
-const ParagraphContainer: React.FC = () => {
+interface Props {
+  heading: React.ReactNode;
+  content: React.ReactNode;
+}
+
+const ParagraphContainer: React.FC<Props> = ({ heading, content }) => {
   return (
     <>
       <Box
@@ -13,8 +16,8 @@ const ParagraphContainer: React.FC = () => {
         }}
       >
         <Stack>
-          <ParagraphHeadingContainer />
-          <WelcomeParagraph />
+          {heading}
+          {content}
         </Stack>
       </Box>
     </>
