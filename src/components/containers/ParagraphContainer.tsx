@@ -15,7 +15,7 @@ const ParagraphContainer: React.FC<Props> = ({ heading, content }) => {
           backgroundColor: 'background.default',
         }}
       >
-        <Stack>
+        <Stack spacing={2} pr={1} pl={1}>
           {heading}
           {content}
         </Stack>

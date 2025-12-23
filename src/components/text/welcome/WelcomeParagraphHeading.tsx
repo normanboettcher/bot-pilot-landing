@@ -1,7 +1,7 @@
 import React from 'react';
-import ParagraphHeadingContainer from './ParagraphHeadingContainer.tsx';
-import { headings } from '../../config/Headings.ts';
-import WelcomeParagraphSubheading from '../text/welcome/WelcomeParagraphSubheading.tsx';
+import ParagraphHeadingContainer from '../../containers/ParagraphHeadingContainer.tsx';
+import { headings } from '../../../config/Headings.ts';
+import WelcomeParagraphSubheading from './WelcomeParagraphSubheading.tsx';
 
 const WelcomeParagraphHeading: React.FC = () => {
   return (

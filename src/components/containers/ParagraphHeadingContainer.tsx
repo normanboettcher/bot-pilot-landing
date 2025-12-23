@@ -1,7 +1,7 @@
 import React from 'react';
 import { Stack } from '@mui/material';
-import ParagraphHeading from '../text/ParagraphHeading.tsx';
 import HeadingDecoration from '../decoration/HeadingDecoration.tsx';
+import ParagraphHeading from './ParagraphHeading.tsx';
 
 interface Props {
   heading: string;
