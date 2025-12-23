@@ -182,7 +182,7 @@ export const lightColorSchemes = {
       grey: {
         ...gray,
       },
-      divider: neutral[400],
+      divider: brand[500],
       background: {
         default: neutral[300],
         paper: neutral[400],

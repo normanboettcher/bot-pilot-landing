@@ -16,7 +16,7 @@ const Hero: React.FC = () => {
         alignItems: 'start',
         alignContent: 'center',
         height: {
-          xs: '35vh', // Mobile
+          xs: '30vh', // Mobile
           sm: '50vh', // Tablet
           md: '80vh', // Desktop
           lg: '95vh', // Large Desktop

@@ -3,6 +3,7 @@ import React from 'react';
 import AppTheme from './theme/AppTheme.tsx';
 import { Box, CssBaseline } from '@mui/material';
 import Hero from './components/hero/Hero.tsx';
+import AppAppBar from './components/appbar/AppAppBar.tsx';
 
 function App() {
   return (
@@ -12,13 +13,14 @@ function App() {
         <Box
           sx={{
             padding: {
-              sx: '5px',
+              xs: '5px',
               sm: '5px',
               md: '10px',
               lg: '10px',
             },
           }}
         >
+          <AppAppBar />
           <Hero />
           <ParagraphContainer />
         </Box>
