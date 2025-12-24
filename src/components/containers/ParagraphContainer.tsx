@@ -12,12 +12,20 @@ const ParagraphContainer: React.FC<Props> = ({ heading, content }) => {
       <Box
         display="flex"
         sx={{
+          width: '100%',
           backgroundColor: 'background.default',
         }}
       >
-        <Stack spacing={2} pr={1} pl={1}>
+        <Stack spacing={2} pr={1} pl={1} width={'100%'}>
           {heading}
-          {content}
+          <Box
+            sx={{
+              width: '100%',
+              position: 'relative',
+            }}
+          >
+            {content}
+          </Box>
         </Stack>
       </Box>
     </>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Stack, Typography, useMediaQuery } from '@mui/material';
-import TextDecoration from '../../decoration/TextDecoration.tsx';
+import TextDecoration from '../decoration/TextDecoration.tsx';
 
 const WelcomeParagraphContent: React.FC = () => {
   const isMobile = useMediaQuery('(max-width: 600px)');

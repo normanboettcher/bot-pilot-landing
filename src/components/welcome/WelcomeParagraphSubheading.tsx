@@ -1,6 +1,6 @@
 import React from 'react';
-import TextDecoration from '../../decoration/TextDecoration.tsx';
-import ParagraphHeading from '../../containers/ParagraphHeading.tsx';
+import ParagraphHeading from '../containers/ParagraphHeading.tsx';
+import TextDecoration from '../decoration/TextDecoration.tsx';
 
 const WelcomeParagraphSubheading: React.FC = () => {
   return (
