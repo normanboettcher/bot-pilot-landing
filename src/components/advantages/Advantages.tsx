@@ -1,7 +1,7 @@
 import React from 'react';
 import ParagraphContainer from '../containers/ParagraphContainer.tsx';
 import AdvantagesHeading from './AdvantagesHeading.tsx';
-import { Box } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 import AdvantagesCard from './AdvantagesCard.tsx';
 import { getProductAdvantages } from './ProductAdvantages.tsx';
 import type { Advantage } from './domain/Advantage.ts';
@@ -11,7 +11,7 @@ import AdvantagesCarousel from './AdvantagesCarousel.tsx';
 const advantages: Advantage[] = getProductAdvantages();
 
 const card = (
-  <Box display={'flex'} alignItems={'end'}>
+  <Stack direction={'row'} spacing={2}>
     {advantages.map((advantage: Advantage) => (
       <AdvantagesCard
         title={advantage.title}
@@ -19,7 +19,7 @@ const card = (
         icon={advantage.icon}
       />
     ))}
-  </Box>
+  </Stack>
 );
 
 const Advantages = () => {
