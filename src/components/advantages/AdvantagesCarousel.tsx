@@ -3,20 +3,27 @@ import { getProductAdvantages } from './ProductAdvantages.tsx';
 import AdvantagesCard from './AdvantagesCard.tsx';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { Box } from '@mui/material';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Box } from '@mui/material';
 
 const AdvantagesCarousel = () => {
   const advantages = getProductAdvantages();
   return (
     <Box
+      position={'relative'}
       sx={{
         '.swiper-button-next, .swiper-button-prev': {
+          display: { xs: 'none', md: 'flex' },
+          opacity: 0,
           color: 'secondary.main',
         },
+        '&:hover .swiper-button-next, &:hover .swiper-button-prev': {
+          opacity: 1,
+        },
+
         '.swiper-pagination-bullet': {
           backgroundColor: 'secondary.main',
           opacity: 0.4,
