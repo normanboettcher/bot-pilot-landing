@@ -9,7 +9,6 @@ interface Props {
 
 const FeaturesCard: React.FC<Props> = ({ feature, direction }) => {
   const { title, imageUrl, content } = feature;
-  console.log(`imageUrl: ${imageUrl} `);
   return (
     <Stack direction={direction} spacing={2}>
       <Box
@@ -24,13 +23,14 @@ const FeaturesCard: React.FC<Props> = ({ feature, direction }) => {
           direction={direction !== 'column' ? direction : 'column'}
           spacing={1}
           width={'100%'}
+          p={1}
         >
           <Box
             component={'img'}
             src={imageUrl}
             alt={'title'}
             sx={{
-              backgroundImage: `url(${feature.imageUrl})`,
+              borderRadius: 2,
             }}
           />
           <Card sx={{ width: '100%' }}>
