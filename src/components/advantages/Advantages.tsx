@@ -25,7 +25,7 @@ const card = (
 const Advantages = () => {
   const { isMobile } = useResponsive();
   return (
-    <Box>
+    <Box id={'highlights'}>
       <ParagraphContainer
         heading={<AdvantagesHeading />}
         content={isMobile ? <AdvantagesCarousel /> : card}
