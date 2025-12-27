@@ -5,7 +5,7 @@ import ParagraphHeading from './ParagraphHeading.tsx';
 
 interface Props {
   heading: string;
-  subheading?: string | React.ReactNode;
+  subheading?: string;
 }
 
 const ParagraphHeadingContainer: React.FC<Props> = ({ heading, subheading }) => {
@@ -14,7 +14,7 @@ const ParagraphHeadingContainer: React.FC<Props> = ({ heading, subheading }) => 
       <HeadingDecoration />
       <Stack direction={'column'} pl={1} spacing={-1} justifyContent={'center'}>
         <ParagraphHeading type={'heading'} content={heading} />
-        {subheading}
+        <ParagraphHeading type={'subheading'} content={subheading} />
       </Stack>
     </Stack>
   );

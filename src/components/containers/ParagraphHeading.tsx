@@ -8,10 +8,12 @@ interface Props {
 }
 
 const ParagraphHeading: React.FC<Props> = ({ type, content, children }) => {
-  const variant = type === 'heading' ? 'h4' : 'subtitle1';
+  const isHeading = type === 'heading';
   return (
     <Typography
-      variant={variant}
+      variant={isHeading ? 'h4' : 'subtitle1'}
+      component={isHeading ? 'h2' : 'p'}
+      gutterBottom
       sx={{
         fontWeight: 'bold',
       }}

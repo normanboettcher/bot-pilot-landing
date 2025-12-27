@@ -4,4 +4,5 @@ export interface Feature {
   imageUrl: string;
   title: string;
   content: React.ReactNode | string;
+  icon: React.ReactNode;
 }

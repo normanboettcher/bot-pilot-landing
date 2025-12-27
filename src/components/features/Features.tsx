@@ -5,8 +5,9 @@ import { Stack } from '@mui/material';
 import useResponsive from '../../core/useResponsive.ts';
 import FeaturesCard from './FeaturesCard.tsx';
 import featureImage from '../../assets/images/feature1.png';
+import { DevicesRounded } from '@mui/icons-material';
 
-const features: Feature[] = [
+export const features: Feature[] = [
   {
     title: 'Gestalten Sie die Sprache Ihres Bots individuell nach Ihren Wünschen',
     imageUrl: featureImage,
@@ -15,6 +16,7 @@ const features: Feature[] = [
         Was für ein <TextDecoration>tolles Feature</TextDecoration>
       </span>
     ),
+    icon: <DevicesRounded />,
   },
   {
     title: 'Feature2',
@@ -24,6 +26,7 @@ const features: Feature[] = [
         Was für ein <TextDecoration>tolles Feature</TextDecoration>
       </span>
     ),
+    icon: <DevicesRounded />,
   },
   {
     title: 'Feature3',
@@ -33,6 +36,7 @@ const features: Feature[] = [
         Was für ein <TextDecoration>tolles Feature</TextDecoration>
       </span>
     ),
+    icon: <DevicesRounded />,
   },
 ];
 

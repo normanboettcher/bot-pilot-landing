@@ -10,6 +10,7 @@ import WelcomeParagraphHeading from './components/welcome/WelcomeParagraphHeadin
 import WelcomeParagraphContent from './components/welcome/WelcomeParagraphContent.tsx';
 import Features from './components/features/Features.tsx';
 import Footer from './components/footer/Footer.tsx';
+import FeaturesV2 from './components/features/v2/FeaturesV2.tsx';
 
 function App() {
   return (
@@ -33,9 +34,10 @@ function App() {
             content={<WelcomeParagraphContent />}
           />
           <ContactUsButton />
+          <FeaturesV2 />
           <Advantages />
           <Features />
-          <Divider/>
+          <Divider />
           <Footer />
         </Box>
       </AppTheme>
