@@ -8,6 +8,7 @@ import ContactUsButton from './components/buttons/ContactUs.tsx';
 import Advantages from './components/advantages/Advantages.tsx';
 import WelcomeParagraphHeading from './components/welcome/WelcomeParagraphHeading.tsx';
 import WelcomeParagraphContent from './components/welcome/WelcomeParagraphContent.tsx';
+import Features from './components/features/Features.tsx';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           />
           <ContactUsButton />
           <Advantages />
+          <Features />
         </Box>
       </AppTheme>
     </>
