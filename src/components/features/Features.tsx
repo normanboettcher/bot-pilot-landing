@@ -39,7 +39,7 @@ const features: Feature[] = [
 const Features = () => {
   const { isMobile } = useResponsive();
   return (
-    <Stack direction={'column'} p={1} spacing={1}>
+    <Stack direction={'column'} p={1} spacing={1} id={'features'}>
       {features.map((feature, index) => (
         <FeaturesCard
           key={index}
