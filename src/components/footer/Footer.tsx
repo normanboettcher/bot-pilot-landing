@@ -188,7 +188,7 @@ const Footer = () => {
           <IconButton
             color="inherit"
             size="small"
-            href="https://www.linkedin.com/company/mui/"
+            href="https://www.linkedin.com/in/norman-boettcher-software-engineering/"
             aria-label="LinkedIn"
             sx={{ alignSelf: 'center' }}
           >
