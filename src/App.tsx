@@ -11,6 +11,7 @@ import WelcomeParagraphContent from './components/welcome/WelcomeParagraphConten
 import Features from './components/features/Features.tsx';
 import Footer from './components/footer/Footer.tsx';
 import FeaturesV2 from './components/features/v2/FeaturesV2.tsx';
+import HighlightsV2 from './components/advantages/v2/HighlightsV2.tsx';
 
 function App() {
   return (
@@ -37,8 +38,8 @@ function App() {
             <ContactUsButton />
           </Box>
           <FeaturesV2 />
-          <Advantages />
-          <Features />
+          <Divider />
+          <HighlightsV2 />
           <Divider />
           <Footer />
         </Box>
