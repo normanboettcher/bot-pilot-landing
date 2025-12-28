@@ -8,7 +8,6 @@ import {
   DialogContentText,
   DialogTitle,
   Grid,
-  TextareaAutosize,
   TextField,
 } from '@mui/material';
 
