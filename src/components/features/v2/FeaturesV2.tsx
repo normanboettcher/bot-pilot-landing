@@ -51,8 +51,8 @@ const FeaturesV2 = () => {
     );
   }
   return (
-    <Box id={'features-v2'} sx={{ py: { xs: 8, sm: 16 } }}>
-      <Box sx={{ width: { sm: '100%', md: '70%' } }}>
+    <Box id={'features-v2'} sx={{ py: { xs: 8, sm: 12 } }}>
+      <Box sx={{ width: { sm: '100%', md: '100%', lg: '70%' } }}>
         <ParagraphContainer heading={heading()} content={featuresV2()} />
       </Box>
     </Box>

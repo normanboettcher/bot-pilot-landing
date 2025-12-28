@@ -33,7 +33,9 @@ function App() {
             heading={<WelcomeParagraphHeading />}
             content={<WelcomeParagraphContent />}
           />
-          <ContactUsButton />
+          <Box pt={8}>
+            <ContactUsButton />
+          </Box>
           <FeaturesV2 />
           <Advantages />
           <Features />
