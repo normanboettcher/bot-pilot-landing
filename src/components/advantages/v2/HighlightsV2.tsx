@@ -10,9 +10,15 @@ const HighlightsV2 = () => {
   function highlightV2() {
     return (
       <Box>
-        <Grid container spacing={2} justifyContent={'center'} px={{
-          md: 8
-        }}>
+        <Grid
+          container
+          spacing={2}
+          justifyContent={'center'}
+          px={{
+            md: 12,
+            lg: 16,
+          }}
+        >
           {features.map((advantage, index) => (
             <Grid size={{ xs: 12, sm: 8, md: 4 }}>
               <HighlightsCard key={index} highlight={advantage} />
