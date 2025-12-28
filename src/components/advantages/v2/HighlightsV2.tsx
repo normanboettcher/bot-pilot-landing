@@ -9,7 +9,7 @@ const HighlightsV2 = () => {
   const features = getProductAdvantages();
   function highlightV2() {
     return (
-      <Box>
+      <Box id={'highlights'}>
         <Grid
           container
           spacing={2}
@@ -29,7 +29,7 @@ const HighlightsV2 = () => {
     );
   }
   return (
-    <Box sx={{ py: { xs: 8, sm: 12 } }}>
+    <Box sx={{ py: { xs: 8, sm: 12 } }} id={'highlights-v2'}>
       <ParagraphContainer heading={<AdvantagesHeading />} content={highlightV2()} />
     </Box>
   );
