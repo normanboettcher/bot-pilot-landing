@@ -10,6 +10,7 @@ import WelcomeParagraphContent from './components/welcome/WelcomeParagraphConten
 import Footer from './components/footer/Footer.tsx';
 import FeaturesV2 from './components/features/v2/FeaturesV2.tsx';
 import HighlightsV2 from './components/advantages/v2/HighlightsV2.tsx';
+import { DialogContextProvider } from './context/DialogContext.tsx';
 
 function App() {
   return (
@@ -26,29 +27,31 @@ function App() {
             },
           }}
         >
-          <AppAppBar />
-          <Hero />
-          <ParagraphContainer
-            heading={<WelcomeParagraphHeading />}
-            content={<WelcomeParagraphContent />}
-          />
-          <Box
-            sx={{
-              py: {
-                xs: 4,
-                sm: 8,
-                md: 12,
-              },
-            }}
-          >
-            <ContactUsButton />
-          </Box>
-          <Divider />
-          <FeaturesV2 />
-          <Divider />
-          <HighlightsV2 />
-          <Divider />
-          <Footer />
+          <DialogContextProvider>
+            <AppAppBar />
+            <Hero />
+            <ParagraphContainer
+              heading={<WelcomeParagraphHeading />}
+              content={<WelcomeParagraphContent />}
+            />
+            <Box
+              sx={{
+                py: {
+                  xs: 4,
+                  sm: 8,
+                  md: 12,
+                },
+              }}
+            >
+              <ContactUsButton />
+            </Box>
+            <Divider />
+            <FeaturesV2 />
+            <Divider />
+            <HighlightsV2 />
+            <Divider />
+            <Footer />
+          </DialogContextProvider>
         </Box>
       </AppTheme>
     </>

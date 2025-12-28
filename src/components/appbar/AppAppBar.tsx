@@ -14,6 +14,8 @@ import {
   Typography,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import { useContactDialog } from '../../context/DialogContext.tsx';
+import ContactFormDialog from '../contact/ContactFormDialog.tsx';
 
 interface NavItem {
   title: string;
@@ -40,8 +42,12 @@ const navItems: NavItem[] = [
 const drawerWidth = 150;
 const AppAppBar: React.FC = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { isOpen, onClose, setOpen, onSubmit } = useContactDialog();
 
   const onAppBarClick = (key: string) => {
+    if (key === 'kontakt') {
+      setOpen(true);
+    }
     document.getElementById(key)?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -132,6 +138,7 @@ const AppAppBar: React.FC = () => {
           {drawer}
         </Drawer>
       </nav>
+      <ContactFormDialog onSubmit={onSubmit} open={isOpen} onClose={onClose} />
     </Box>
   );
 };

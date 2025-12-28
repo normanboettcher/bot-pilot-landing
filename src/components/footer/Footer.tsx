@@ -11,6 +11,8 @@ import {
   Typography,
 } from '@mui/material';
 import LinkedInIcon from '../icons/LinkedInIcon.tsx';
+import { useContactDialog } from '../../context/DialogContext.tsx';
+import ContactFormDialog from '../contact/ContactFormDialog.tsx';
 
 function Copyright() {
   return (
@@ -26,6 +28,7 @@ function Copyright() {
 }
 
 const Footer = () => {
+  const { isOpen, setOpen, onClose, onSubmit } = useContactDialog();
   return (
     <Container
       sx={{
@@ -37,6 +40,7 @@ const Footer = () => {
         textAlign: { sm: 'center', md: 'left' },
       }}
     >
+      <ContactFormDialog onClose={onClose} onSubmit={onSubmit} open={isOpen} />
       <Stack
         spacing={3}
         direction={{ xs: 'column', sm: 'row' }}
@@ -115,7 +119,7 @@ const Footer = () => {
           <Link color="text.secondary" variant="body2" href="#highlights-v2">
             Highlights
           </Link>
-          <Link color="text.secondary" variant="body2" href="#">
+          <Link color="text.secondary" variant="body2" onClick={() => setOpen(true)}>
             Jetzt Kontakt aufnehmen!
           </Link>
         </Box>
