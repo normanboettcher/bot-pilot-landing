@@ -190,10 +190,12 @@ export const lightColorSchemes = {
         paper: neutral[400],
       },
       text: {
-        main: brand[500],
+        primary: brand[900],
         light: brand[300],
         dark: brand[700],
         secondary: brand[500],
+        heading: gray[800],
+        subheading: gray[700],
       },
       action: {
         hover: alpha(neutral[600], 0.7),

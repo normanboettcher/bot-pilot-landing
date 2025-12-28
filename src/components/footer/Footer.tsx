@@ -16,7 +16,7 @@ function Copyright() {
   return (
     <Typography variant="body2" sx={{ color: 'text.secondary', mt: 1 }}>
       {'Copyright © '}
-      <Link color="text.secondary" href="https://mui.com/">
+      <Link color="text.secondary" href="#">
         SNB-Technologies
       </Link>
       &nbsp;
@@ -53,14 +53,21 @@ const Footer = () => {
             minWidth: { xs: '100%', sm: '60%' },
           }}
         >
-          <Box sx={{ width: { xs: '100%', sm: '60%' } }}>
+          <Stack sx={[{ width: { xs: '100%', sm: '60%' } }]} alignItems={'start'}>
             <Typography variant="body2" gutterBottom sx={{ fontWeight: 600, mt: 2 }}>
               Jetzt zum Newsletter anmelden
             </Typography>
-            <Typography variant="body2" sx={{ color: 'text.secondary', mb: 2 }}>
+            <Typography variant="body2" sx={{ mb: 2 }}>
               Kein Update mehr verpassen!
             </Typography>
-            <InputLabel htmlFor="email-newsletter">Email</InputLabel>
+            <InputLabel
+              htmlFor="email-newsletter"
+              sx={{
+                color: 'text.primary',
+              }}
+            >
+              Email
+            </InputLabel>
             <Stack direction="row" spacing={1} useFlexGap>
               <TextField
                 id="email-newsletter"
@@ -80,14 +87,14 @@ const Footer = () => {
               />
               <Button
                 variant="contained"
-                color="primary"
+                color="secondary"
                 size="small"
                 sx={{ flexShrink: 0 }}
               >
                 Anmelden
               </Button>
             </Stack>
-          </Box>
+          </Stack>
         </Box>
         <Box
           sx={{
@@ -102,10 +109,10 @@ const Footer = () => {
           <Link color="text.secondary" variant="body2" href="#">
             Home
           </Link>
-          <Link color="text.secondary" variant="body2" href="#features">
+          <Link color="text.secondary" variant="body2" href="#features-v2">
             Features
           </Link>
-          <Link color="text.secondary" variant="body2" href="#highlights">
+          <Link color="text.secondary" variant="body2" href="#highlights-v2">
             Highlights
           </Link>
           <Link color="text.secondary" variant="body2" href="#">

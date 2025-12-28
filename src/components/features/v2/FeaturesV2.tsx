@@ -35,7 +35,7 @@ const FeaturesV2 = () => {
         selectedFeature={selectedFeature}
       />
     ) : (
-      <Stack direction="row" spacing={2} width={'100%'}>
+      <Stack direction="row" spacing={2} width={'100%'} px={{ md: 12, lg: 16 }}>
         <FeatureImageCard imageUrl={selectedFeature.imageUrl} />
         <Stack direction={'column'} spacing={1} width={'100%'}>
           {features.map((feature, index) => (
@@ -52,7 +52,7 @@ const FeaturesV2 = () => {
   }
   return (
     <Box id={'features-v2'} sx={{ py: { xs: 8, sm: 12 } }}>
-      <Box sx={{ width: { sm: '100%', md: '100%', lg: '70%' } }}>
+      <Box sx={{ width: { sm: '100%', md: '100%', lg: '90%' } }}>
         <ParagraphContainer heading={heading()} content={featuresV2()} />
       </Box>
     </Box>
