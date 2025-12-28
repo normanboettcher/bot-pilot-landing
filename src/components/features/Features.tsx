@@ -9,7 +9,7 @@ import { DevicesRounded } from '@mui/icons-material';
 
 export const features: Feature[] = [
   {
-    title: 'Gestalten Sie die Sprache Ihres Bots individuell nach Ihren Wünschen',
+    title: 'Feature 1',
     imageUrl: featureImage,
     content: (
       <span>
@@ -23,7 +23,7 @@ export const features: Feature[] = [
     imageUrl: featureImage,
     content: (
       <span>
-        Was für ein <TextDecoration>tolles Feature</TextDecoration>
+        Was für ein <TextDecoration>tolles Feature 2</TextDecoration>
       </span>
     ),
     icon: <DevicesRounded />,
@@ -33,7 +33,7 @@ export const features: Feature[] = [
     imageUrl: featureImage,
     content: (
       <span>
-        Was für ein <TextDecoration>tolles Feature</TextDecoration>
+        Was für ein <TextDecoration>tolles Feature 3</TextDecoration>
       </span>
     ),
     icon: <DevicesRounded />,
