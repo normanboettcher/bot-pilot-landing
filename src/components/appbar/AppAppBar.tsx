@@ -15,10 +15,35 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
-const navItems = ['Home', 'Vorteile', 'Produkt', 'Kontakt'];
+interface NavItem {
+  title: string;
+  key: string;
+}
+const navItems: NavItem[] = [
+  {
+    title: 'Home',
+    key: 'root',
+  },
+  {
+    key: 'features-v2',
+    title: 'Features',
+  },
+  {
+    key: 'highlights-v2',
+    title: 'Highlights',
+  },
+  {
+    key: 'kontakt',
+    title: 'Kontakt',
+  },
+];
 const drawerWidth = 150;
 const AppAppBar: React.FC = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const onAppBarClick = (key: string) => {
+    document.getElementById(key)?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   const handleDrawerOpen = () => {
     setMobileOpen((prevState) => !prevState);
@@ -35,10 +60,13 @@ const AppAppBar: React.FC = () => {
         }}
       />
       <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item} />
+        {navItems.map(({ key, title }, index) => (
+          <ListItem key={index} disablePadding>
+            <ListItemButton
+              sx={{ textAlign: 'center' }}
+              onClick={() => onAppBarClick(key)}
+            >
+              <ListItemText primary={title} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -75,9 +103,13 @@ const AppAppBar: React.FC = () => {
             SNB-Technologies
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {navItems.map((item) => (
-              <Button key={item} sx={{ color: 'text.primary' }}>
-                {item}
+            {navItems.map(({ key, title }, index) => (
+              <Button
+                key={index}
+                sx={{ color: 'text.primary' }}
+                onClick={() => onAppBarClick(key)}
+              >
+                {title}
               </Button>
             ))}
           </Box>
