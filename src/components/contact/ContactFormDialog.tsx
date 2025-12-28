@@ -18,12 +18,19 @@ interface Props {
 }
 
 const ContactFormDialog: React.FC<Props> = ({ open, onSubmit, onClose }) => {
+  const textFieldSlotPops = {
+    inputLabel: {
+      sx: {
+        color: 'text.primary',
+      },
+    },
+  };
   return (
     <Box>
       <Dialog open={open} onClose={onClose}>
         <DialogTitle>{'Contact Form'}</DialogTitle>
         <DialogContent>
-          <DialogContentText color={'secondary.dark'} py={2}>
+          <DialogContentText color={'text.primary'} py={2}>
             Wir freuen uns, dass Sie an einem individuellen Chatbot von SNB-Technologies
             interessiert sind. Füllen Sie einfach die nachfolgenden Felder aus und wir
             werden uns umgehend mit Ihnen in Verbindung setzen.
@@ -32,6 +39,7 @@ const ContactFormDialog: React.FC<Props> = ({ open, onSubmit, onClose }) => {
             <Grid container spacing={2}>
               <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
+                  slotProps={textFieldSlotPops}
                   autoFocus
                   required
                   id={'vorname-field'}
@@ -44,6 +52,7 @@ const ContactFormDialog: React.FC<Props> = ({ open, onSubmit, onClose }) => {
               </Grid>
               <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
+                  slotProps={textFieldSlotPops}
                   autoFocus
                   required
                   id={'nachname-field'}
@@ -56,6 +65,7 @@ const ContactFormDialog: React.FC<Props> = ({ open, onSubmit, onClose }) => {
               </Grid>
               <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
+                  slotProps={textFieldSlotPops}
                   autoFocus
                   required
                   id={'unternehmen-field'}
@@ -68,6 +78,7 @@ const ContactFormDialog: React.FC<Props> = ({ open, onSubmit, onClose }) => {
               </Grid>
               <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
+                  slotProps={textFieldSlotPops}
                   autoFocus
                   required
                   id={'email-field'}
@@ -80,6 +91,7 @@ const ContactFormDialog: React.FC<Props> = ({ open, onSubmit, onClose }) => {
               </Grid>
               <Grid size={12}>
                 <TextField
+                  slotProps={textFieldSlotPops}
                   autoFocus
                   minRows={5}
                   multiline
@@ -98,8 +110,8 @@ const ContactFormDialog: React.FC<Props> = ({ open, onSubmit, onClose }) => {
         <DialogActions>
           <Button
             onClick={onClose}
-            color={'secondary'}
             sx={{
+              color: 'text.primary',
               '&:hover': {
                 backgroundColor: 'action.hover',
               },
@@ -109,8 +121,8 @@ const ContactFormDialog: React.FC<Props> = ({ open, onSubmit, onClose }) => {
           </Button>
           <Button
             onClick={onSubmit}
-            color={'secondary'}
             sx={{
+              color: 'text.primary',
               '&:hover': {
                 backgroundColor: 'action.hover',
               },
