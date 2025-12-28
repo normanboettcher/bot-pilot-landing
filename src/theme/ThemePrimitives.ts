@@ -1,3 +1,5 @@
+import { alpha } from '@mui/material/styles';
+
 export const blue = {
   50: 'hsl(210, 100%, 95%)',
   100: 'hsl(210, 100%, 92%)',
@@ -187,12 +189,16 @@ export const lightColorSchemes = {
         default: neutral[300],
         paper: neutral[400],
       },
-    },
-    text: {
-      main: brand[500],
-      light: brand[300],
-      dark: brand[700],
-      secondary: brand[500],
+      text: {
+        main: brand[500],
+        light: brand[300],
+        dark: brand[700],
+        secondary: brand[500],
+      },
+      action: {
+        hover: alpha(neutral[600], 0.7),
+        selected: alpha(brand[800], 0.4),
+      },
     },
   },
 };
