@@ -32,9 +32,18 @@ function App() {
             heading={<WelcomeParagraphHeading />}
             content={<WelcomeParagraphContent />}
           />
-          <Box pt={8}>
+          <Box
+            sx={{
+              py: {
+                xs: 4,
+                sm: 8,
+                md: 12,
+              },
+            }}
+          >
             <ContactUsButton />
           </Box>
+          <Divider />
           <FeaturesV2 />
           <Divider />
           <HighlightsV2 />

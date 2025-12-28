@@ -5,7 +5,15 @@ import TextDecoration from '../decoration/TextDecoration.tsx';
 const WelcomeParagraphContent: React.FC = () => {
   const isMobile = useMediaQuery('(max-width: 600px)');
   return (
-    <Stack direction={isMobile ? 'column' : 'row'} spacing={isMobile ? 1 : 3}>
+    <Stack
+      direction={isMobile ? 'column' : 'row'}
+      spacing={isMobile ? 1 : 3}
+      sx={{
+        px: {
+          sm: 12,
+        },
+      }}
+    >
       <Typography variant={'body1'} textAlign={'justify'}>
         Ein digitaler Assistent, der Ihnen wirklich{' '}
         <TextDecoration>Arbeit abnimmt</TextDecoration> und das rund um die Uhr! Als

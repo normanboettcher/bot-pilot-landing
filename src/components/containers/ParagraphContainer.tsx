@@ -22,6 +22,11 @@ const ParagraphContainer: React.FC<Props> = ({ heading, content }) => {
             sx={{
               width: '100%',
               position: 'relative',
+              py: {
+                md: 8,
+                sm: 4,
+                xs: 2,
+              },
             }}
           >
             {content}
