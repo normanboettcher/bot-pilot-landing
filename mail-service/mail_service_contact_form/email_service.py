@@ -1,8 +1,11 @@
+import logging
 from email.message import EmailMessage
 import aiosmtplib
 import os
 
 from pydantic import EmailStr
+
+logger = logging.getLogger(__name__)
 
 
 async def send_contact_mail(name: str, email: EmailStr, message: str, company: str):
@@ -10,6 +13,8 @@ async def send_contact_mail(name: str, email: EmailStr, message: str, company: s
     msg["From"] = os.environ["SMTP_USER"]
     msg["To"] = os.environ["CONTACT_RECEIVER"]
     msg["Subject"] = f"Neue Kontaktanfrage - {company}"
+
+    logger.debug(f'from: [{msg["From"]}] \n to: [{msg["To"]}]')
 
     msg.set_content(
         f"""

@@ -1,5 +1,5 @@
 dev:
-	poetry run uvicorn mail_service_contact_form.main:app --reload
+	poetry run uvicorn mail_service_contact_form.main:app --reload --log-level debug
 format:
 	poetry run black .
 lint:

@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "FastAPI backend for contact form with email delivery"
 authors = ["Norman-Ian Böttcher norman.boettcher@web.de"]
 readme = "README.md"
-package-mode = false
+package-mode = true
 
 [tool.poetry.dependencies]
 python = "^3.13"
