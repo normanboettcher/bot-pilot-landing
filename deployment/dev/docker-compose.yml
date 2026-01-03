@@ -5,8 +5,8 @@ networks:
 services:
   bot-pilot-landing:
     build:
-      context: ../../frontend/
-      dockerfile: ../../frontend/deployment/dev/Containerfile
+      context: ../../frontend
+      dockerfile: ./deployment/dev/Containerfile
     container_name: bot_pilot_landing
     networks:
       - landing-dev
@@ -16,9 +16,11 @@ services:
   bot-pilot-mail:
     build:
       context: ../../mail-service
-      dockerfile: ../../mail-service/deployment/dev/Containerfile
+      dockerfile: ./deployment/dev/Containerfile
     container_name: mail_service
+    env_file:
+      - ../../mail-service/.env
     networks:
       - landing-dev
-    expose:
+    ports:
       - "8000"

@@ -42,18 +42,24 @@ const ContactFormDialog: React.FC<Props> = ({ open, onClose }) => {
   const onSubmit = async (e: React.FormEvent) => {
     if (e) {
       e.preventDefault();
-      await fetch('/api/contact', {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          first_name: request.firstName,
-          last_name: request.lastName,
-          company: request.company,
-          message: request.message,
-          email: request.email,
-        }),
+      const payload = JSON.stringify({
+        first_name: request.firstName,
+        last_name: request.lastName,
+        company: request.company,
+        message: request.message,
+        email: request.email,
       });
+      try {
+        await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: payload,
+        });
+      } catch (e) {
+        console.log(`Fehler: ${e}`);
+      }
     }
   };
   const textFieldSlotPops = {

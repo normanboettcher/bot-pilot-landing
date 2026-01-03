@@ -3,16 +3,17 @@ FROM python:3.13-slim
 ENV POETRY_VIRTUALENVS_CREATE=false
 
 WORKDIR /app
-COPY pyproject.toml poetry.lock /app/
+COPY pyproject.toml poetry.lock logging.yaml ./
 
 RUN pip install poetry && \
     poetry install \
     --no-root \
     --no-interaction \
-    --no-ansi \
+    --no-ansi
 
-COPY . /app/
+COPY . ./
 
-RUN pip install .
+RUN pip install -e .
+EXPOSE 8000
 
-CMD ["poetry", "run", "uvicorn", "mail_service_contact_form.main:app"]
+CMD ["poetry", "run", "uvicorn", "mail_service_contact_form.main:app", "--host", "0.0.0.0", "--log-config", "logging.yaml"]
