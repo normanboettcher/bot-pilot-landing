@@ -1,14 +1,13 @@
 import { createContext, useContext, useState } from 'react';
 import React from 'react';
+
 export const DialogContext = createContext<{
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: () => void;
   setOpen: (open: boolean) => void;
 }>({
   isOpen: false,
   onClose: () => {},
-  onSubmit: () => {},
   setOpen: () => {},
 });
 
@@ -26,7 +25,6 @@ export const DialogContextProvider: React.FC<{ children: React.ReactNode }> = ({
       value={{
         isOpen: open,
         onClose: onClose,
-        onSubmit: () => {},
         setOpen: setOpen,
       }}
     >

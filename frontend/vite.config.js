@@ -9,5 +9,14 @@ export default defineConfig({
         alias: {
             '@': path.resolve(__dirname, './src'),
         }
+    },
+    server: {
+        proxy: {
+            '/api/contact': {
+                target: 'http://mail_service:8000/',
+                changeOrigin: true,
+                rewrite: (path) => path.replace(/^\/api/, '')
+            }
+        }
     }
 })

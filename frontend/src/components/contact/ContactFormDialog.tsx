@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Button,
@@ -13,11 +13,49 @@ import {
 
 interface Props {
   onClose: () => void;
-  onSubmit: () => void;
   open: boolean;
 }
 
-const ContactFormDialog: React.FC<Props> = ({ open, onSubmit, onClose }) => {
+interface ContactRequest {
+  firstName: string;
+  lastName: string;
+  company: string;
+  email: string;
+  message: string;
+}
+
+const ContactFormDialog: React.FC<Props> = ({ open, onClose }) => {
+  const [request, setRequest] = useState<ContactRequest>({
+    firstName: '',
+    lastName: '',
+    company: '',
+    email: '',
+    message: '',
+  });
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setRequest((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+  const onSubmit = async (e: React.FormEvent) => {
+    if (e) {
+      e.preventDefault();
+      await fetch('/api/contact', {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          first_name: request.firstName,
+          last_name: request.lastName,
+          company: request.company,
+          message: request.message,
+          email: request.email,
+        }),
+      });
+    }
+  };
   const textFieldSlotPops = {
     inputLabel: {
       sx: {
@@ -43,11 +81,12 @@ const ContactFormDialog: React.FC<Props> = ({ open, onSubmit, onClose }) => {
                   autoFocus
                   required
                   id={'vorname-field'}
-                  name={'vorname'}
+                  name={'firstName'}
                   label={'Vorname'}
                   type={'text'}
                   fullWidth
                   variant={'standard'}
+                  onChange={onChange}
                 />
               </Grid>
               <Grid size={{ xs: 12, sm: 6 }}>
@@ -56,11 +95,12 @@ const ContactFormDialog: React.FC<Props> = ({ open, onSubmit, onClose }) => {
                   autoFocus
                   required
                   id={'nachname-field'}
-                  name={'nachname'}
+                  name={'lastName'}
                   label={'Nachname'}
                   type={'text'}
                   fullWidth
                   variant={'standard'}
+                  onChange={onChange}
                 />
               </Grid>
               <Grid size={{ xs: 12, sm: 6 }}>
@@ -69,11 +109,12 @@ const ContactFormDialog: React.FC<Props> = ({ open, onSubmit, onClose }) => {
                   autoFocus
                   required
                   id={'unternehmen-field'}
-                  name={'unternehmen'}
+                  name={'company'}
                   label={'Unternehmen'}
                   type={'text'}
                   fullWidth
                   variant={'standard'}
+                  onChange={onChange}
                 />
               </Grid>
               <Grid size={{ xs: 12, sm: 6 }}>
@@ -87,6 +128,7 @@ const ContactFormDialog: React.FC<Props> = ({ open, onSubmit, onClose }) => {
                   type={'email'}
                   fullWidth
                   variant={'standard'}
+                  onChange={onChange}
                 />
               </Grid>
               <Grid size={12}>
@@ -98,10 +140,11 @@ const ContactFormDialog: React.FC<Props> = ({ open, onSubmit, onClose }) => {
                   required
                   id={'anmerkungen-field'}
                   label={'Anmerkungen'}
-                  name={'anmerkungen'}
+                  name={'message'}
                   type={'text'}
                   fullWidth
                   variant={'outlined'}
+                  onChange={onChange}
                 />
               </Grid>
             </Grid>

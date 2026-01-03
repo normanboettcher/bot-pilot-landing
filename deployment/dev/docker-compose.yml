@@ -1,0 +1,24 @@
+name: 'bot-pilot-landing-dev'
+networks:
+  landing-dev:
+
+services:
+  bot-pilot-landing:
+    build:
+      context: ../../frontend/
+      dockerfile: ../../frontend/deployment/dev/Containerfile
+    container_name: bot_pilot_landing
+    networks:
+      - landing-dev
+    ports:
+      - "5173:5173"
+
+  bot-pilot-mail:
+    build:
+      context: ../../mail-service
+      dockerfile: ../../mail-service/deployment/dev/Containerfile
+    container_name: mail_service
+    networks:
+      - landing-dev
+    expose:
+      - "8000"
