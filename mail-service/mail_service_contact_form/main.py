@@ -1,5 +1,3 @@
-import logging
-
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from mail_service_contact_form.models import ContactRequest
@@ -19,12 +17,13 @@ app.add_middleware(
 async def contact(data: ContactRequest):
     try:
         await send_contact_mail(
-            f'{data.first_name} {data.last_name}',
+            f"{data.first_name} {data.last_name}",
             data.email,
             data.message,
-            data.company
+            data.company,
         )
         return {"status": "ok"}
     except Exception as e:
-        raise HTTPException(status_code=500,
-                            detail=f"Mail konnte nicht gesendet werden: {e}")
+        raise HTTPException(
+            status_code=500, detail=f"Mail konnte nicht gesendet werden: {e}"
+        )
