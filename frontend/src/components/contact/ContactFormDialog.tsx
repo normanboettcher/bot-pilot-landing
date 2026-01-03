@@ -10,6 +10,8 @@ import {
   Grid,
   TextField,
 } from '@mui/material';
+import type {} from '@mui/lab/themeAugmentation';
+import { LoadingButton } from '@mui/lab';
 
 interface Props {
   onClose: () => void;
@@ -50,13 +52,17 @@ const ContactFormDialog: React.FC<Props> = ({ open, onClose }) => {
         email: request.email,
       });
       try {
-        await fetch('/api/contact', {
+        setLoading(true);
+        const response = await fetch('/api/contact', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: payload,
         });
+        if (response.ok) {
+          setLoading(false);
+        }
       } catch (e) {
         console.log(`Fehler: ${e}`);
       }
@@ -69,6 +75,7 @@ const ContactFormDialog: React.FC<Props> = ({ open, onClose }) => {
       },
     },
   };
+  const [loading, setLoading] = useState<boolean>(false);
   return (
     <Box>
       <Dialog open={open} onClose={onClose}>
@@ -168,8 +175,10 @@ const ContactFormDialog: React.FC<Props> = ({ open, onClose }) => {
           >
             Schliessen
           </Button>
-          <Button
+          <LoadingButton
+            loading={loading}
             onClick={onSubmit}
+            loadingPosition={'start'}
             sx={{
               color: 'text.primary',
               '&:hover': {
@@ -178,7 +187,7 @@ const ContactFormDialog: React.FC<Props> = ({ open, onClose }) => {
             }}
           >
             Absenden
-          </Button>
+          </LoadingButton>
         </DialogActions>
       </Dialog>
     </Box>
