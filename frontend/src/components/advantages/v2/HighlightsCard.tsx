@@ -9,11 +9,26 @@ interface Props {
 const HighlightsCard: React.FC<Props> = ({ highlight }) => {
   const { icon, description, title } = highlight;
   return (
-    <Card>
+    <Card
+      sx={{
+        height: '100%',
+        '&:hover': {
+          backgroundColor: 'action.hover',
+        },
+      }}
+    >
       <Stack spacing={1} direction={'column'} p={2}>
         <Box>{icon}</Box>
         <Box>
-          <Typography component={'h3'} variant={'h5'}>
+          <Typography
+            component={'h3'}
+            variant={'h5'}
+            sx={{
+              wordWrap: 'break-word',
+              overflowWrap: 'break-word',
+              hyphens: 'auto',
+            }}
+          >
             {title}
           </Typography>
         </Box>
