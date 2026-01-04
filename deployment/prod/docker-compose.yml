@@ -1,26 +1,40 @@
 name: 'bot-pilot-landing-prod'
 networks:
-  landing-dev:
+  landing-prod:
 
 services:
+  caddy-prod:
+    image: caddy:latest
+    container_name: caddy-prod
+    restart: unless-stopped
+    ports:
+      - "8443:8443"
+    networks:
+      - landing-prod
+    volumes:
+      - ../../Caddyfile:/etc/caddy/Caddyfile:ro,Z
   bot-pilot-landing:
     build:
       context: ../../frontend
-      dockerfile: ./deployment/dev/Containerfile
+      dockerfile: ./deployment/prod/Containerfile
     container_name: bot_pilot_landing
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
     networks:
-      - landing-dev
-    ports:
-      - "5173:5173"
+      - landing-prod
+    expose:
+      - "80"
 
   bot-pilot-mail:
     build:
       context: ../../mail-service
       dockerfile: ./deployment/dev/Containerfile
     container_name: mail_service
+    restart: unless-stopped
     env_file:
       - ../../mail-service/.env
     networks:
-      - landing-dev
+      - landing-prod
     ports:
       - "8000"

@@ -1,0 +1,20 @@
+{
+    local_certs
+}
+
+:8443 {
+
+    file_server
+    handle {
+               reverse_proxy bot-pilot-landing:80
+           }
+
+    handle_path /api/* {
+                           reverse_proxy mail_service:8000
+                       }
+    log {
+            output stdout
+            format console
+            level DEBUG
+        }
+}
