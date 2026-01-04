@@ -24,6 +24,10 @@ COPY . ./
 RUN pip install -e .
 
 FROM python:3.13-slim
+
+RUN useradd -m appuser
+USER appuser
+
 WORKDIR /app
 
 COPY --from=builder /usr/local/lib/python3.13/site-packages /usr/local/lib/python3.13/site-packages

@@ -1,0 +1,7 @@
+.idea
+.env
+.flake8
+.gitignore
+Makefile
+deployment
+README.md
