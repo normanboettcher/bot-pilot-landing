@@ -12,12 +12,12 @@ services:
     networks:
       - landing-prod
     volumes:
-      - ../../Caddyfile:/etc/caddy/Caddyfile:ro,Z
+      - ../Caddyfile:/etc/caddy/Caddyfile:ro,Z
   bot-pilot-landing:
     build:
       context: ../../frontend
       dockerfile: ./deployment/prod/Containerfile
-    container_name: bot_pilot_landing
+    container_name: bot_pilot_landing_prod
     restart: unless-stopped
     environment:
       - NODE_ENV=production
@@ -30,7 +30,7 @@ services:
     build:
       context: ../../mail-service
       dockerfile: ./deployment/dev/Containerfile
-    container_name: mail_service
+    container_name: mail_service_prod
     restart: unless-stopped
     env_file:
       - ../../mail-service/.env

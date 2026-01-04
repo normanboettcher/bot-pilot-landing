@@ -10,7 +10,7 @@
            }
 
     handle_path /api/* {
-                           reverse_proxy mail_service:8000
+                           reverse_proxy mail_service_prod:8000
                        }
     log {
             output stdout
