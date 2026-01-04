@@ -29,12 +29,14 @@ services:
   bot-pilot-mail:
     build:
       context: ../../mail-service
-      dockerfile: ./deployment/dev/Containerfile
+      dockerfile: ./deployment/prod/Containerfile
     container_name: mail_service_prod
     restart: unless-stopped
     env_file:
       - ../../mail-service/.env
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro,Z
     networks:
       - landing-prod
-    ports:
-      - "8000"
+    expose:
+      - "80"
