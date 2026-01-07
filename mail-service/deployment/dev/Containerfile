@@ -1,36 +1,19 @@
-FROM python:3.13-slim AS builder
+FROM python:3.13-slim
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-        build-essential \
-        curl \
-        libpq-dev \
-        git \
-    && rm -rf /var/lib/apt/lists/*
+ENV POETRY_VIRTUALENVS_CREATE=false
 
 WORKDIR /app
+COPY pyproject.toml poetry.lock logging.yaml ./
 
-ENV POETRY_HOME="/opt/poetry"
-ENV PATH="$POETRY_HOME/bin:$PATH"
-RUN curl -sSL https://install.python-poetry.org | python3 - && \
-    poetry --version
-
-COPY pyproject.toml poetry.lock ./
-
-RUN poetry config virtualenvs.create false \
-    && poetry install --no-root  --no-interaction --no-ansi
+RUN pip install poetry && \
+    poetry install \
+    --no-root \
+    --no-interaction \
+    --no-ansi
 
 COPY . ./
 
 RUN pip install -e .
-
-FROM python:3.13-slim
-WORKDIR /app
-
-COPY --from=builder /usr/local/lib/python3.13/site-packages /usr/local/lib/python3.13/site-packages
-COPY --from=builder /app /app
-
-COPY logging.yaml logging.yaml
-
 EXPOSE 8000
 
 CMD ["poetry", "run", "uvicorn", "mail_service_contact_form.main:app", "--host", "0.0.0.0", "--log-config", "logging.yaml"]
