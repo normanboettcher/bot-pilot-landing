@@ -11,7 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 @Component
-public class MailPasswordInitializer {
+public class MailSenderInitializer {
 
     @Autowired
     private JavaMailSender mailSender;
