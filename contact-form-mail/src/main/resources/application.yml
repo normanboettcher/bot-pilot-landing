@@ -11,3 +11,6 @@ spring:
           auth: true
           starttls:
             enable: true
+logging:
+  level:
+    de.bot.pilot.mail: DEBUG
