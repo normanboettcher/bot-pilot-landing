@@ -20,7 +20,7 @@ const HighlightsV2 = () => {
           }}
         >
           {features.map((advantage, index) => (
-            <Grid size={{ xs: 12, sm: 8, md: 4 }}>
+            <Grid size={{ xs: 12, sm: 8, md: 4 }} key={index}>
               <HighlightsCard key={index} highlight={advantage} />
             </Grid>
           ))}

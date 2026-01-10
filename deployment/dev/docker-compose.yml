@@ -14,15 +14,17 @@ services:
     ports:
       - "5173:5173"
 
-  bot-pilot-mail:
+  api.mail.contact:
     build:
-      context: ../../mail-service
+      context: ../../contact-form-mail
       dockerfile: ./deployment/dev/Containerfile
     container_name: mail_service
     restart: unless-stopped
     env_file:
-      - ../../mail-service/.env
+      - dev.env
+    volumes:
+      - ${HOME}/projects/bot-pilot-landing/contact-form-mail/smtp_pw:/opt/secrets/smtp_password:ro,Z
     networks:
       - landing-dev
     ports:
-      - "8000"
+      - "8080"

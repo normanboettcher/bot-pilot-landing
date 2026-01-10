@@ -13,4 +13,4 @@ spring:
             enable: true
 logging:
   level:
-    de.bot.pilot.mail: DEBUG
+    de.bot.pilot.mail: ${LOG_LEVEL_MAIL:INFO}

@@ -12,8 +12,8 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '/api/contact': {
-        target: 'http://localhost:8000/',
+      '/api': {
+        target: 'http://api.mail.contact:8080',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
