@@ -42,7 +42,7 @@ const navItems: NavItem[] = [
 const drawerWidth = 150;
 const AppAppBar: React.FC = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { isOpen, onClose, setOpen, onSubmit } = useContactDialog();
+  const { isOpen, onClose, setOpen } = useContactDialog();
 
   const onAppBarClick = (key: string) => {
     if (key === 'kontakt') {
@@ -69,10 +69,11 @@ const AppAppBar: React.FC = () => {
         {navItems.map(({ key, title }, index) => (
           <ListItem key={index} disablePadding>
             <ListItemButton
+              key={index}
               sx={{ textAlign: 'center' }}
               onClick={() => onAppBarClick(key)}
             >
-              <ListItemText primary={title} />
+              <ListItemText key={index} primary={title} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -138,7 +139,7 @@ const AppAppBar: React.FC = () => {
           {drawer}
         </Drawer>
       </nav>
-      <ContactFormDialog onSubmit={onSubmit} open={isOpen} onClose={onClose} />
+      <ContactFormDialog open={isOpen} onClose={onClose} />
     </Box>
   );
 };

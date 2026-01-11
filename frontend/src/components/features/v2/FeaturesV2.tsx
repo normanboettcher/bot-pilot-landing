@@ -40,6 +40,7 @@ const FeaturesV2 = () => {
         <Stack direction={'column'} spacing={1} width={'100%'}>
           {features.map((feature, index) => (
             <FeatureButton
+              key={index}
               selectedFeature={feature}
               index={index}
               handleItemClick={handleItemClick}

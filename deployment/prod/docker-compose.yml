@@ -1,0 +1,47 @@
+name: 'bot-pilot-landing-prod'
+networks:
+  landing-prod:
+
+services:
+  caddy-prod:
+    image: caddy:latest
+    container_name: caddy-prod
+    restart: unless-stopped
+    ports:
+      - "8443:8443"
+    networks:
+      - landing-prod
+    volumes:
+      - ../Caddyfile:/etc/caddy/Caddyfile:ro,Z
+  bot-pilot-landing:
+    image: docker.io/normanboettcher/bot-pilot:bot-pilot-landing-0.1.0
+    container_name: bot_pilot_landing_prod
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    networks:
+      - landing-prod
+    expose:
+      - "80"
+
+  api.mail.contact.bot-pilot.de:
+    image: docker.io/normanboettcher/bot-pilot:contact-form-mail-0.1.0
+    container_name: mail_service_prod
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    read_only: true
+    env_file:
+      - prod.env
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    volumes:
+      - ./smtp_pw:/opt/secrets/smtp_password:ro,Z
+    networks:
+      - landing-prod
+    expose:
+      - "8080"
+    tmpfs:
+      - /tmp

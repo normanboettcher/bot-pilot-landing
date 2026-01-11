@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Button,
@@ -10,14 +10,64 @@ import {
   Grid,
   TextField,
 } from '@mui/material';
+import type {} from '@mui/lab/themeAugmentation';
+import { LoadingButton } from '@mui/lab';
 
 interface Props {
   onClose: () => void;
-  onSubmit: () => void;
   open: boolean;
 }
 
-const ContactFormDialog: React.FC<Props> = ({ open, onSubmit, onClose }) => {
+interface ContactRequest {
+  firstName: string;
+  lastName: string;
+  company: string;
+  email: string;
+  message: string;
+}
+
+const ContactFormDialog: React.FC<Props> = ({ open, onClose }) => {
+  const [request, setRequest] = useState<ContactRequest>({
+    firstName: '',
+    lastName: '',
+    company: '',
+    email: '',
+    message: '',
+  });
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setRequest((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+  const onSubmit = async (e: React.FormEvent) => {
+    if (e) {
+      e.preventDefault();
+      const payload = JSON.stringify({
+        first_name: request.firstName,
+        last_name: request.lastName,
+        company: request.company,
+        message: request.message,
+        email: request.email,
+      });
+      try {
+        setLoading(true);
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: payload,
+        });
+        if (response.ok) {
+          setLoading(false);
+        }
+      } catch (e) {
+        console.log(`Fehler: ${e}`);
+      }
+    }
+  };
   const textFieldSlotPops = {
     inputLabel: {
       sx: {
@@ -25,6 +75,7 @@ const ContactFormDialog: React.FC<Props> = ({ open, onSubmit, onClose }) => {
       },
     },
   };
+  const [loading, setLoading] = useState<boolean>(false);
   return (
     <Box>
       <Dialog open={open} onClose={onClose}>
@@ -43,11 +94,12 @@ const ContactFormDialog: React.FC<Props> = ({ open, onSubmit, onClose }) => {
                   autoFocus
                   required
                   id={'vorname-field'}
-                  name={'vorname'}
+                  name={'firstName'}
                   label={'Vorname'}
                   type={'text'}
                   fullWidth
                   variant={'standard'}
+                  onChange={onChange}
                 />
               </Grid>
               <Grid size={{ xs: 12, sm: 6 }}>
@@ -56,11 +108,12 @@ const ContactFormDialog: React.FC<Props> = ({ open, onSubmit, onClose }) => {
                   autoFocus
                   required
                   id={'nachname-field'}
-                  name={'nachname'}
+                  name={'lastName'}
                   label={'Nachname'}
                   type={'text'}
                   fullWidth
                   variant={'standard'}
+                  onChange={onChange}
                 />
               </Grid>
               <Grid size={{ xs: 12, sm: 6 }}>
@@ -69,11 +122,12 @@ const ContactFormDialog: React.FC<Props> = ({ open, onSubmit, onClose }) => {
                   autoFocus
                   required
                   id={'unternehmen-field'}
-                  name={'unternehmen'}
+                  name={'company'}
                   label={'Unternehmen'}
                   type={'text'}
                   fullWidth
                   variant={'standard'}
+                  onChange={onChange}
                 />
               </Grid>
               <Grid size={{ xs: 12, sm: 6 }}>
@@ -87,6 +141,7 @@ const ContactFormDialog: React.FC<Props> = ({ open, onSubmit, onClose }) => {
                   type={'email'}
                   fullWidth
                   variant={'standard'}
+                  onChange={onChange}
                 />
               </Grid>
               <Grid size={12}>
@@ -98,10 +153,11 @@ const ContactFormDialog: React.FC<Props> = ({ open, onSubmit, onClose }) => {
                   required
                   id={'anmerkungen-field'}
                   label={'Anmerkungen'}
-                  name={'anmerkungen'}
+                  name={'message'}
                   type={'text'}
                   fullWidth
                   variant={'outlined'}
+                  onChange={onChange}
                 />
               </Grid>
             </Grid>
@@ -119,8 +175,10 @@ const ContactFormDialog: React.FC<Props> = ({ open, onSubmit, onClose }) => {
           >
             Schliessen
           </Button>
-          <Button
+          <LoadingButton
+            loading={loading}
             onClick={onSubmit}
+            loadingPosition={'start'}
             sx={{
               color: 'text.primary',
               '&:hover': {
@@ -129,7 +187,7 @@ const ContactFormDialog: React.FC<Props> = ({ open, onSubmit, onClose }) => {
             }}
           >
             Absenden
-          </Button>
+          </LoadingButton>
         </DialogActions>
       </Dialog>
     </Box>

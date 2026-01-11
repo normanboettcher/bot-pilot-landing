@@ -1,0 +1,30 @@
+name: 'bot-pilot-landing-dev'
+networks:
+  landing-dev:
+
+services:
+  bot-pilot-landing:
+    build:
+      context: ../../frontend
+      dockerfile: ./deployment/dev/Containerfile
+    container_name: bot_pilot_landing
+    restart: unless-stopped
+    networks:
+      - landing-dev
+    ports:
+      - "5173:5173"
+
+  api.mail.contact:
+    build:
+      context: ../../contact-form-mail
+      dockerfile: ./deployment/dev/Containerfile
+    container_name: mail_service
+    restart: unless-stopped
+    env_file:
+      - dev.env
+    volumes:
+      - ${HOME}/projects/bot-pilot-landing/contact-form-mail/smtp_pw:/opt/secrets/smtp_password:ro,Z
+    networks:
+      - landing-dev
+    ports:
+      - "8080"

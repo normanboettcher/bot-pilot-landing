@@ -3,5 +3,13 @@
   <component name="Black">
     <option name="sdkName" value="bot-pilot-landing-mail" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="bot-pilot-landing-mail" project-jdk-type="Python SDK" />
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/contact-form-mail/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_25" project-jdk-name="25" project-jdk-type="JavaSDK" />
 </project>
