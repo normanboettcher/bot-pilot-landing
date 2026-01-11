@@ -28,6 +28,11 @@ services:
     image: docker.io/normanboettcher/bot-pilot:contact-form-mail-0.1.0
     container_name: mail_service_prod
     restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    read_only: true
     env_file:
       - prod.env
     environment:
@@ -38,3 +43,5 @@ services:
       - landing-prod
     expose:
       - "8080"
+    tmpfs:
+      - /tmp
