@@ -14,9 +14,7 @@ services:
     volumes:
       - ../Caddyfile:/etc/caddy/Caddyfile:ro,Z
   bot-pilot-landing:
-    build:
-      context: ../../frontend
-      dockerfile: ./deployment/prod/Containerfile
+    image: docker.io/normanboettcher/bot-pilot:bot-pilot-landing-0.1.0
     container_name: bot_pilot_landing_prod
     restart: unless-stopped
     environment:
@@ -26,17 +24,17 @@ services:
     expose:
       - "80"
 
-  bot-pilot-mail:
-    build:
-      context: ../../mail-service
-      dockerfile: ./deployment/prod/Containerfile
+  api.mail.contact.bot-pilot.de:
+    image: docker.io/normanboettcher/bot-pilot:contact-form-mail-0.1.0
     container_name: mail_service_prod
     restart: unless-stopped
     env_file:
-      - ../../mail-service/.env
+      - prod.env
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro,Z
+      - ./smtp_pw:/opt/secrets/smtp_password:ro,Z
     networks:
       - landing-prod
     expose:
-      - "80"
+      - "8080"

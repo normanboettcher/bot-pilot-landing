@@ -4,9 +4,9 @@ WORKDIR /app
 
 COPY . .
 
-RUN --mount=type=cache,target=/root/.yarn/berry/cache \
-    yarn install --immutable && \
-    yarn build --mode development
+RUN yarn set version 4.9.2
+RUN yarn install --immutable && \
+    yarn build --mode production
 
 # 2. Stage: Runner
 FROM nginx:stable-alpine AS runner
