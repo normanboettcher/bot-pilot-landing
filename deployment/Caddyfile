@@ -1,3 +1,17 @@
+{
+	order rate_limit before reverse_proxy
+}
+
+(rate_limit_api) {
+	rate_limit {
+				   zone api_zone {
+									 key {remote_ip}
+									 events 10
+									 window 1m
+								 }
+			   }
+}
+
 :8443 {
 
 	encode zstd gzip
@@ -18,12 +32,14 @@
   "
 
 	file_server
+
 	handle {
 			   reverse_proxy bot-pilot-landing:80
 		   }
 
 	handle_path /api/* {
 						   reverse_proxy api.mail.contact.bot-pilot.de:8080
+						   import rate_limit_api
 					   }
 	log {
 			output stdout
