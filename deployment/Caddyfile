@@ -1,20 +1,51 @@
 {
-	local_certs
+#http_port 8081
+#https_port 8443
+	order rate_limit before reverse_proxy
+}
+
+
+(rate_limit_api) {
+	rate_limit {
+				   zone api_zone {
+									 key {remote_ip}
+									 events 10
+									 window 1m
+								 }
+			   }
 }
 
 :8443 {
 
+	encode zstd gzip
+	header {
+			   Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+			   X-Content-Type-Options "nosniff"
+			   X-Frame-Options "DENY"
+			   Referrer-Policy "strict-origin-when-cross-origin"
+			   Permissions-Policy "geolocation=(), camera=(), microphone=()"
+			   Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self' https://api.mail.contact.bot-pilot.de;"
+		   }
+	request_body {
+					 max_size 1MB
+				 }
 	file_server
+
 	handle {
 			   reverse_proxy bot-pilot-landing:80
 		   }
 
 	handle_path /api/* {
-						   reverse_proxy api.mail.contact.bot-pilot.de:8080
+						   import rate_limit_api
+						   @not_post not method POST
+						   respond @not_post 405 {
+													 body "Method Not Allowed"
+												 }
+						   reverse_proxy mail_service_prod:8080
 					   }
 	log {
 			output stdout
 			format console
-			level DEBUG
+			level INFO
 		}
 }

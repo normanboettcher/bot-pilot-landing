@@ -4,7 +4,7 @@ networks:
 
 services:
   caddy-prod:
-    image: caddy:latest
+    image: docker.io/normanboettcher/bot-pilot:caddy-gateway-1.0.0
     container_name: caddy-prod
     restart: unless-stopped
     ports:
