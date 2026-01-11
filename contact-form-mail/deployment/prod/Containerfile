@@ -11,12 +11,16 @@ COPY src ./src
 
 RUN ./mvnw -q -B package -DskipTests
 
+COPY deployment/prod/HealthCheck.java ./
+RUN javac HealthCheck.java
+
 # -------- Runtime Stage --------
 FROM gcr.io/distroless/java25-debian13:nonroot
 
 WORKDIR /app
 
 COPY --from=builder /build/target/*.jar app.jar
+COPY --from=builder /build/HealthCheck.class .
 EXPOSE 8080
 
 ENV JAVA_OPTS="-XX:+UseContainerSupport \
@@ -24,7 +28,7 @@ ENV JAVA_OPTS="-XX:+UseContainerSupport \
  -XX:+ExitOnOutOfMemoryError"
 
 HEALTHCHECK --interval=30s --timeout=3s --retries=3 \
-CMD ["java", "-jar", "app.jar", "--spring.profile.active=prod", "--healthcheck"]
+CMD ["java", "-cp", ".", "HealthCheck"]
 
 USER nonroot
 
