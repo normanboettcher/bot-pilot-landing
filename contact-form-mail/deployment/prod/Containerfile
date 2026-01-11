@@ -1,0 +1,31 @@
+# -------- Build Stage --------
+FROM eclipse-temurin:25-jdk-alpine AS builder
+
+WORKDIR /build
+
+COPY pom.xml mvnw ./
+COPY .mvn ./.mvn
+RUN ./mvnw -q -e -B dependency:go-offline || true
+
+COPY src ./src
+
+RUN ./mvnw -q -B package -DskipTests
+
+# -------- Runtime Stage --------
+FROM gcr.io/distroless/java25-debian13:nonroot
+
+WORKDIR /app
+
+COPY --from=builder /build/target/*.jar app.jar
+EXPOSE 8080
+
+ENV JAVA_OPTS="-XX:+UseContainerSupport \
+ -XX:MaxRAMPercentage=75.0 \
+ -XX:+ExitOnOutOfMemoryError"
+
+HEALTHCHECK --interval=30s --timeout=3s --retries=3 \
+CMD ["java", "-jar", "app.jar", "--spring.profile.active=prod", "--healthcheck"]
+
+USER nonroot
+
+ENTRYPOINT ["java", "-jar", "app.jar"]
