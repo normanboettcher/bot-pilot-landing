@@ -1,4 +1,6 @@
 {
+#http_port 8081
+#https_port 8443
 	order rate_limit before reverse_proxy
 }
 
@@ -14,14 +16,7 @@
 }
 
 :8443 {
-	@api {
-			 path /api/*
-			 method POST
-		 }
 
-	request_body {
-					 max_size 1MB
-				 }
 	encode zstd gzip
 	header {
 			   Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
@@ -29,16 +24,11 @@
 			   X-Frame-Options "DENY"
 			   Referrer-Policy "strict-origin-when-cross-origin"
 			   Permissions-Policy "geolocation=(), camera=(), microphone=()"
+			   Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self' https://api.mail.contact.bot-pilot.de;"
 		   }
-# Content Security Policy (Frontend!)
-	header Content-Security-Policy "
-    default-src 'self';
-    script-src 'self';
-    style-src 'self' 'unsafe-inline';
-    img-src 'self' data:;
-    connect-src 'self' https://api.mail.contact.bot-pilot.de;
-  "
-
+	request_body {
+					 max_size 1MB
+				 }
 	file_server
 
 	handle {
@@ -46,14 +36,16 @@
 		   }
 
 	handle_path /api/* {
-						   reverse_proxy @api api.mail.contact.bot-pilot.de:8080
 						   import rate_limit_api
-						   respond /api/* 405
+						   @not_post not method POST
+						   respond @not_post 405 {
+													 body "Method Not Allowed"
+												 }
+						   reverse_proxy mail_service_prod:8080
 					   }
 	log {
 			output stdout
 			format console
-			level DEBUG
-			output file /var/log/caddy/access.log
+			level INFO
 		}
 }
