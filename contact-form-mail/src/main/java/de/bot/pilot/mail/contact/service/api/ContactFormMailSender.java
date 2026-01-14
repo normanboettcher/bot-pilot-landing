@@ -1,4 +1,4 @@
-package de.bot.pilot.mail.contact.service;
+package de.bot.pilot.mail.contact.service.api;
 
 import de.bot.pilot.mail.contact.dto.ContactRequest;
 

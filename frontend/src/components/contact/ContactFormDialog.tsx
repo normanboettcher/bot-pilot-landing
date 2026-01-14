@@ -12,6 +12,7 @@ import {
 } from '@mui/material';
 import type {} from '@mui/lab/themeAugmentation';
 import { LoadingButton } from '@mui/lab';
+import ContactFormCaptcha from '../captcha/ContactFormCaptcha.tsx';
 
 interface Props {
   onClose: () => void;
@@ -45,11 +46,8 @@ const ContactFormDialog: React.FC<Props> = ({ open, onClose }) => {
     if (e) {
       e.preventDefault();
       const payload = JSON.stringify({
-        first_name: request.firstName,
-        last_name: request.lastName,
-        company: request.company,
-        message: request.message,
-        email: request.email,
+        ...request,
+        captchaToken: captchaToken,
       });
       try {
         setLoading(true);
@@ -75,10 +73,12 @@ const ContactFormDialog: React.FC<Props> = ({ open, onClose }) => {
       },
     },
   };
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   return (
     <Box>
       <Dialog open={open} onClose={onClose}>
+        <ContactFormCaptcha onVerify={setCaptchaToken} />
         <DialogTitle>{'Contact Form'}</DialogTitle>
         <DialogContent>
           <DialogContentText color={'text.primary'} py={2}>

@@ -11,8 +11,8 @@ import jakarta.validation.constraints.NotBlank;
  * <p>
  * Fields:
  * <ul>
- * <li>first_name: The first name of the user. It must not be blank. </li>
- * <li>last_name: The last name of the user. It must not be blank. </li>
+ * <li>firstName: The first name of the user. It must not be blank. </li>
+ * <li>lastName: The last name of the user. It must not be blank. </li>
  * <li> email: The email address of the user. It must be a valid email format and not blank. </li>
  * <li> company: The company name associated with the user. It must not be blank. </li>
  * <li> message: The message content sent by the user. It must not be blank. </li>
@@ -22,18 +22,20 @@ import jakarta.validation.constraints.NotBlank;
  */
 public record ContactRequest(
         @NotBlank
-        String first_name,
+        String firstName,
         @NotBlank
-        String last_name,
+        String lastName,
         @NotBlank
         @Email
         String email,
         @NotBlank
         String company,
         @NotBlank
-        String message
+        String message,
+        @NotBlank
+        String captchaToken
 ) {
     public String fullName() {
-        return first_name + " " + last_name;
+        return firstName + " " + lastName;
     }
 }
