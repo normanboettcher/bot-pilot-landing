@@ -25,6 +25,7 @@ public class ContactFormCaptchaService implements CaptchaService {
 
     @Override
     public void verify(String token, String ip) throws IOException {
+        log.debug("Verifying captcha token {} for ip {}", token, ip);
         String secret = Files.readString(Path.of(secretPath)).trim();
         Map<String, String> params = Map.of(
                 "secret", secret,
