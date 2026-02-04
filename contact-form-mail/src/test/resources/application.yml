@@ -6,3 +6,6 @@ spring:
     host: localhost
     username: user
     password: password
+captcha:
+  secret:
+    path: '/path'

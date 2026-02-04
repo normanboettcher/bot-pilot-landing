@@ -23,7 +23,8 @@ services:
     env_file:
       - dev.env
     volumes:
-      - ${HOME}/projects/bot-pilot-landing/contact-form-mail/smtp_pw:/opt/secrets/smtp_password:ro,Z
+      - ${HOME}/projects/bot-pilot-landing/contact-form-mail/smtp_pw:/run/secrets/smtp_password:ro,Z
+      - ${HOME}/projects/bot-pilot-landing/contact-form-mail/captcha_secret:/run/secrets/captcha_secret:ro,Z
     networks:
       - landing-dev
     ports:

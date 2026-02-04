@@ -1,7 +1,7 @@
 package de.bot.pilot.mail.contact.service;
 
 import de.bot.pilot.mail.contact.dto.ContactRequest;
-import org.springframework.beans.factory.annotation.Autowired;
+import de.bot.pilot.mail.contact.service.api.ContactFormMailSender;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;

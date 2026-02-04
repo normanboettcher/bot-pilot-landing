@@ -38,7 +38,8 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=prod
     volumes:
-      - ./smtp_pw:/opt/secrets/smtp_password:ro,Z
+      - ./smtp_pw:/run/secrets/smtp_password:ro,Z
+      - ./captcha_secret:/run/secrets/captcha_secret:ro,Z
     networks:
       - landing-prod
     expose:

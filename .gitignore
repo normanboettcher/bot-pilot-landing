@@ -12,6 +12,7 @@ env/
 ENV/
 
 deployment/prod/smtp_pw
+deployment/prod/captcha_secret
 
 # Poetry
 dist/

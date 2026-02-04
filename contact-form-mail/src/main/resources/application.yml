@@ -24,3 +24,7 @@ management:
     web:
       exposure:
         include: "health"
+
+captcha:
+  secret:
+    path: ${CAPTCHA_SECRET_PATH}

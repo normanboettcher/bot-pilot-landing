@@ -31,6 +31,7 @@ const RAW_RUNTIME_STATE =
           ["@emotion/react", "virtual:d55c68965250ed4636fc7620bee9e957884eabcb1156d639a382bb61ac4c8b21b11780c11154f7a186738e775947726beba74ef937ffd5b064f78c64681c3bcf#npm:11.14.0"],\
           ["@emotion/styled", "virtual:d55c68965250ed4636fc7620bee9e957884eabcb1156d639a382bb61ac4c8b21b11780c11154f7a186738e775947726beba74ef937ffd5b064f78c64681c3bcf#npm:11.14.1"],\
           ["@eslint/js", "npm:9.39.2"],\
+          ["@marsidev/react-turnstile", "virtual:d55c68965250ed4636fc7620bee9e957884eabcb1156d639a382bb61ac4c8b21b11780c11154f7a186738e775947726beba74ef937ffd5b064f78c64681c3bcf#npm:1.4.1"],\
           ["@mui/icons-material", "virtual:d55c68965250ed4636fc7620bee9e957884eabcb1156d639a382bb61ac4c8b21b11780c11154f7a186738e775947726beba74ef937ffd5b064f78c64681c3bcf#npm:7.3.6"],\
           ["@mui/lab", "virtual:d55c68965250ed4636fc7620bee9e957884eabcb1156d639a382bb61ac4c8b21b11780c11154f7a186738e775947726beba74ef937ffd5b064f78c64681c3bcf#npm:5.0.0-alpha.177"],\
           ["@mui/material", "virtual:d55c68965250ed4636fc7620bee9e957884eabcb1156d639a382bb61ac4c8b21b11780c11154f7a186738e775947726beba74ef937ffd5b064f78c64681c3bcf#npm:7.3.6"],\
@@ -1037,6 +1038,32 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@marsidev/react-turnstile", [\
+      ["npm:1.4.1", {\
+        "packageLocation": "./.yarn/cache/@marsidev-react-turnstile-npm-1.4.1-ebd4404a47-bbe267c2ca.zip/node_modules/@marsidev/react-turnstile/",\
+        "packageDependencies": [\
+          ["@marsidev/react-turnstile", "npm:1.4.1"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:d55c68965250ed4636fc7620bee9e957884eabcb1156d639a382bb61ac4c8b21b11780c11154f7a186738e775947726beba74ef937ffd5b064f78c64681c3bcf#npm:1.4.1", {\
+        "packageLocation": "./.yarn/__virtual__/@marsidev-react-turnstile-virtual-cf85f98ca8/0/cache/@marsidev-react-turnstile-npm-1.4.1-ebd4404a47-bbe267c2ca.zip/node_modules/@marsidev/react-turnstile/",\
+        "packageDependencies": [\
+          ["@marsidev/react-turnstile", "virtual:d55c68965250ed4636fc7620bee9e957884eabcb1156d639a382bb61ac4c8b21b11780c11154f7a186738e775947726beba74ef937ffd5b064f78c64681c3bcf#npm:1.4.1"],\
+          ["@types/react", "npm:19.2.7"],\
+          ["@types/react-dom", "virtual:d55c68965250ed4636fc7620bee9e957884eabcb1156d639a382bb61ac4c8b21b11780c11154f7a186738e775947726beba74ef937ffd5b064f78c64681c3bcf#npm:19.2.3"],\
+          ["react", "npm:19.2.3"],\
+          ["react-dom", "virtual:d55c68965250ed4636fc7620bee9e957884eabcb1156d639a382bb61ac4c8b21b11780c11154f7a186738e775947726beba74ef937ffd5b064f78c64681c3bcf#npm:19.2.3"]\
+        ],\
+        "packagePeers": [\
+          "@types/react-dom",\
+          "@types/react",\
+          "react-dom",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@mui/base", [\
       ["npm:5.0.0-beta.40-1", {\
         "packageLocation": "./.yarn/cache/@mui-base-npm-5.0.0-beta.40-1-3fe2b65b0a-3f00ef8b57.zip/node_modules/@mui/base/",\
@@ -2002,6 +2029,7 @@ const RAW_RUNTIME_STATE =
           ["@emotion/react", "virtual:d55c68965250ed4636fc7620bee9e957884eabcb1156d639a382bb61ac4c8b21b11780c11154f7a186738e775947726beba74ef937ffd5b064f78c64681c3bcf#npm:11.14.0"],\
           ["@emotion/styled", "virtual:d55c68965250ed4636fc7620bee9e957884eabcb1156d639a382bb61ac4c8b21b11780c11154f7a186738e775947726beba74ef937ffd5b064f78c64681c3bcf#npm:11.14.1"],\
           ["@eslint/js", "npm:9.39.2"],\
+          ["@marsidev/react-turnstile", "virtual:d55c68965250ed4636fc7620bee9e957884eabcb1156d639a382bb61ac4c8b21b11780c11154f7a186738e775947726beba74ef937ffd5b064f78c64681c3bcf#npm:1.4.1"],\
           ["@mui/icons-material", "virtual:d55c68965250ed4636fc7620bee9e957884eabcb1156d639a382bb61ac4c8b21b11780c11154f7a186738e775947726beba74ef937ffd5b064f78c64681c3bcf#npm:7.3.6"],\
           ["@mui/lab", "virtual:d55c68965250ed4636fc7620bee9e957884eabcb1156d639a382bb61ac4c8b21b11780c11154f7a186738e775947726beba74ef937ffd5b064f78c64681c3bcf#npm:5.0.0-alpha.177"],\
           ["@mui/material", "virtual:d55c68965250ed4636fc7620bee9e957884eabcb1156d639a382bb61ac4c8b21b11780c11154f7a186738e775947726beba74ef937ffd5b064f78c64681c3bcf#npm:7.3.6"],\
