@@ -16,6 +16,14 @@ spring:
           writetimeout: 5000
           starttls:
             enable: true
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASS}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
 logging:
   level:
     de.bot.pilot.mail: ${LOG_LEVEL_MAIL:INFO}
