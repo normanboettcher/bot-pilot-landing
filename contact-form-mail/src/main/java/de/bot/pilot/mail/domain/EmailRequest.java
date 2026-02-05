@@ -10,6 +10,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+import java.sql.Timestamp;
+
 /**
  * Represents an email request entity within the system.
  * This class is used to define the structure of email requests
@@ -38,6 +40,7 @@ public class EmailRequest {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "contact_form_customer_id", nullable = false)
     private ContactFormCustomer contactFormCustomer;
+    private Timestamp createdAt = new Timestamp(System.currentTimeMillis());
 
     protected EmailRequest() {
         //JPA
@@ -46,7 +49,7 @@ public class EmailRequest {
     @Override
     public String toString() {
         return String.format("EmailRequest[id='%s', content='%s', subject='%s', " +
-                        "contactFormCustomer='%s']",
-                id, content, subject, contactFormCustomer.toString());
+                        "contactFormCustomer='%s', timestamp='%s']",
+                id, content, subject, contactFormCustomer.toString(), createdAt.toInstant().toString());
     }
 }
