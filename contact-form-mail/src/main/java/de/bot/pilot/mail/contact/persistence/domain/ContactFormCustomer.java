@@ -1,4 +1,4 @@
-package de.bot.pilot.mail.domain;
+package de.bot.pilot.mail.contact.persistence.domain;
 
 
 import jakarta.persistence.Entity;
@@ -34,9 +34,11 @@ import java.util.List;
 @Entity
 @Table(name = "contact_form_customer")
 public class ContactFormCustomer {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private String firstName;
     private String lastName;
     private String email;
@@ -45,8 +47,52 @@ public class ContactFormCustomer {
     @OneToMany(mappedBy = "contactFormCustomer")
     private List<EmailRequest> emailRequests = new ArrayList<>();
 
-    protected ContactFormCustomer() {
+    public ContactFormCustomer() {
         //JPA
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public void setEmailRequests(List<EmailRequest> emailRequests) {
+        this.emailRequests = emailRequests;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public List<EmailRequest> getEmailRequests() {
+        return emailRequests;
     }
 
     @Override

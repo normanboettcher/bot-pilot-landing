@@ -1,4 +1,4 @@
-package de.bot.pilot.mail.domain;
+package de.bot.pilot.mail.contact.persistence.domain;
 
 
 import jakarta.persistence.Entity;
@@ -35,21 +35,68 @@ public class EmailRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private String content;
     private String subject;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "contact_form_customer_id", nullable = false)
     private ContactFormCustomer contactFormCustomer;
     private Timestamp createdAt = new Timestamp(System.currentTimeMillis());
+    private boolean success;
 
-    protected EmailRequest() {
+    public EmailRequest() {
         //JPA
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public ContactFormCustomer getContactFormCustomer() {
+        return contactFormCustomer;
+    }
+
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public void setContactFormCustomer(ContactFormCustomer contactFormCustomer) {
+        this.contactFormCustomer = contactFormCustomer;
+    }
+
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
     }
 
     @Override
     public String toString() {
         return String.format("EmailRequest[id='%s', content='%s', subject='%s', " +
-                        "contactFormCustomer='%s', timestamp='%s']",
-                id, content, subject, contactFormCustomer.toString(), createdAt.toInstant().toString());
+                        "contactFormCustomer='%s', timestamp='%s', success='%s']",
+                id, content, subject, contactFormCustomer.toString(),
+                createdAt.toInstant().toString());
     }
 }
