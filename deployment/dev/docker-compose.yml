@@ -27,5 +27,5 @@ services:
       - ${HOME}/projects/bot-pilot-landing/contact-form-mail/captcha_secret:/run/secrets/captcha_secret:ro,Z
     networks:
       - landing-dev
-    ports:
+    expose:
       - "8080"
