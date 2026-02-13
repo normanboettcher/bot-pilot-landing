@@ -8,7 +8,7 @@ spring:
 
   cloud:
     vault:
-      uri: http://test.bot-pilot.de:8200
+      uri: ${VAULT_TARGET_URL}
       authentication: APPROLE
       app-role:
         role-id: ${APP_ROLE_ID}
@@ -26,9 +26,6 @@ spring:
         lifecycle:
           enabled: true
   mail:
-    host: ${SMTP_HOST}
-    port: ${SMTP_PORT}
-    username: ${SMTP_USERNAME}
     properties:
       mail:
         smtp:
@@ -44,12 +41,11 @@ spring:
       connection-timeout: 20000
       idle-timeout: 600000
       max-lifetime: 1200000 # 20 minutes
-    # url: ${DB_URL}
     driver-class-name: org.mariadb.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: validate
-    show-sql: true
+    show-sql: ${SHOW_SQL:false}
     database-platform: org.hibernate.dialect.MariaDBDialect
 logging:
   level:
