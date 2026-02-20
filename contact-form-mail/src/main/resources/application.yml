@@ -57,6 +57,14 @@ management:
       exposure:
         include: "health"
 
+transit:
+  mail:
+    path: 'transit'
+    key: 'mail-key'
+  message:
+    path: 'transit'
+    key: 'message-key'
+
 captcha:
   secret:
     path: ${CAPTCHA_SECRET_PATH}
