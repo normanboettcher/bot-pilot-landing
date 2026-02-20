@@ -1,15 +1,18 @@
 package de.bot.pilot.mail.contact.config;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
 @ConfigurationProperties(prefix = "transit")
 public class VaultTransitProperties {
-    @NotBlank
+    @NotNull
+    @Valid
     private VaultTransitMailProperties mail;
-    @NotBlank
+    @NotNull
+    @Valid
     private VaultTransitMessageProperties message;
 
     public VaultTransitMailProperties getMail() {
@@ -25,5 +28,6 @@ public class VaultTransitProperties {
     }
 
     public void setMessage(VaultTransitMessageProperties message) {
+        this.message = message;
     }
 }

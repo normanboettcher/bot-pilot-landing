@@ -6,8 +6,10 @@ import de.bot.pilot.mail.contact.persistence.domain.EmailRequest;
 import de.bot.pilot.mail.contact.service.api.ContactFormMailSender;
 import de.bot.pilot.mail.contact.persistence.repository.api.ContactFormCustomerRepository;
 import de.bot.pilot.mail.contact.persistence.repository.api.EmailRequestRepository;
+import de.bot.pilot.mail.contact.service.transit.api.EncryptionService;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
@@ -31,13 +33,17 @@ public class ContactFormMailSenderService implements ContactFormMailSender {
     private final ContactFormCustomerRepository contactFormCustomerRepository;
     private final EmailRequestRepository emailRequestRepository;
     private final JavaMailSender mailSender;
+    @Qualifier("mailEncryptionService")
+    private final EncryptionService mailEncryptionService;
 
     public ContactFormMailSenderService(ContactFormCustomerRepository contactFormCustomerRepository,
                                         EmailRequestRepository emailRequestRepository,
-                                        JavaMailSender mailSender) {
+                                        JavaMailSender mailSender,
+                                        EncryptionService mailEncryptionService) {
         this.contactFormCustomerRepository = contactFormCustomerRepository;
         this.emailRequestRepository = emailRequestRepository;
         this.mailSender = mailSender;
+        this.mailEncryptionService = mailEncryptionService;
     }
 
     @Override
@@ -67,5 +73,16 @@ public class ContactFormMailSenderService implements ContactFormMailSender {
         contactFormCustomerRepository.save(contactFormCustomer);
         emailRequestRepository.save(emailRequest);
     }
+
+    private ContactRequest encryptContactRequest(ContactRequest contactRequest) {
+        try {
+            var encryptedMail = mailEncryptionService.encrypt(contactRequest.email());
+        } catch (Exception e) {
+
+        }
+        // TODO: create contact request with encrypted data
+        return contactRequest;
+    }
+
 
 }
