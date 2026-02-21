@@ -4,15 +4,9 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>de.bot.pilot.crypto</groupId>
-        <artifactId>bot-pilot-crypto-infrastructure</artifactId>
+        <artifactId>infrastructure-adapter</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>infrastructure-adapter</artifactId>
-    <packaging>pom</packaging>
-    <name>bot-pilot :: crypto :: infrastrucute :: adapter</name>
-    <modules>
-        <module>vault-client</module>
-        <module>vault-mapper</module>
-        <module>vault-config</module>
-    </modules>
+    <artifactId>vault-config</artifactId>
+    <name>bot-pilot :: crypto :: infrastructure :: adapter :: vault-config</name>
 </project>
