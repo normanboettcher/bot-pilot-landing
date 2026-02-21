@@ -6,7 +6,7 @@ import de.bot.pilot.mail.crypto.domain.values.Plaintext;
 import org.springframework.stereotype.Component;
 
 @Component
-public class VaultCryptoAdapter implements CryptoPort {
+public class VaultCryptoMailAdapter implements CryptoPort {
 
     @Override
     public Ciphertext encrypt(Plaintext value) {

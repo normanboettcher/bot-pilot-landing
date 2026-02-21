@@ -30,7 +30,8 @@
         <org.springframework.cloud.version>2025.1.0</org.springframework.cloud.version>
         <org.springframework.vault.version>4.0.0</org.springframework.vault.version>
         <org.slf4j.version>2.0.16</org.slf4j.version>
-        <de.bot.pilot.crypto.bom.version>1.0.0-SNAPSHOT</de.bot.pilot.crypto.bom.version>
+        <de.bot.pilot.crypto.bom.version>1.0.0-SNAPSHOT
+        </de.bot.pilot.crypto.bom.version>
 
         <maven.compiler.release>25</maven.compiler.release>
         <!--  Enable preview features (structured concurrency, etc.)  -->
@@ -128,6 +129,5 @@
         <module>bot-pilot-crypto-application</module>
         <module>bot-pilot-crypto-infrastructure</module>
         <module>bot-pilot-crypto-domain</module>
-        <module>bot-pilot-crypto-runner</module>
     </modules>
 </project>
