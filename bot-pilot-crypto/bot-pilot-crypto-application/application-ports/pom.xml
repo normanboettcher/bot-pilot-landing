@@ -1,0 +1,19 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>de.bot.pilot.crypto</groupId>
+        <artifactId>crypto-application</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <artifactId>application-ports</artifactId>
+    <name>bot-pilot :: crypto :: application :: ports</name>
+    <dependencies>
+        <dependency>
+            <groupId>de.bot.pilot.crypto</groupId>
+            <artifactId>application-command</artifactId>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+</project>

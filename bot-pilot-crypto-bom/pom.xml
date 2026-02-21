@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>de.bot.pilot.crypto</groupId>
+    <artifactId>bot-pilot-crypto-bom</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>bot-pilot :: crypto :: bom</name>
+    <description>
+        Bill of Materials — single source of truth for all internal module versions.
+        Any module that imports this BOM gets consistent versions without specifying
+        them individually. External consumers can also import just this BOM.
+    </description>
+
+    <properties>
+        <de.bot.pilot.crypto.version>0.0.1-SNAPSHOT</de.bot.pilot.crypto.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>de.bot.pilot.crypto</groupId>
+                <artifactId>domain-values</artifactId>
+                <version>${de.bot.pilot.crypto.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.bot.pilot.crypto</groupId>
+                <artifactId>domain-error</artifactId>
+                <version>${de.bot.pilot.crypto.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.bot.pilot.crypto</groupId>
+                <artifactId>domain-ports</artifactId>
+                <version>${de.bot.pilot.crypto.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.bot.pilot.crypto</groupId>
+                <artifactId>application-command</artifactId>
+                <version>${de.bot.pilot.crypto.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.bot.pilot.crypto</groupId>
+                <artifactId>application-ports</artifactId>
+                <version>${de.bot.pilot.crypto.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.bot.pilot.crypto</groupId>
+                <artifactId>application-service</artifactId>
+                <version>${de.bot.pilot.crypto.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.bot.pilot.crypto</groupId>
+                <artifactId>vault-client</artifactId>
+                <version>${de.bot.pilot.crypto.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.bot.pilot.crypto</groupId>
+                <artifactId>vault-mapper</artifactId>
+                <version>${de.bot.pilot.crypto.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.bot.pilot.crypto</groupId>
+                <artifactId>infra-resilience</artifactId>
+                <version>${de.bot.pilot.crypto.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.bot.pilot.crypto</groupId>
+                <artifactId>api-dto</artifactId>
+                <version>${de.bot.pilot.crypto.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.example.crypto</groupId>
+                <artifactId>api-problem</artifactId>
+                <version>${de.bot.pilot.crypto.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.bot.pilot.crypto</groupId>
+                <artifactId>api-filter</artifactId>
+                <version>${de.bot.pilot.crypto.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.bot.pilot.crypto</groupId>
+                <artifactId>api-controller</artifactId>
+                <version>${de.bot.pilot.crypto.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
