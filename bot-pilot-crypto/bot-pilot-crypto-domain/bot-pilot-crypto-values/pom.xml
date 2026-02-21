@@ -8,5 +8,5 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <artifactId>bot-pilot-crypto-values</artifactId>
-    <name>bot-pilot-crypto::domain::values</name>
+    <name>bot-pilot::crypto::domain::values</name>
 </project>

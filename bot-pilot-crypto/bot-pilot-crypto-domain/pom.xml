@@ -9,7 +9,7 @@
     </parent>
     <artifactId>bot-pilot-crypto-domain</artifactId>
     <packaging>pom</packaging>
-    <name>bot-pilot-crypto::domain</name>
+    <name>bot-pilot::crypto::domain</name>
     <modules>
         <module>bot-pilot-crypto-values</module>
     </modules>

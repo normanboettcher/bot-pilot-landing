@@ -8,5 +8,5 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <artifactId>bot-pilot-crypto-command</artifactId>
-    <name>bot-pilot-crypto::application::command</name>
+    <name>bot-pilot::crypto::application::command</name>
 </project>

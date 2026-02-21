@@ -14,7 +14,7 @@
     <artifactId>bot-pilot-crypto</artifactId>
     <groupId>de.bot.pilot.crypto</groupId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>bot-pilot-crypto</name>
+    <name>bot-pilot::crypto</name>
     <packaging>pom</packaging>
     <url/>
     <licenses>
@@ -41,6 +41,16 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot</artifactId>
+            <version>4.0.1</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
