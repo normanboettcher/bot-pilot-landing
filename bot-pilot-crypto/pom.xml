@@ -78,5 +78,6 @@
         <module>bot-pilot-crypto-application</module>
         <module>bot-pilot-crypto-infrastructure</module>
         <module>bot-pilot-crypto-domain</module>
+        <module>bot-pilot-crypto-runner</module>
     </modules>
 </project>
