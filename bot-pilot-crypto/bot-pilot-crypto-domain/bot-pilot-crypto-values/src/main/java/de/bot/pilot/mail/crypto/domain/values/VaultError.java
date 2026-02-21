@@ -16,7 +16,7 @@ public sealed interface VaultError permits
 
     /**
      * Provides a detailed description of the vault error.
-     * Human readable.
+     * Human-readable.
      *
      * @return a string representing the descriptive detail of the error.
      */

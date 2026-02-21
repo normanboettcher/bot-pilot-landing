@@ -1,5 +1,0 @@
-/home/norman/projects/bot-pilot-landing/bot-pilot-crypto/bot-pilot-crypto-domain/bot-pilot-crypto-values/src/main/java/de/bot/pilot/mail/crypto/domain/values/Ciphertext.java
-/home/norman/projects/bot-pilot-landing/bot-pilot-crypto/bot-pilot-crypto-domain/bot-pilot-crypto-values/src/main/java/de/bot/pilot/mail/crypto/domain/values/Plaintext.java
-/home/norman/projects/bot-pilot-landing/bot-pilot-crypto/bot-pilot-crypto-domain/bot-pilot-crypto-values/src/main/java/de/bot/pilot/mail/crypto/domain/values/VaultError.java
-/home/norman/projects/bot-pilot-landing/bot-pilot-crypto/bot-pilot-crypto-domain/bot-pilot-crypto-values/src/main/java/de/bot/pilot/mail/crypto/domain/values/exception/VaultCryptoException.java
-/home/norman/projects/bot-pilot-landing/bot-pilot-crypto/bot-pilot-crypto-domain/bot-pilot-crypto-values/src/main/java/de/bot/pilot/mail/crypto/domain/values/ports/output/CryptoPort.java
