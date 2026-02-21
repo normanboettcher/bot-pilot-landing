@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/bot-pilot-crypto/bot-pilot-crypto.iml" filepath="$PROJECT_DIR$/bot-pilot-crypto/bot-pilot-crypto.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/bot-pilot-landing.iml" filepath="$PROJECT_DIR$/.idea/bot-pilot-landing.iml" />
       <module fileurl="file://$PROJECT_DIR$/contact-form-mail/contact-form-mail.iml" filepath="$PROJECT_DIR$/contact-form-mail/contact-form-mail.iml" />
     </modules>

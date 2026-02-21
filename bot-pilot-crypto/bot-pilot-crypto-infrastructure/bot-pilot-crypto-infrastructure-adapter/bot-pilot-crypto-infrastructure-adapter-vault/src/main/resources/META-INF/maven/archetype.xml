@@ -1,5 +1,5 @@
 <archetype>
-  <id>contact-form-crypto-infrastructure</id>
+  <id>bot-pilot-infrastructure-adapter-vault</id>
   <sources>
     <source>src/main/java/App.java</source>
   </sources>

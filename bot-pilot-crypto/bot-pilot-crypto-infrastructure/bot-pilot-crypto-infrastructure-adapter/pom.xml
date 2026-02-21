@@ -4,13 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>de.bot.pilot.crypto</groupId>
-        <artifactId>bot-pilot-crypto</artifactId>
+        <artifactId>bot-pilot-crypto-infrastructure</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>bot-pilot-crypto-infrastructure</artifactId>
-    <name>bot-pilot-crypto::infrastructure</name>
-    <modules>
-        <module>bot-pilot-crypto-infrastructure-adapter</module>
-    </modules>
+    <artifactId>bot-pilot-crypto-infrastructure-adapter</artifactId>
     <packaging>pom</packaging>
+    <name>bot-pilot::crypto::infrastrucute::adapter</name>
+    <modules>
+        <module>bot-pilot-crypto-infrastructure-adapter-vault</module>
+    </modules>
 </project>

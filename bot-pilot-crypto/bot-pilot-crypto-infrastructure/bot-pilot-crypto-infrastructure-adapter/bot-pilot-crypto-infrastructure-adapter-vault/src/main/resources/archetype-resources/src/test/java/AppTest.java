@@ -1,4 +1,4 @@
-package $de.bot.pilot.mail;
+package $de.bot.pilot.crypto;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
