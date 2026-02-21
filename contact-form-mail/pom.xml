@@ -25,9 +25,6 @@
             <email>norman.boettcher@web.de</email>
         </developer>
     </developers>
-    <modules>
-        <module>contact-form-crypto</module>
-    </modules>
     <scm>
         <connection/>
         <developerConnection/>
