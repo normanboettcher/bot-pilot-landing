@@ -8,6 +8,17 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <artifactId>domain-ports</artifactId>
-    <name>Archetype - domain-ports</name>
-    <url>http://maven.apache.org</url>
+    <name>bot-pilot :: crypto :: domain :: ports</name>
+    <dependencies>
+        <dependency>
+            <groupId>de.bot.pilot.crypto</groupId>
+            <artifactId>domain-error</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>de.bot.pilot.crypto</groupId>
+            <artifactId>domain-values</artifactId>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 </project>

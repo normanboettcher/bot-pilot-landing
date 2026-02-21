@@ -1,4 +1,4 @@
-package de.bot.pilot.mail.crypto.domain.values;
+package de.bot.pilot.crypto.domain.error;
 
 /**
  * Represents a sealed interface for modeling various types of errors that can occur

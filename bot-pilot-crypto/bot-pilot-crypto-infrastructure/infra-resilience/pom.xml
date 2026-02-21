@@ -8,6 +8,5 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <artifactId>infra-resilience</artifactId>
-    <name>Archetype - infra-resilience</name>
-    <url>http://maven.apache.org</url>
+    <name>bot-pilot :: crypto :: infrastructure :: resilience</name>
 </project>

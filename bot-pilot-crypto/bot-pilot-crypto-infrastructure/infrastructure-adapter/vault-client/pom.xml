@@ -7,18 +7,26 @@
         <artifactId>infrastructure-adapter</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>bot-pilot-crypto-infrastructure-adapter-vault</artifactId>
-    <name>bot-pilot::crypto::infrastructure::adapter::vault</name>
+    <artifactId>vault-client</artifactId>
+    <name>bot-pilot :: crypto :: infrastructure :: adapter :: vault-client</name>
     <dependencies>
+        <dependency>
+            <groupId>de.bot.pilot.crypto</groupId>
+            <artifactId>domain-values</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>de.bot.pilot.crypto</groupId>
+            <artifactId>domain-ports</artifactId>
+            <scope>compile</scope>
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
         </dependency>
         <dependency>
-            <groupId>de.bot.pilot.crypto</groupId>
-            <artifactId>values</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
         </dependency>
     </dependencies>
 </project>

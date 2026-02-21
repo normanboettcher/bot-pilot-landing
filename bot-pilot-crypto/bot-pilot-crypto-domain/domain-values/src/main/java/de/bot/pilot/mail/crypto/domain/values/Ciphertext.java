@@ -1,6 +1,7 @@
 package de.bot.pilot.mail.crypto.domain.values;
 
-import de.bot.pilot.mail.crypto.domain.values.exception.VaultCryptoException;
+import de.bot.pilot.crypto.domain.error.VaultError;
+import de.bot.pilot.crypto.domain.error.exception.VaultCryptoException;
 
 public record Ciphertext(String value) {
     public Ciphertext {

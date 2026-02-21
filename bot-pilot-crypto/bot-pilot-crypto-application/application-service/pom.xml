@@ -12,15 +12,22 @@
     <dependencies>
         <dependency>
             <groupId>de.bot.pilot.crypto</groupId>
-            <artifactId>bot-pilot-crypto-application-ports</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <artifactId>application-ports</artifactId>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>de.bot.pilot.crypto</groupId>
-            <artifactId>bot-pilot-crypto-values</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <artifactId>domain-values</artifactId>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>de.bot.pilot.crypto</groupId>
+            <artifactId>domain-ports</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
         </dependency>
     </dependencies>
 </project>

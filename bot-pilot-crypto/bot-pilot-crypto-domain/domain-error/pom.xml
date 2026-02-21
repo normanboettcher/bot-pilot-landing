@@ -8,6 +8,5 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <artifactId>domain-error</artifactId>
-    <name>Archetype - domain-error</name>
-    <url>http://maven.apache.org</url>
+    <name>bot-pilot :: crypto :: domain :: error</name>
 </project>

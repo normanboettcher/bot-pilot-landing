@@ -1,11 +1,11 @@
 package de.bot.pilot.mail.crypto.application.service;
 
+import de.bot.pilot.crypto.domain.ports.out.CryptoPort;
 import de.bot.pilot.mail.crypto.application.ports.input.CryptoUseCase;
 import de.bot.pilot.mail.crypto.domain.command.DecryptCommand;
 import de.bot.pilot.mail.crypto.domain.command.EncryptCommand;
 import de.bot.pilot.mail.crypto.domain.values.Ciphertext;
 import de.bot.pilot.mail.crypto.domain.values.Plaintext;
-import de.bot.pilot.mail.crypto.domain.values.ports.output.CryptoPort;
 import org.springframework.stereotype.Service;
 
 @Service

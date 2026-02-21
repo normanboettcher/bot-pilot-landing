@@ -1,8 +1,8 @@
-package de.bot.pilot.mail.crypto.domain.values.ports.output;
+package de.bot.pilot.crypto.domain.ports.out;
 
 import de.bot.pilot.mail.crypto.domain.values.Ciphertext;
 import de.bot.pilot.mail.crypto.domain.values.Plaintext;
-import de.bot.pilot.mail.crypto.domain.values.exception.VaultCryptoException;
+import de.bot.pilot.crypto.domain.error.exception.VaultCryptoException;
 
 /**
  * Represents a cryptographic interface for performing encryption and decryption
@@ -15,7 +15,7 @@ import de.bot.pilot.mail.crypto.domain.values.exception.VaultCryptoException;
  * - Input parameters must not be null or blank.
  * - Any failure during cryptographic operations will result in a {@link VaultCryptoException}
  * containing detailed error information encapsulated in specific
- * {@link de.bot.pilot.mail.crypto.domain.values.VaultError} instances.
+ * {@link de.bot.pilot.crypto.domain.error.VaultError} instances.
  */
 public interface CryptoPort {
 

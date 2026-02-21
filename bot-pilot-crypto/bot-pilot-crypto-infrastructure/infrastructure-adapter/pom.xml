@@ -9,8 +9,9 @@
     </parent>
     <artifactId>infrastructure-adapter</artifactId>
     <packaging>pom</packaging>
-    <name>bot-pilot::crypto::infrastrucute::adapter</name>
+    <name>bot-pilot :: crypto :: infrastrucute :: adapter</name>
     <modules>
-        <module>bot-pilot-crypto-infrastructure-adapter-vault</module>
+        <module>vault-client</module>
+        <module>vault-mapper</module>
     </modules>
 </project>

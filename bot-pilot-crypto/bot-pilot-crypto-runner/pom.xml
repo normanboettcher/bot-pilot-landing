@@ -8,7 +8,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <artifactId>bot-pilot-crypto-runner</artifactId>
-    <name>bot-pilot::crypto::runner</name>
+    <name>bot-pilot :: crypto :: runner</name>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>

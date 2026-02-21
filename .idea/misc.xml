@@ -9,6 +9,8 @@
       <list>
         <option value="$PROJECT_DIR$/contact-form-mail/pom.xml" />
         <option value="$PROJECT_DIR$/bot-pilot-crypto/pom.xml" />
+        <option value="$PROJECT_DIR$/bot-pilot-crypto/bot-pilot-crypto-bom/pom.xml" />
+        <option value="$PROJECT_DIR$/bot-pilot-crypto-bom/pom.xml" />
       </list>
     </option>
   </component>

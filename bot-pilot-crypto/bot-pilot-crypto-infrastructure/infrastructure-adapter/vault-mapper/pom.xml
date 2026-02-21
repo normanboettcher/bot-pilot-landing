@@ -8,6 +8,5 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <artifactId>vault-mapper</artifactId>
-    <name>Archetype - vault-mapper</name>
-    <url>http://maven.apache.org</url>
+    <name>bot-pilot :: crypto :: infrastructure :: adapter :: vault-mapper</name>
 </project>
