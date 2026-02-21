@@ -12,6 +12,7 @@
     <groupId>de.bot.pilot.mail</groupId>
     <artifactId>contact-form-mail</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
     <name>contact-form-mail</name>
     <description>Project to send mails via contact form</description>
     <url/>
@@ -24,6 +25,9 @@
             <email>norman.boettcher@web.de</email>
         </developer>
     </developers>
+    <modules>
+        <module>contact-form-crypto</module>
+    </modules>
     <scm>
         <connection/>
         <developerConnection/>
@@ -125,5 +129,6 @@
             </plugin>
         </plugins>
     </build>
+
 
 </project>
