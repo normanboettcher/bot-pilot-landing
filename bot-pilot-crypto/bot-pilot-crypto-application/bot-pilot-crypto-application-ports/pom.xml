@@ -9,4 +9,12 @@
     </parent>
     <artifactId>bot-pilot-crypto-application-ports</artifactId>
     <name>bot-pilot-crypto::application::ports</name>
+    <dependencies>
+        <dependency>
+            <groupId>de.bot.pilot.crypto</groupId>
+            <artifactId>bot-pilot-crypto-command</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 </project>
