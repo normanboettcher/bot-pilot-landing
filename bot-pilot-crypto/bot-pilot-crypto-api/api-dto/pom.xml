@@ -9,4 +9,10 @@
     </parent>
     <artifactId>api-dto</artifactId>
     <name>bot-pilot :: crypto :: api :: dto</name>
+    <dependencies>
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+        </dependency>
+    </dependencies>
 </project>

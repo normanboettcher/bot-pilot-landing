@@ -10,7 +10,7 @@ vault:
     keys:
       # Key = EncryptionPurpose label.  Value = Vault mount + key name.
       # To add a purpose: 1) add variant in EncryptionPurpose.java  2) add entry here
-      MAIL:
+      MAIL_ADDRESS:
         mount-path: ${VAULT_MAIL_MOUNT:transit}
         key-name: ${VAULT_MAIL_KEY:mail-key}
 
