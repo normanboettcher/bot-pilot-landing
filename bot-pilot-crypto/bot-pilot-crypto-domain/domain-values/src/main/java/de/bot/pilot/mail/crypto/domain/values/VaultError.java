@@ -1,4 +1,4 @@
-package de.bot.pilot.crypto.domain.error;
+package de.bot.pilot.mail.crypto.domain.values;
 
 /**
  * Represents a sealed interface for modeling various types of errors that can occur
@@ -12,7 +12,8 @@ public sealed interface VaultError permits
         VaultError.EncryptionFailed,
         VaultError.DecryptionFailed,
         VaultError.SecretNotFound,
-        VaultError.InvalidInput {
+        VaultError.InvalidInput,
+        VaultError.UnknownPurpose {
 
     /**
      * Provides a detailed description of the vault error.
@@ -78,6 +79,20 @@ public sealed interface VaultError permits
         @Override
         public Throwable cause() {
             // no need - it is a client mistake
+            return null;
+        }
+    }
+
+    record UnknownPurpose(EncryptionPurpose purpose,
+                          String detail) implements VaultError {
+        public UnknownPurpose(EncryptionPurpose purpose) {
+            this(purpose,
+                    "No transit key configured for purpose: [%s]. Please contact the platform team."
+                            .formatted(purpose.label()));
+        }
+
+        @Override
+        public Throwable cause() {
             return null;
         }
     }

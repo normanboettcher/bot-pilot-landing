@@ -9,10 +9,10 @@
     </parent>
     <artifactId>infrastructure-adapter</artifactId>
     <packaging>pom</packaging>
-    <name>bot-pilot :: crypto :: infrastrucute :: adapter</name>
+    <name>bot-pilot :: crypto :: infrastructure :: adapter</name>
     <modules>
-        <module>vault-client</module>
+        <module>vault-spring-client</module>
         <module>vault-mapper</module>
-        <module>vault-config</module>
+        <module>vault-spring-config</module>
     </modules>
 </project>

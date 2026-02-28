@@ -4,9 +4,15 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>de.bot.pilot.crypto</groupId>
-        <artifactId>infrastructure-adapter</artifactId>
+        <artifactId>bot-pilot-crypto-domain</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>vault-config</artifactId>
-    <name>bot-pilot :: crypto :: infrastructure :: adapter :: vault-config</name>
+    <artifactId>domain-transit-registry</artifactId>
+    <name>bot-pilot :: crypto :: domain :: domain-transit-registry</name>
+    <dependencies>
+        <dependency>
+            <groupId>de.bot.pilot.crypto</groupId>
+            <artifactId>domain-values</artifactId>
+        </dependency>
+    </dependencies>
 </project>

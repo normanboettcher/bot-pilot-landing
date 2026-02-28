@@ -9,4 +9,10 @@
     </parent>
     <artifactId>application-command</artifactId>
     <name>bot-pilot :: crypto :: application :: command</name>
+    <dependencies>
+        <dependency>
+            <groupId>de.bot.pilot.crypto</groupId>
+            <artifactId>domain-values</artifactId>
+        </dependency>
+    </dependencies>
 </project>

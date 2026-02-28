@@ -8,7 +8,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <artifactId>domain-ports</artifactId>
-    <name>bot-pilot :: crypto :: domain :: ports</name>
+    <name>bot-pilot :: crypto :: domain :: domain-ports</name>
     <dependencies>
         <dependency>
             <groupId>de.bot.pilot.crypto</groupId>

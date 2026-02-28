@@ -7,8 +7,8 @@
         <artifactId>infrastructure-adapter</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>vault-client</artifactId>
-    <name>bot-pilot :: crypto :: infrastructure :: adapter :: vault-client</name>
+    <artifactId>vault-spring-client</artifactId>
+    <name>bot-pilot :: crypto :: infrastructure :: adapter :: vault-spring-client</name>
     <dependencies>
         <dependency>
             <groupId>de.bot.pilot.crypto</groupId>

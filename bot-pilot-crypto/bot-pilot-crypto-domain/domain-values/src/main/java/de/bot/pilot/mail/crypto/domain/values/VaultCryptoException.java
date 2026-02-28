@@ -1,6 +1,4 @@
-package de.bot.pilot.crypto.domain.error.exception;
-
-import de.bot.pilot.crypto.domain.error.VaultError;
+package de.bot.pilot.mail.crypto.domain.values;
 
 /**
  * Represents an exception specific to cryptographic operations within a vault system.

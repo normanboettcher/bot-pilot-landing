@@ -12,7 +12,7 @@
     <name>bot-pilot :: crypto :: domain</name>
     <modules>
         <module>domain-values</module>
-        <module>domain-error</module>
         <module>domain-ports</module>
+        <module>domain-transit-registry</module>
     </modules>
 </project>

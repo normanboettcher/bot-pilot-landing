@@ -8,12 +8,5 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <artifactId>domain-values</artifactId>
-    <name>bot-pilot :: crypto :: domain :: values</name>
-    <dependencies>
-        <dependency>
-            <groupId>de.bot.pilot.crypto</groupId>
-            <artifactId>domain-error</artifactId>
-            <scope>compile</scope>
-        </dependency>
-    </dependencies>
+    <name>bot-pilot :: crypto :: domain :: domain-values</name>
 </project>
