@@ -15,7 +15,7 @@ import jakarta.validation.constraints.Size;
  * API contract stability ≠ domain model stability.
  *
  * @param value   the plaintext or ciphertext content
- * @param purpose one of: MAIL, MESSAGE, USER_PII
+ * @param purpose one of: MAIL_ADDRESS, MESSAGE, COMPANY
  */
 public record CryptoRequest(
         @NotBlank(message = "value must not be blank")
@@ -24,7 +24,7 @@ public record CryptoRequest(
 
         @NotBlank(message = "purpose must not be blank")
         @Pattern(regexp = "MAIL_ADDRESS|MESSAGE|COMPANY",
-                message = "purpose must be one of: MAIL, MESSAGE, USER_PII")
+                message = "purpose must be one of: MAIL_ADDRESS, MESSAGE, COMPANY")
         String purpose
 ) {
 }

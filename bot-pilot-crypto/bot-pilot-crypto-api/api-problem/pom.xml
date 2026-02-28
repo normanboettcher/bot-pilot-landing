@@ -9,4 +9,18 @@
     </parent>
     <artifactId>api-problem</artifactId>
     <name>bot-pilot :: crypto :: api :: problem</name>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.bot.pilot.crypto</groupId>
+            <artifactId>domain-values</artifactId>
+        </dependency>
+    </dependencies>
 </project>
