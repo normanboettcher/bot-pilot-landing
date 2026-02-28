@@ -28,13 +28,14 @@ public class CryptoService implements CryptoUseCase {
     public String encrypt(EncryptCommand command) {
         var plaintext = new Plaintext(command.rawValue());
         var transitKey = resolveKey(command.purpose());
-        return cryptoPort.encrypt(plaintext).value();
+        return cryptoPort.encrypt(plaintext, transitKey).value();
     }
 
     @Override
     public String decrypt(DecryptCommand command) {
         var ciphertext = new Ciphertext(command.rawCiphertext());
-        return cryptoPort.decrypt(ciphertext).value();
+        var transitKey = resolveKey(command.purpose());
+        return cryptoPort.decrypt(ciphertext, transitKey).value();
     }
 
     private TransitKey resolveKey(EncryptionPurpose purpose) {

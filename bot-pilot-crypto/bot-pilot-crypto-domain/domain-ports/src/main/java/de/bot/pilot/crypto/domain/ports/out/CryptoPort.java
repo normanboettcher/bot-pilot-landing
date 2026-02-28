@@ -2,6 +2,7 @@ package de.bot.pilot.crypto.domain.ports.out;
 
 import de.bot.pilot.mail.crypto.domain.values.Ciphertext;
 import de.bot.pilot.mail.crypto.domain.values.Plaintext;
+import de.bot.pilot.mail.crypto.domain.values.TransitKey;
 import de.bot.pilot.mail.crypto.domain.values.VaultCryptoException;
 
 /**
@@ -29,7 +30,7 @@ public interface CryptoPort {
      *              containing a {@link de.bot.pilot.mail.crypto.domain.values.VaultError.EncryptionFailed}
      * @return an instance of {@link Ciphertext} encapsulating the encrypted data.
      */
-    Ciphertext encrypt(Plaintext value);
+    Ciphertext encrypt(Plaintext value, TransitKey transitKey);
 
     /**
      * Decrypts the provided {@link Ciphertext} and returns the resulting {@link Plaintext}.
@@ -45,5 +46,5 @@ public interface CryptoPort {
      * @return the resulting plaintext extracted from the provided ciphertext.
      * @throws VaultCryptoException if decryption fails or the input is invalid.
      */
-    Plaintext decrypt(Ciphertext ciphertext);
+    Plaintext decrypt(Ciphertext ciphertext, TransitKey transitKey);
 }

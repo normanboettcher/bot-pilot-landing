@@ -9,4 +9,22 @@
     </parent>
     <artifactId>vault-mapper</artifactId>
     <name>bot-pilot :: crypto :: infrastructure :: adapter :: vault-mapper</name>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.bot.pilot.crypto</groupId>
+            <artifactId>domain-values</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.vault</groupId>
+            <artifactId>spring-vault-core</artifactId>
+        </dependency>
+    </dependencies>
 </project>
