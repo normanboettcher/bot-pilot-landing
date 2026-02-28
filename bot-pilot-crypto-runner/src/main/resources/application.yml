@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: bot-pilot-crypto-runner
+    profiles:
+      active: ${ACTIVE_PROFILE:local}
+  config:
+    import: optional:vault://
+vault:
+  transit:
+    keys:
+      # Key = EncryptionPurpose label.  Value = Vault mount + key name.
+      # To add a purpose: 1) add variant in EncryptionPurpose.java  2) add entry here
+      MAIL:
+        mount-path: ${VAULT_MAIL_MOUNT:transit}
+        key-name: ${VAULT_MAIL_KEY:mail-key}
+
+      MESSAGE:
+        mount-path: ${VAULT_MSG_MOUNT:transit}
+        key-name: ${VAULT_MSG_KEY:message-key}
+
+      COMPANY:
+        mount-path: ${VAULT_COMPANY_MOUNT:transit}
+        key-name: ${VAULT_COMPANY_KEY:company-key}

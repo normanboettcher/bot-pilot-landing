@@ -54,7 +54,7 @@
             </dependency>
             <dependency>
                 <groupId>de.bot.pilot.crypto</groupId>
-                <artifactId>vault-client</artifactId>
+                <artifactId>vault-spring-client</artifactId>
                 <version>${de.bot.pilot.crypto.version}</version>
             </dependency>
             <dependency>
