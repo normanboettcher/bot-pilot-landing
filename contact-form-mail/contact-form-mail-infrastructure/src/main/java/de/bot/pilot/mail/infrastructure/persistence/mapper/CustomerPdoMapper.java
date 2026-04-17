@@ -1,15 +1,15 @@
 package de.bot.pilot.mail.infrastructure.persistence.mapper;
 
 import de.bot.pilot.mail.domain.model.Customer;
-import de.bot.pilot.mail.infrastructure.persistence.entity.CustomerJpaEntity;
+import de.bot.pilot.mail.infrastructure.persistence.entity.CustomerPdo;
 
-public final class CustomerEntityMapper {
+public final class CustomerPdoMapper {
 
-    private CustomerEntityMapper() {
+    private CustomerPdoMapper() {
     }
 
-    public static CustomerJpaEntity toEntity(Customer customer) {
-        CustomerJpaEntity entity = new CustomerJpaEntity();
+    public static CustomerPdo toEntity(Customer customer) {
+        CustomerPdo entity = new CustomerPdo();
         entity.setFirstName(customer.firstName());
         entity.setLastName(customer.lastName());
         entity.setEmail(customer.email());

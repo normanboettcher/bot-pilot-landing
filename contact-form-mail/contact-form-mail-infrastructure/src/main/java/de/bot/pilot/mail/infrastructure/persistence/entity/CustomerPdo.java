@@ -12,7 +12,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "contact_form_customer")
-public class CustomerJpaEntity {
+public class CustomerPdo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,9 +24,9 @@ public class CustomerJpaEntity {
     private String company;
 
     @OneToMany(mappedBy = "customer")
-    private List<EmailRequestJpaEntity> emailRequests = new ArrayList<>();
+    private List<EmailRequestPdo> emailRequests = new ArrayList<>();
 
-    protected CustomerJpaEntity() {
+    public CustomerPdo() {
     }
 
     public Long getId() { return id; }
@@ -34,11 +34,11 @@ public class CustomerJpaEntity {
     public String getLastName() { return lastName; }
     public String getEmail() { return email; }
     public String getCompany() { return company; }
-    public List<EmailRequestJpaEntity> getEmailRequests() { return emailRequests; }
+    public List<EmailRequestPdo> getEmailRequests() { return emailRequests; }
 
     public void setFirstName(String firstName) { this.firstName = firstName; }
     public void setLastName(String lastName) { this.lastName = lastName; }
     public void setEmail(String email) { this.email = email; }
     public void setCompany(String company) { this.company = company; }
-    public void setEmailRequests(List<EmailRequestJpaEntity> emailRequests) { this.emailRequests = emailRequests; }
+    public void setEmailRequests(List<EmailRequestPdo> emailRequests) { this.emailRequests = emailRequests; }
 }

@@ -14,7 +14,7 @@ import java.time.Instant;
 
 @Entity
 @Table(name = "email_request")
-public class EmailRequestJpaEntity {
+public class EmailRequestPdo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,9 +27,9 @@ public class EmailRequestJpaEntity {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "contact_form_customer_id", nullable = false)
-    private CustomerJpaEntity customer;
+    private CustomerPdo customer;
 
-    protected EmailRequestJpaEntity() {
+    public EmailRequestPdo() {
     }
 
     public Long getId() { return id; }
@@ -37,11 +37,11 @@ public class EmailRequestJpaEntity {
     public String getSubject() { return subject; }
     public Timestamp getCreatedAt() { return createdAt; }
     public boolean isSuccess() { return success; }
-    public CustomerJpaEntity getCustomer() { return customer; }
+    public CustomerPdo getCustomer() { return customer; }
 
     public void setContent(String content) { this.content = content; }
     public void setSubject(String subject) { this.subject = subject; }
     public void setCreatedAt(Timestamp createdAt) { this.createdAt = createdAt; }
     public void setSuccess(boolean success) { this.success = success; }
-    public void setCustomer(CustomerJpaEntity customer) { this.customer = customer; }
+    public void setCustomer(CustomerPdo customer) { this.customer = customer; }
 }
