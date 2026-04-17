@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>contact-form-mail-bootstrap</artifactId>
-    <name>contact-form-mail-bootstrap</name>
+    <name>contact-form-mail :: bootstrap</name>
     <description>Spring Boot entry point — wires all adapters and produces the executable JAR.</description>
 
     <dependencies>

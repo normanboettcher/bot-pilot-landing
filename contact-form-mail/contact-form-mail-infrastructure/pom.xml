@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>contact-form-mail-infrastructure</artifactId>
-    <name>contact-form-mail-infrastructure</name>
+    <name>contact-form-mail :: infrastructure</name>
     <description>Driven adapters: JPA persistence, JavaMail, Cloudflare Turnstile captcha.</description>
 
     <dependencies>

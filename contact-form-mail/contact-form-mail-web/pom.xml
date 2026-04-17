@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>contact-form-mail-web</artifactId>
-    <name>contact-form-mail-web</name>
+    <name>contact-form-mail :: web</name>
     <description>Driving adapter: Spring MVC REST controller and web DTOs.</description>
 
     <dependencies>

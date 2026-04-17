@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>contact-form-mail-domain</artifactId>
-    <name>contact-form-mail-domain</name>
+    <name>contact-form-mail :: domain</name>
     <description>Pure domain model — value objects, exceptions, outbound port interfaces. No framework dependencies.</description>
 
     <dependencies>

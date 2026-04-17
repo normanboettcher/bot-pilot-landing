@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>contact-form-mail-application</artifactId>
-    <name>contact-form-mail-application</name>
+    <name>contact-form-mail :: application</name>
     <description>Use cases and inbound port interfaces. Orchestrates the domain. No framework dependencies.</description>
 
     <dependencies>

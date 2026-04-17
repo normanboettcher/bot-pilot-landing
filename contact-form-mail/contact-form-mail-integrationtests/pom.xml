@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>contact-form-mail-integrationtests</artifactId>
-    <name>contact-form-mail-integrationtests</name>
+    <name>contact-form-mail :: integrationtests</name>
     <description>Full-stack @SpringBootTest integration tests. Depends on bootstrap.</description>
 
     <dependencies>
