@@ -39,6 +39,7 @@
         <immutables.version>2.10.1</immutables.version>
     </properties>
 
+
     <dependencyManagement>
         <dependencies>
             <!-- Internal modules -->
