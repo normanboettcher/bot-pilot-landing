@@ -38,7 +38,7 @@
         <spring-cloud.version>2025.1.0</spring-cloud.version>
         <immutables.version>2.10.1</immutables.version>
         <spotless.version>2.43.0</spotless.version>
-        <google-java-format.version>1.24.0</google-java-format.version>
+        <eclipse.version>4.33</eclipse.version>
         <jacoco.version>0.8.12</jacoco.version>
         <maven-release-plugin.version>3.1.1</maven-release-plugin.version>
     </properties>
@@ -83,10 +83,9 @@
                 <artifactId>spotless-maven-plugin</artifactId>
                 <configuration>
                     <java>
-                        <googleJavaFormat>
-                            <version>${google-java-format.version}</version>
-                            <style>GOOGLE</style>
-                        </googleJavaFormat>
+                      <eclipse>
+                        <version>${eclipse.version}</version>
+                      </eclipse>
                     </java>
                 </configuration>
                 <executions>
