@@ -4,18 +4,16 @@ on:
   push:
     branches: [ "main", "build/**", "feature/**", "fix/**", "refactoring/**" ]
     paths:
-      - '**/src/**'
-      - 'pom.xml'
-      - '**/pom.xml'
-      - 'mvnw'
+      - 'contact-form-mail/**/src/**'
+      - 'contact-form-mail/**/pom.xml'
+      - 'contact-form-mail/mvnw'
       - '.github/workflows/build.yml'
   pull_request:
     branches: [ "main" ]
     paths:
-      - '**/src/**'
-      - 'pom.xml'
-      - '**/pom.xml'
-      - 'mvnw'
+      - 'contact-form-mail/**/src/**'
+      - 'contact-form-mail/**/pom.xml'
+      - 'contact-form-mail/mvnw'
       - '.github/workflows/build.yml'
 
 jobs:
@@ -34,4 +32,4 @@ jobs:
           cache: maven
 
       - name: Build and test
-        run: ./mvnw verify --batch-mode --no-transfer-progress
+        run: ./contact-form-mail/mvnw verify --batch-mode --no-transfer-progress -f ./contact-form-mail/pom.xml
