@@ -39,7 +39,7 @@
         <immutables.version>2.10.1</immutables.version>
         <spotless.version>2.43.0</spotless.version>
         <eclipse.version>4.33</eclipse.version>
-        <jacoco.version>0.8.12</jacoco.version>
+        <jacoco.version>0.8.13</jacoco.version>
         <maven-release-plugin.version>3.1.1</maven-release-plugin.version>
     </properties>
 
