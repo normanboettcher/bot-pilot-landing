@@ -9,18 +9,8 @@
       <module fileurl="file://$PROJECT_DIR$/bot-pilot-crypto/bot-pilot-crypto-application/application-command/application-command.iml" filepath="$PROJECT_DIR$/bot-pilot-crypto/bot-pilot-crypto-application/application-command/application-command.iml" />
       <module fileurl="file://$PROJECT_DIR$/bot-pilot-crypto/bot-pilot-crypto-application/application-ports/application-ports.iml" filepath="$PROJECT_DIR$/bot-pilot-crypto/bot-pilot-crypto-application/application-ports/application-ports.iml" />
       <module fileurl="file://$PROJECT_DIR$/bot-pilot-crypto/bot-pilot-crypto-application/bot-pilot-crypto-application-service/application-service.iml" filepath="$PROJECT_DIR$/bot-pilot-crypto/bot-pilot-crypto-application/bot-pilot-crypto-application-service/application-service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/bot-pilot-crypto/bot-pilot-crypto.iml" filepath="$PROJECT_DIR$/bot-pilot-crypto/bot-pilot-crypto.iml" />
-      <module fileurl="file://$PROJECT_DIR$/bot-pilot-crypto/contact-form-crypto-api/bot-pilot-crypto-api.iml" filepath="$PROJECT_DIR$/bot-pilot-crypto/contact-form-crypto-api/bot-pilot-crypto-api.iml" />
-      <module fileurl="file://$PROJECT_DIR$/bot-pilot-crypto/contact-form-crypto-application/bot-pilot-crypto-application.iml" filepath="$PROJECT_DIR$/bot-pilot-crypto/contact-form-crypto-application/bot-pilot-crypto-application.iml" />
-      <module fileurl="file://$PROJECT_DIR$/bot-pilot-crypto-bom/bot-pilot-crypto-bom.iml" filepath="$PROJECT_DIR$/bot-pilot-crypto-bom/bot-pilot-crypto-bom.iml" />
-      <module fileurl="file://$PROJECT_DIR$/bot-pilot-crypto/contact-form-crypto-domain/bot-pilot-crypto-domain.iml" filepath="$PROJECT_DIR$/bot-pilot-crypto/contact-form-crypto-domain/bot-pilot-crypto-domain.iml" />
-      <module fileurl="file://$PROJECT_DIR$/bot-pilot-crypto/contact-form-crypto-infrastructure/bot-pilot-crypto-infrastructure.iml" filepath="$PROJECT_DIR$/bot-pilot-crypto/contact-form-crypto-infrastructure/bot-pilot-crypto-infrastructure.iml" />
-      <module fileurl="file://$PROJECT_DIR$/bot-pilot-crypto-runner/bot-pilot-crypto-runner.iml" filepath="$PROJECT_DIR$/bot-pilot-crypto-runner/bot-pilot-crypto-runner.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/bot-pilot-landing.iml" filepath="$PROJECT_DIR$/.idea/bot-pilot-landing.iml" />
       <module fileurl="file://$PROJECT_DIR$/contact-form-mail/contact-form-mail.iml" filepath="$PROJECT_DIR$/contact-form-mail/contact-form-mail.iml" />
-      <module fileurl="file://$PROJECT_DIR$/domain-ports.iml" filepath="$PROJECT_DIR$/domain-ports.iml" />
-      <module fileurl="file://$PROJECT_DIR$/domain-transit-registry.iml" filepath="$PROJECT_DIR$/domain-transit-registry.iml" />
-      <module fileurl="file://$PROJECT_DIR$/infra-resilience.iml" filepath="$PROJECT_DIR$/infra-resilience.iml" />
       <module fileurl="file://$PROJECT_DIR$/infrastructure-adapter.iml" filepath="$PROJECT_DIR$/infrastructure-adapter.iml" />
       <module fileurl="file://$PROJECT_DIR$/bot-pilot-crypto/bot-pilot-crypto-domain/domain-values/values.iml" filepath="$PROJECT_DIR$/bot-pilot-crypto/bot-pilot-crypto-domain/domain-values/values.iml" />
       <module fileurl="file://$PROJECT_DIR$/vault-mapper.iml" filepath="$PROJECT_DIR$/vault-mapper.iml" />
