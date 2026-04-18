@@ -1,0 +1,35 @@
+name: Build
+
+on:
+  push:
+    branches: [ "main", "build/**", "feature/**", "fix/**", "refactoring/**" ]
+    paths:
+      - 'contact-form-mail/**/src/**'
+      - 'contact-form-mail/**/pom.xml'
+      - 'contact-form-mail/mvnw'
+      - '.github/workflows/build.yml'
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - 'contact-form-mail/**/src/**'
+      - 'contact-form-mail/**/pom.xml'
+      - 'contact-form-mail/mvnw'
+      - '.github/workflows/build.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java 25
+        uses: actions/setup-java@v4
+        with:
+          java-version: '25'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Build and test
+        run: contact-form-mail/mvnw verify --batch-mode --no-transfer-progress
