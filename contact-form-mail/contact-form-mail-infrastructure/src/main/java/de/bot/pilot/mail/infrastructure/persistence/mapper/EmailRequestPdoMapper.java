@@ -8,16 +8,16 @@ import java.sql.Timestamp;
 
 public final class EmailRequestPdoMapper {
 
-    private EmailRequestPdoMapper() {
-    }
+	private EmailRequestPdoMapper() {
+	}
 
-    public static EmailRequestPdo toEntity(EmailRecord record, CustomerPdo customer) {
-        EmailRequestPdo entity = new EmailRequestPdo();
-        entity.setContent(record.content());
-        entity.setSubject(record.subject());
-        entity.setCreatedAt(Timestamp.from(record.createdAt()));
-        entity.setSuccess(record.success());
-        entity.setCustomer(customer);
-        return entity;
-    }
+	public static EmailRequestPdo toEntity(EmailRecord record, CustomerPdo customer) {
+		EmailRequestPdo entity = new EmailRequestPdo();
+		entity.setContent(record.content());
+		entity.setSubject(record.subject());
+		entity.setCreatedAt(Timestamp.from(record.createdAt()));
+		entity.setSuccess(record.success());
+		entity.setCustomer(customer);
+		return entity;
+	}
 }

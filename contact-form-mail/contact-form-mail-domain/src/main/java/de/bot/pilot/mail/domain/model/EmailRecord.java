@@ -5,13 +5,13 @@ import org.immutables.value.Value;
 import java.time.Instant;
 
 /**
- * Domain value object representing a persisted email attempt.
- * Generated {@code ImmutableEmailRecord} provides a type-safe builder.
+ * Domain value object representing a persisted email attempt. Generated
+ * {@code ImmutableEmailRecord} provides a type-safe builder.
  */
 @Value.Immutable
 public interface EmailRecord {
-    String content();
-    String subject();
-    Instant createdAt();
-    boolean success();
+	String content();
+	String subject();
+	Instant createdAt();
+	boolean success();
 }

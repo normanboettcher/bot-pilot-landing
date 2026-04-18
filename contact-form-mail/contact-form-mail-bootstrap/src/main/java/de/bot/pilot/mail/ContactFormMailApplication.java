@@ -8,7 +8,7 @@ import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 @ConfigurationPropertiesScan
 public class ContactFormMailApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(ContactFormMailApplication.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(ContactFormMailApplication.class, args);
+	}
 }

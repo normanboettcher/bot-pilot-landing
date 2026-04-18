@@ -11,10 +11,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ApplicationBeanConfig {
 
-    @Bean
-    public ContactFormUseCase contactFormUseCase(CaptchaPort captchaPort,
-                                                 MailPort mailPort,
-                                                 ContactFormRecordPort contactFormRecordPort) {
-        return new ContactFormService(captchaPort, mailPort, contactFormRecordPort);
-    }
+	@Bean
+	public ContactFormUseCase contactFormUseCase(CaptchaPort captchaPort, MailPort mailPort,
+			ContactFormRecordPort contactFormRecordPort) {
+		return new ContactFormService(captchaPort, mailPort, contactFormRecordPort);
+	}
 }

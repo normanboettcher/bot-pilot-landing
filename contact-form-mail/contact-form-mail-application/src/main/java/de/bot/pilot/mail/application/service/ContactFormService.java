@@ -17,65 +17,53 @@ import org.slf4j.LoggerFactory;
 import java.time.Instant;
 
 /**
- * Interactor implementing the contact form use case.
- * No Spring annotations — wired explicitly by the bootstrap configuration.
+ * Interactor implementing the contact form use case. No Spring annotations —
+ * wired explicitly by the bootstrap configuration.
  *
- * Flow:
- *   1. Verify captcha (fail-fast)
- *   2. Build domain objects
- *   3. Attempt mail delivery, record outcome
- *   4. Persist customer + email record atomically via ContactFormRecordPort
+ * Flow: 1. Verify captcha (fail-fast) 2. Build domain objects 3. Attempt mail
+ * delivery, record outcome 4. Persist customer + email record atomically via
+ * ContactFormRecordPort
  */
 public class ContactFormService implements ContactFormUseCase {
 
-    private static final Logger log = LoggerFactory.getLogger(ContactFormService.class);
-    private static final String SUBJECT_TEMPLATE = "Kontaktanfrage: %s";
+	private static final Logger log = LoggerFactory.getLogger(ContactFormService.class);
+	private static final String SUBJECT_TEMPLATE = "Kontaktanfrage: %s";
 
-    private final CaptchaPort captchaPort;
-    private final MailPort mailPort;
-    private final ContactFormRecordPort contactFormRecordPort;
+	private final CaptchaPort captchaPort;
+	private final MailPort mailPort;
+	private final ContactFormRecordPort contactFormRecordPort;
 
-    public ContactFormService(CaptchaPort captchaPort,
-                              MailPort mailPort,
-                              ContactFormRecordPort contactFormRecordPort) {
-        this.captchaPort = captchaPort;
-        this.mailPort = mailPort;
-        this.contactFormRecordPort = contactFormRecordPort;
-    }
+	public ContactFormService(CaptchaPort captchaPort, MailPort mailPort, ContactFormRecordPort contactFormRecordPort) {
+		this.captchaPort = captchaPort;
+		this.mailPort = mailPort;
+		this.contactFormRecordPort = contactFormRecordPort;
+	}
 
-    @Override
-    public void submit(ContactSubmission submission) {
-        captchaPort.verify(submission.captchaToken(), submission.remoteIp());
+	@Override
+	public void submit(ContactSubmission submission) {
+		captchaPort.verify(submission.captchaToken(), submission.remoteIp());
 
-        Customer customer = ImmutableCustomer.builder()
-                .firstName(submission.firstName())
-                .lastName(submission.lastName())
-                .email(submission.email())
-                .company(submission.company())
-                .build();
+		Customer customer = ImmutableCustomer.builder().firstName(submission.firstName())
+				.lastName(submission.lastName()).email(submission.email()).company(submission.company()).build();
 
-        String subject = SUBJECT_TEMPLATE.formatted(submission.company());
-        MailMessage message = new MailMessage(subject, submission.message());
+		String subject = SUBJECT_TEMPLATE.formatted(submission.company());
+		MailMessage message = new MailMessage(subject, submission.message());
 
-        boolean mailSuccess = trySendMail(message);
+		boolean mailSuccess = trySendMail(message);
 
-        EmailRecord emailRecord = ImmutableEmailRecord.builder()
-                .content(submission.message())
-                .subject(subject)
-                .createdAt(Instant.now())
-                .success(mailSuccess)
-                .build();
+		EmailRecord emailRecord = ImmutableEmailRecord.builder().content(submission.message()).subject(subject)
+				.createdAt(Instant.now()).success(mailSuccess).build();
 
-        contactFormRecordPort.save(customer, emailRecord);
-    }
+		contactFormRecordPort.save(customer, emailRecord);
+	}
 
-    private boolean trySendMail(MailMessage message) {
-        try {
-            mailPort.sendNotification(message);
-            return true;
-        } catch (MailDeliveryException e) {
-            log.warn("Mail delivery failed for subject '{}': {}", message.subject(), e.getMessage());
-            return false;
-        }
-    }
+	private boolean trySendMail(MailMessage message) {
+		try {
+			mailPort.sendNotification(message);
+			return true;
+		} catch (MailDeliveryException e) {
+			log.warn("Mail delivery failed for subject '{}': {}", message.subject(), e.getMessage());
+			return false;
+		}
+	}
 }

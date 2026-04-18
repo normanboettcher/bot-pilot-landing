@@ -5,9 +5,9 @@ import de.bot.pilot.mail.domain.model.EmailRecord;
 
 public interface ContactFormRecordPort {
 
-    /**
-     * Persists the customer and its associated email record atomically.
-     * Transactional boundary is owned by the adapter implementation.
-     */
-    void save(Customer customer, EmailRecord emailRecord);
+	/**
+	 * Persists the customer and its associated email record atomically.
+	 * Transactional boundary is owned by the adapter implementation.
+	 */
+	void save(Customer customer, EmailRecord emailRecord);
 }

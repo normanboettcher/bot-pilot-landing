@@ -14,31 +14,53 @@ import java.util.List;
 @Table(name = "contact_form_customer")
 public class CustomerPdo {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String company;
+	private String firstName;
+	private String lastName;
+	private String email;
+	private String company;
 
-    @OneToMany(mappedBy = "customer")
-    private List<EmailRequestPdo> emailRequests = new ArrayList<>();
+	@OneToMany(mappedBy = "customer")
+	private List<EmailRequestPdo> emailRequests = new ArrayList<>();
 
-    public CustomerPdo() {
-    }
+	public CustomerPdo() {
+	}
 
-    public Long getId() { return id; }
-    public String getFirstName() { return firstName; }
-    public String getLastName() { return lastName; }
-    public String getEmail() { return email; }
-    public String getCompany() { return company; }
-    public List<EmailRequestPdo> getEmailRequests() { return emailRequests; }
+	public Long getId() {
+		return id;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public String getCompany() {
+		return company;
+	}
+	public List<EmailRequestPdo> getEmailRequests() {
+		return emailRequests;
+	}
 
-    public void setFirstName(String firstName) { this.firstName = firstName; }
-    public void setLastName(String lastName) { this.lastName = lastName; }
-    public void setEmail(String email) { this.email = email; }
-    public void setCompany(String company) { this.company = company; }
-    public void setEmailRequests(List<EmailRequestPdo> emailRequests) { this.emailRequests = emailRequests; }
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public void setCompany(String company) {
+		this.company = company;
+	}
+	public void setEmailRequests(List<EmailRequestPdo> emailRequests) {
+		this.emailRequests = emailRequests;
+	}
 }

@@ -16,32 +16,54 @@ import java.time.Instant;
 @Table(name = "email_request")
 public class EmailRequestPdo {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
-    private String content;
-    private String subject;
-    private Timestamp createdAt = Timestamp.from(Instant.now());
-    private boolean success;
+	private String content;
+	private String subject;
+	private Timestamp createdAt = Timestamp.from(Instant.now());
+	private boolean success;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "contact_form_customer_id", nullable = false)
-    private CustomerPdo customer;
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "contact_form_customer_id", nullable = false)
+	private CustomerPdo customer;
 
-    public EmailRequestPdo() {
-    }
+	public EmailRequestPdo() {
+	}
 
-    public Long getId() { return id; }
-    public String getContent() { return content; }
-    public String getSubject() { return subject; }
-    public Timestamp getCreatedAt() { return createdAt; }
-    public boolean isSuccess() { return success; }
-    public CustomerPdo getCustomer() { return customer; }
+	public Long getId() {
+		return id;
+	}
+	public String getContent() {
+		return content;
+	}
+	public String getSubject() {
+		return subject;
+	}
+	public Timestamp getCreatedAt() {
+		return createdAt;
+	}
+	public boolean isSuccess() {
+		return success;
+	}
+	public CustomerPdo getCustomer() {
+		return customer;
+	}
 
-    public void setContent(String content) { this.content = content; }
-    public void setSubject(String subject) { this.subject = subject; }
-    public void setCreatedAt(Timestamp createdAt) { this.createdAt = createdAt; }
-    public void setSuccess(boolean success) { this.success = success; }
-    public void setCustomer(CustomerPdo customer) { this.customer = customer; }
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+	public void setCreatedAt(Timestamp createdAt) {
+		this.createdAt = createdAt;
+	}
+	public void setSuccess(boolean success) {
+		this.success = success;
+	}
+	public void setCustomer(CustomerPdo customer) {
+		this.customer = customer;
+	}
 }
