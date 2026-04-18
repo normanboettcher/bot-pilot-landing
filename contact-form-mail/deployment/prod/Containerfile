@@ -5,11 +5,22 @@ WORKDIR /build
 
 COPY pom.xml mvnw ./
 COPY .mvn ./.mvn
+# Copy all module POMs so Maven can resolve the dependency graph before source copy
+COPY contact-form-mail-domain/pom.xml            contact-form-mail-domain/
+COPY contact-form-mail-application/pom.xml       contact-form-mail-application/
+COPY contact-form-mail-infrastructure/pom.xml    contact-form-mail-infrastructure/
+COPY contact-form-mail-web/pom.xml               contact-form-mail-web/
+COPY contact-form-mail-bootstrap/pom.xml         contact-form-mail-bootstrap/
+COPY contact-form-mail-integrationtests/pom.xml  contact-form-mail-integrationtests/
 RUN ./mvnw -q -e -B dependency:go-offline || true
 
-COPY src ./src
+COPY contact-form-mail-domain/src            contact-form-mail-domain/src
+COPY contact-form-mail-application/src       contact-form-mail-application/src
+COPY contact-form-mail-infrastructure/src    contact-form-mail-infrastructure/src
+COPY contact-form-mail-web/src               contact-form-mail-web/src
+COPY contact-form-mail-bootstrap/src         contact-form-mail-bootstrap/src
 
-RUN ./mvnw -q -B package -DskipTests
+RUN ./mvnw -q -B package -DskipTests -T 1C
 
 COPY deployment/prod/HealthCheck.java ./
 RUN javac HealthCheck.java
@@ -19,7 +30,7 @@ FROM gcr.io/distroless/java25-debian13:nonroot
 
 WORKDIR /app
 
-COPY --from=builder /build/target/*.jar app.jar
+COPY --from=builder /build/contact-form-mail-bootstrap/target/*-exec.jar app.jar
 COPY --from=builder /build/HealthCheck.class .
 EXPOSE 8080
 

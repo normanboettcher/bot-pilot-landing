@@ -1,0 +1,66 @@
+spring:
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+  application:
+    name: contact-form-mail
+  config:
+    import: optional:vault://
+
+  cloud:
+    vault:
+      uri: ${VAULT_TARGET_URL}
+      authentication: APPROLE
+      app-role:
+        role-id: ${APP_ROLE_ID}
+        secret-id: ${APP_SECRET_ID}
+        role: contact-form-app
+        app-role-path: approle
+      database:
+        enabled: true
+        backend: database
+        role: contact-form-dev-role
+        username-property: spring.datasource.username
+        password-property: spring.datasource.password
+      config:
+        lifecycle:
+          enabled: true
+
+  mail:
+    properties:
+      mail:
+        smtp:
+          auth: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+          starttls:
+            enable: true
+
+  datasource:
+    hikari:
+      maximum-pool-size: 5
+      connection-timeout: 20000
+      idle-timeout: 600000
+      max-lifetime: 1200000
+    driver-class-name: org.mariadb.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: ${SHOW_SQL:false}
+    database-platform: org.hibernate.dialect.MariaDBDialect
+
+logging:
+  level:
+    de.bot.pilot.mail: ${LOG_LEVEL_MAIL:INFO}
+    org.springframework.cloud.vault: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health"
+
+captcha:
+  secret:
+    path: ${CAPTCHA_SECRET_PATH}

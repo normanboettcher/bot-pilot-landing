@@ -1,7 +1,7 @@
 FROM eclipse-temurin:25-jdk-alpine
 
 WORKDIR /app
-COPY target/contact-form-mail-*.jar app.jar
+COPY contact-form-mail-bootstrap/target/contact-form-mail-bootstrap-*-exec.jar app.jar
 EXPOSE 8080
 
 ENTRYPOINT ["java", "-jar", "app.jar"]

@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: contact-form-mail
+  mail:
+    port: 25
+    host: localhost
+    username: user
+    password: password
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+captcha:
+  secret:
+    path: '/path'
