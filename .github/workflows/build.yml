@@ -33,3 +33,21 @@ jobs:
 
       - name: Build and test
         run: ./contact-form-mail/mvnw verify --batch-mode --no-transfer-progress -f ./contact-form-mail/pom.xml
+
+      - name: JaCoCo coverage report (PR comment)
+        if: github.event_name == 'pull_request'
+        uses: madrapps/jacoco-report@v1.6.0
+        with:
+          paths: contact-form-mail/contact-form-mail-integrationtests/target/site/jacoco-aggregate/jacoco.xml
+          token: ${{ secrets.GITHUB_TOKEN }}
+          title: Code Coverage
+          min-coverage-overall: 0
+          min-coverage-changed-files: 0
+
+      - name: Upload coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jacoco-report
+          path: contact-form-mail/contact-form-mail-integrationtests/target/site/jacoco-aggregate/
+          retention-days: 14
