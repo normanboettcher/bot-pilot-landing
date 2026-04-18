@@ -15,20 +15,20 @@ import org.springframework.stereotype.Component;
 @Component
 public class ContactFormRecordAdapter implements ContactFormRecordPort {
 
-    private final CustomerJpaRepository customerRepository;
-    private final EmailRequestJpaRepository emailRequestRepository;
+	private final CustomerJpaRepository customerRepository;
+	private final EmailRequestJpaRepository emailRequestRepository;
 
-    public ContactFormRecordAdapter(CustomerJpaRepository customerRepository,
-                                    EmailRequestJpaRepository emailRequestRepository) {
-        this.customerRepository = customerRepository;
-        this.emailRequestRepository = emailRequestRepository;
-    }
+	public ContactFormRecordAdapter(CustomerJpaRepository customerRepository,
+			EmailRequestJpaRepository emailRequestRepository) {
+		this.customerRepository = customerRepository;
+		this.emailRequestRepository = emailRequestRepository;
+	}
 
-    @Override
-    @Transactional
-    public void save(Customer customer, EmailRecord emailRecord) {
-        CustomerPdo savedCustomer = customerRepository.save(CustomerPdoMapper.toEntity(customer));
-        EmailRequestPdo emailRequestEntity = EmailRequestPdoMapper.toEntity(emailRecord, savedCustomer);
-        emailRequestRepository.save(emailRequestEntity);
-    }
+	@Override
+	@Transactional
+	public void save(Customer customer, EmailRecord emailRecord) {
+		CustomerPdo savedCustomer = customerRepository.save(CustomerPdoMapper.toEntity(customer));
+		EmailRequestPdo emailRequestEntity = EmailRequestPdoMapper.toEntity(emailRecord, savedCustomer);
+		emailRequestRepository.save(emailRequestEntity);
+	}
 }

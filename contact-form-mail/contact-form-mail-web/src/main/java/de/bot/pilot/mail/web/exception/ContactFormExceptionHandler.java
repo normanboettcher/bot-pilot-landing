@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class ContactFormExceptionHandler {
 
-    @ExceptionHandler(CaptchaVerificationException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String handleCaptchaFailure(CaptchaVerificationException ex) {
-        return ex.getMessage();
-    }
+	@ExceptionHandler(CaptchaVerificationException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	public String handleCaptchaFailure(CaptchaVerificationException ex) {
+		return ex.getMessage();
+	}
 }

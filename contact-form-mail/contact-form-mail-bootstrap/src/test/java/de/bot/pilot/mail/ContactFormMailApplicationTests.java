@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class ContactFormMailApplicationTests {
 
-    @Disabled
-    void contextLoads() {
-    }
+	@Disabled
+	void contextLoads() {
+	}
 }

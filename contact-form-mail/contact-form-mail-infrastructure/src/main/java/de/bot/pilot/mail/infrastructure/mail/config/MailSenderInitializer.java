@@ -12,21 +12,22 @@ import java.nio.file.Path;
 
 /**
  * Reads the SMTP password from the file referenced by SMTP_PASSWORD_FILE.
- * File-based secret injection avoids putting credentials in environment variables.
+ * File-based secret injection avoids putting credentials in environment
+ * variables.
  */
 @Component
 public class MailSenderInitializer {
 
-    @Autowired
-    private JavaMailSender mailSender;
+	@Autowired
+	private JavaMailSender mailSender;
 
-    @PostConstruct
-    public void init() throws IOException {
-        if (mailSender instanceof JavaMailSenderImpl impl) {
-            String passwordFile = System.getenv("SMTP_PASSWORD_FILE");
-            if (passwordFile != null) {
-                impl.setPassword(Files.readString(Path.of(passwordFile)).trim());
-            }
-        }
-    }
+	@PostConstruct
+	public void init() throws IOException {
+		if (mailSender instanceof JavaMailSenderImpl impl) {
+			String passwordFile = System.getenv("SMTP_PASSWORD_FILE");
+			if (passwordFile != null) {
+				impl.setPassword(Files.readString(Path.of(passwordFile)).trim());
+			}
+		}
+	}
 }

@@ -12,26 +12,25 @@ import org.springframework.stereotype.Component;
 @Component
 public class JavaMailSenderAdapter implements MailPort {
 
-    private final JavaMailSender mailSender;
-    private final String smtpUsername;
+	private final JavaMailSender mailSender;
+	private final String smtpUsername;
 
-    public JavaMailSenderAdapter(JavaMailSender mailSender,
-                                 @Value("${spring.mail.username}") String smtpUsername) {
-        this.mailSender = mailSender;
-        this.smtpUsername = smtpUsername;
-    }
+	public JavaMailSenderAdapter(JavaMailSender mailSender, @Value("${spring.mail.username}") String smtpUsername) {
+		this.mailSender = mailSender;
+		this.smtpUsername = smtpUsername;
+	}
 
-    @Override
-    public void sendNotification(MailMessage message) {
-        SimpleMailMessage mail = new SimpleMailMessage();
-        mail.setTo(smtpUsername);
-        mail.setFrom(smtpUsername);
-        mail.setSubject(message.subject());
-        mail.setText(message.body());
-        try {
-            mailSender.send(mail);
-        } catch (MailException e) {
-            throw new MailDeliveryException("SMTP delivery failed: " + e.getMessage(), e);
-        }
-    }
+	@Override
+	public void sendNotification(MailMessage message) {
+		SimpleMailMessage mail = new SimpleMailMessage();
+		mail.setTo(smtpUsername);
+		mail.setFrom(smtpUsername);
+		mail.setSubject(message.subject());
+		mail.setText(message.body());
+		try {
+			mailSender.send(mail);
+		} catch (MailException e) {
+			throw new MailDeliveryException("SMTP delivery failed: " + e.getMessage(), e);
+		}
+	}
 }

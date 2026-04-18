@@ -15,25 +15,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/contact")
 public class ContactFormController {
 
-    private final ContactFormUseCase contactFormUseCase;
+	private final ContactFormUseCase contactFormUseCase;
 
-    public ContactFormController(ContactFormUseCase contactFormUseCase) {
-        this.contactFormUseCase = contactFormUseCase;
-    }
+	public ContactFormController(ContactFormUseCase contactFormUseCase) {
+		this.contactFormUseCase = contactFormUseCase;
+	}
 
-    @PostMapping
-    public ResponseEntity<Void> submit(@Valid @RequestBody ContactRequest request,
-                                       HttpServletRequest httpRequest) {
-        ContactSubmission submission = new ContactSubmission(
-                request.firstName(),
-                request.lastName(),
-                request.email(),
-                request.company(),
-                request.message(),
-                request.captchaToken(),
-                httpRequest.getRemoteAddr()
-        );
-        contactFormUseCase.submit(submission);
-        return ResponseEntity.accepted().build();
-    }
+	@PostMapping
+	public ResponseEntity<Void> submit(@Valid @RequestBody ContactRequest request, HttpServletRequest httpRequest) {
+		ContactSubmission submission = new ContactSubmission(request.firstName(), request.lastName(), request.email(),
+				request.company(), request.message(), request.captchaToken(), httpRequest.getRemoteAddr());
+		contactFormUseCase.submit(submission);
+		return ResponseEntity.accepted().build();
+	}
 }
