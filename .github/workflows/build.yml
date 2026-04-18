@@ -32,4 +32,4 @@ jobs:
           cache: maven
 
       - name: Build and test
-        run: contact-form-mail/mvnw verify --batch-mode --no-transfer-progress
+        run: ./contact-form-mail/mvnw verify --batch-mode --no-transfer-progress -f ./contact-form-mail/pom.xml
