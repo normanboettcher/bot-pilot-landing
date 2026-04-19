@@ -2,20 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/api-controller.iml" filepath="$PROJECT_DIR$/api-controller.iml" />
-      <module fileurl="file://$PROJECT_DIR$/api-dto.iml" filepath="$PROJECT_DIR$/api-dto.iml" />
-      <module fileurl="file://$PROJECT_DIR$/api-filter.iml" filepath="$PROJECT_DIR$/api-filter.iml" />
-      <module fileurl="file://$PROJECT_DIR$/api-problem.iml" filepath="$PROJECT_DIR$/api-problem.iml" />
-      <module fileurl="file://$PROJECT_DIR$/bot-pilot-crypto/bot-pilot-crypto-application/application-command/application-command.iml" filepath="$PROJECT_DIR$/bot-pilot-crypto/bot-pilot-crypto-application/application-command/application-command.iml" />
-      <module fileurl="file://$PROJECT_DIR$/bot-pilot-crypto/bot-pilot-crypto-application/application-ports/application-ports.iml" filepath="$PROJECT_DIR$/bot-pilot-crypto/bot-pilot-crypto-application/application-ports/application-ports.iml" />
-      <module fileurl="file://$PROJECT_DIR$/bot-pilot-crypto/bot-pilot-crypto-application/bot-pilot-crypto-application-service/application-service.iml" filepath="$PROJECT_DIR$/bot-pilot-crypto/bot-pilot-crypto-application/bot-pilot-crypto-application-service/application-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/bot-pilot-landing.iml" filepath="$PROJECT_DIR$/.idea/bot-pilot-landing.iml" />
       <module fileurl="file://$PROJECT_DIR$/contact-form-mail/contact-form-mail.iml" filepath="$PROJECT_DIR$/contact-form-mail/contact-form-mail.iml" />
-      <module fileurl="file://$PROJECT_DIR$/infrastructure-adapter.iml" filepath="$PROJECT_DIR$/infrastructure-adapter.iml" />
-      <module fileurl="file://$PROJECT_DIR$/bot-pilot-crypto/bot-pilot-crypto-domain/domain-values/values.iml" filepath="$PROJECT_DIR$/bot-pilot-crypto/bot-pilot-crypto-domain/domain-values/values.iml" />
-      <module fileurl="file://$PROJECT_DIR$/vault-mapper.iml" filepath="$PROJECT_DIR$/vault-mapper.iml" />
-      <module fileurl="file://$PROJECT_DIR$/bot-pilot-crypto/bot-pilot-crypto-infrastructure/bot-pilot-crypto-infrastructure-adapter/bot-pilot-crypto-infrastructure-adapter-vault/vault-spring-client.iml" filepath="$PROJECT_DIR$/bot-pilot-crypto/bot-pilot-crypto-infrastructure/bot-pilot-crypto-infrastructure-adapter/bot-pilot-crypto-infrastructure-adapter-vault/vault-spring-client.iml" />
-      <module fileurl="file://$PROJECT_DIR$/vault-spring-config.iml" filepath="$PROJECT_DIR$/vault-spring-config.iml" />
     </modules>
   </component>
 </project>
