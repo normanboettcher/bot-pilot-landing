@@ -8,6 +8,8 @@ spring:
     password: password
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
+  liquibase:
+    enabled: false
 captcha:
   secret:
     path: '/path'
