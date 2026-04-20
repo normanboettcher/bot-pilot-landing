@@ -1,13 +1,74 @@
 spring:
   application:
     name: contact-form-mail
+
+  # --- Vault: disabled entirely for integration tests ---
+  # The main application.yml sets: spring.config.import=optional:vault://
+  # Even with 'optional:', Spring Cloud Vault will still attempt to connect and
+  # configure a VaultTemplate bean, which fails without a real Vault server.
+  # Setting this to an empty string removes vault from the import chain completely.
+  config:
+    import: ""
+
+  cloud:
+    vault:
+      enabled: false
+
+  # --- Mail: point at local SMTP stub (no real SMTP server needed) ---
+  # The main config leaves host/port/username/password unset (they come from
+  # env vars in production). We supply safe local values here so JavaMailSender
+  # can be constructed without errors. Port 25 matches the GreenMail/stub default.
   mail:
-    port: 25
     host: localhost
+    port: 25
     username: user
     password: password
+    # Disable STARTTLS — the local stub does not support it.
+    # Without this override the main config's 'starttls.enable=true' would cause
+    # the SMTP handshake to fail against an unauthenticated stub.
+    properties:
+      mail:
+        smtp:
+          auth: false
+          starttls:
+            enable: false
+
+  # --- DataSource: H2 in-memory, replaces MariaDB ---
+  # MariaDB requires a running server and Vault-supplied credentials.
+  # H2 runs entirely in-process; no external dependency whatsoever.
+  # MODE=MySQL makes H2 accept MariaDB-flavoured SQL (AUTO_INCREMENT, etc.)
+  # so Liquibase changesets written for MariaDB apply without modification.
   datasource:
-    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MySQL
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+
+  # --- JPA: switch dialect to match H2, keep ddl-auto=none ---
+  # ddl-auto=none means Hibernate will NOT generate or modify tables.
+  # Liquibase owns schema creation (see below). If we let Hibernate auto-create
+  # the schema as well we'd get double-creation errors and lose the Liquibase
+  # changelog tracking that keeps migrations consistent across environments.
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+
+  # --- Liquibase: enabled, pointing at the existing changelog ---
+  # The master changelog lives in contact-form-mail-infrastructure's resources,
+  # which are on the test classpath via the transitive dependency chain
+  # (integrationtests -> bootstrap -> infrastructure).
+  # Liquibase will create the tables before Hibernate validates them, satisfying
+  # the 'ddl-auto: none' contract without needing a pre-existing schema.
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.xml
+
+# --- Captcha: point at a non-existent but syntactically valid path ---
+# CaptchaProperties requires this binding to succeed at startup.
+# The path does not need to exist for context load; it only matters when the
+# endpoint is actually called. No test currently calls POST /contact, so a
+# dummy value is sufficient.
 captcha:
   secret:
-    path: '/path'
+    path: /dev/null

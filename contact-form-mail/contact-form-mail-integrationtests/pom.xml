@@ -46,6 +46,18 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!--
+            H2 in-memory database for integration tests.
+            Replaces MariaDB so no external DB server is required in CI or local test runs.
+            Scoped to 'test' only — production code never sees this driver.
+            Version is managed by spring-boot-starter-parent BOM; no explicit version needed.
+        -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 </project>
