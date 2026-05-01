@@ -48,18 +48,19 @@ public class ContactFormService implements ContactFormUseCase {
 	public void submit(ContactSubmission submission) {
 		captchaPort.verify(submission.captchaToken(), submission.remoteIp());
 
-		Customer customer = ImmutableCustomer.builder().firstName(submission.firstName())
-				.lastName(submission.lastName()).email(submission.email()).company(submission.company()).build();
-
 		String subject = SUBJECT_TEMPLATE.formatted(submission.company());
 		MailMessage message = new MailMessage(subject, submission.message());
 
 		boolean mailSuccess = trySendMail(message);
 
-		// TODO: handle encryption right here before persisting. Persist encrypted data,
-		// never plaintext.
-		EmailRecord emailRecord = ImmutableEmailRecord.builder().content(submission.message()).subject(subject)
+		var encrypted = this.encryptMail(new MailEncryptionInput(submission.message(), subject));
+		EmailRecord emailRecord = ImmutableEmailRecord.builder().content(encrypted.encryptedMessage()).subject(subject)
 				.createdAt(Instant.now()).success(mailSuccess).build();
+		var encryptedCustomer = this.encryptCustomer(new CustomerEncryptionInput(submission.company(),
+				submission.email(), submission.firstName(), submission.lastName()));
+		Customer customer = ImmutableCustomer.builder().firstName(encryptedCustomer.encryptedFirstName())
+				.lastName(encryptedCustomer.encryptedLastName()).email(encryptedCustomer.encryptedEmail())
+				.company(encryptedCustomer.encryptedCompany()).build();
 
 		contactFormRecordPort.save(customer, emailRecord);
 	}
@@ -72,5 +73,32 @@ public class ContactFormService implements ContactFormUseCase {
 			LOGGER.warn("Mail delivery failed for subject '{}': {}", message.subject(), e.getMessage());
 			return false;
 		}
+	}
+
+	private CustomerEncryptionOutput encryptCustomer(final CustomerEncryptionInput input) {
+		var encryptedCompany = this.encryptionPort.encrypt(input.company());
+		var encryptedEmail = this.encryptionPort.encrypt(input.email());
+		var encryptedFirstName = this.encryptionPort.encrypt(input.firstName());
+		var encryptedLastName = this.encryptionPort.encrypt(input.lastName());
+		return new CustomerEncryptionOutput(encryptedCompany, encryptedEmail, encryptedFirstName, encryptedLastName);
+	}
+
+	private MailEncryptionOutput encryptMail(final MailEncryptionInput input) {
+		var message = this.encryptionPort.encrypt(input.message());
+		var subject = this.encryptionPort.encrypt(input.subject());
+		return new MailEncryptionOutput(message, subject);
+	}
+
+	record CustomerEncryptionInput(String company, String email, String firstName, String lastName) {
+	}
+
+	record CustomerEncryptionOutput(String encryptedCompany, String encryptedEmail, String encryptedFirstName,
+			String encryptedLastName) {
+	}
+
+	record MailEncryptionInput(String message, String subject) {
+	}
+
+	record MailEncryptionOutput(String encryptedMessage, String encryptedSubject) {
 	}
 }
