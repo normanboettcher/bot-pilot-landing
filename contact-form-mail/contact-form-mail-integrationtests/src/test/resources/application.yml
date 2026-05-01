@@ -72,3 +72,7 @@ spring:
 captcha:
   secret:
     path: /dev/null
+vault:
+  transit:
+    key: key
+    path: path

@@ -6,7 +6,7 @@ import de.bot.pilot.mail.domain.error.EncryptionError;
  * Represents an exception that is thrown when an encryption-related error
  * occurs within the system.
  */
-public class EncryptionException extends RuntimeException {
+public final class EncryptionException extends RuntimeException {
 	private final EncryptionError encryptionError;
 
 	public EncryptionException(EncryptionError encryptionError) {

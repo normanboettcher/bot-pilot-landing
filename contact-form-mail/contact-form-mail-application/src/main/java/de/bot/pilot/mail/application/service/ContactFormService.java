@@ -53,11 +53,11 @@ public class ContactFormService implements ContactFormUseCase {
 
 		boolean mailSuccess = trySendMail(message);
 
-		var encrypted = this.encryptMail(new MailEncryptionInput(submission.message(), subject));
-		EmailRecord emailRecord = ImmutableEmailRecord.builder().content(encrypted.encryptedMessage()).subject(subject)
-				.createdAt(Instant.now()).success(mailSuccess).build();
-		var encryptedCustomer = this.encryptCustomer(new CustomerEncryptionInput(submission.company(),
-				submission.email(), submission.firstName(), submission.lastName()));
+		var encrypted = encryptMail(new MailEncryptionInput(submission.message(), subject));
+		EmailRecord emailRecord = ImmutableEmailRecord.builder().content(encrypted.encryptedMessage())
+				.subject(encrypted.encryptedSubject()).createdAt(Instant.now()).success(mailSuccess).build();
+		var encryptedCustomer = encryptCustomer(new CustomerEncryptionInput(submission.company(), submission.email(),
+				submission.firstName(), submission.lastName()));
 		Customer customer = ImmutableCustomer.builder().firstName(encryptedCustomer.encryptedFirstName())
 				.lastName(encryptedCustomer.encryptedLastName()).email(encryptedCustomer.encryptedEmail())
 				.company(encryptedCustomer.encryptedCompany()).build();

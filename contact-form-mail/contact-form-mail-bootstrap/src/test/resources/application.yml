@@ -13,3 +13,7 @@ spring:
 captcha:
   secret:
     path: '/path'
+vault:
+  transit:
+    key: key
+    path: path

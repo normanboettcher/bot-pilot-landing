@@ -17,12 +17,4 @@ public interface EncryptionPort {
 	 */
 	String encrypt(String plainText);
 
-	/**
-	 * Decrypts the cipher text using the configured decryption algorithm.
-	 *
-	 * @param cipherText
-	 *            the text to decrypt
-	 * @return the decrypted plain text
-	 */
-	String decrypt(String cipherText);
 }

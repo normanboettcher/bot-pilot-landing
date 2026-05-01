@@ -51,32 +51,4 @@ public class VaultEncryptionAdapter implements EncryptionPort {
 			throw new EncryptionException(new EncryptionError.Unavailable("Cannot access Vault", e));
 		}
 	}
-
-	@Override
-	public String decrypt(String cipherText) {
-		if (cipherText == null || cipherText.isBlank()) {
-			throw new EncryptionException(
-					new EncryptionError.InvalidInput("cipherText", "Ciphertext must not be blank"));
-		}
-		try {
-			Plaintext result = vaultOperations.opsForTransit(path).decrypt(key, Ciphertext.of(cipherText));
-			var asString = result != null ? result.asString() : null;
-			if (result == null) {
-				// No upstream exception - Vault returned null; cause is intentionally absent
-				throw new EncryptionException(
-						new EncryptionError.OperationFailed("Transit decrypt returned null", null));
-			}
-			return result.asString();
-		} catch (VaultLoginException | VaultTokenRenewalException ex) {
-			throw new EncryptionException(new EncryptionError.Unauthorized("Vault auth failed", ex));
-		} catch (VaultException e) {
-			String msg = e.getMessage() != null ? e.getMessage() : "";
-			if (msg.contains("403")) {
-				throw new EncryptionException(new EncryptionError.Forbidden("Vault policy denied", e));
-			}
-			throw new EncryptionException(new EncryptionError.OperationFailed("Transit decrypt failed", e));
-		} catch (ResourceAccessException e) {
-			throw new EncryptionException(new EncryptionError.Unavailable("Cannot access Vault", e));
-		}
-	}
 }
