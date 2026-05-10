@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+            https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd">
+
+    <!--
+        Hibernate 6+ maps GenerationType.AUTO to sequences when the database
+        supports them. H2 supports sequences; MariaDB AUTO_INCREMENT does not
+        use sequences. This changeset creates the sequences Hibernate expects
+        in H2 and is skipped entirely on every other database.
+    -->
+    <changeSet id="002-h2-sequences" author="norman-ian.boettcher">
+        <preConditions onFail="MARK_RAN">
+            <dbms type="h2"/>
+        </preConditions>
+        <createSequence sequenceName="contact_form_customer_seq" startValue="1" incrementBy="50"/>
+        <createSequence sequenceName="email_request_seq" startValue="1" incrementBy="50"/>
+    </changeSet>
+
+</databaseChangeLog>

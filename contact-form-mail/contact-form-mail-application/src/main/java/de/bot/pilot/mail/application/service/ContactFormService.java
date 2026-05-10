@@ -70,7 +70,7 @@ public class ContactFormService implements ContactFormUseCase {
 			mailPort.sendNotification(message);
 			return true;
 		} catch (MailDeliveryException e) {
-			LOGGER.warn("Mail delivery failed for subject '{}': {}", message.subject(), e.getMessage());
+			LOGGER.warn("Mail delivery failed");
 			return false;
 		}
 	}
