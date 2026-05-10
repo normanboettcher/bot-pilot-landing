@@ -6,6 +6,5 @@
             https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd">
 
     <include file="db/changelog/migrations/001-initial-schema.xml"/>
-    <include file="db/changelog/migrations/002-h2-sequences.xml"/>
 
 </databaseChangeLog>

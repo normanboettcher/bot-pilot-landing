@@ -1,6 +1,7 @@
 HELP.md
 smtp_pw
 captcha_secret
+*secret
 target/
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/

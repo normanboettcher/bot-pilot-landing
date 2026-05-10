@@ -69,3 +69,8 @@ management:
 captcha:
   secret:
     path: ${CAPTCHA_SECRET_PATH}
+
+vault:
+  transit:
+    key: ${VAULT_TRANSIT_KEY}
+    path: ${VAULT_TRANSIT_PATH}
