@@ -41,7 +41,6 @@ public class ContactFormService implements ContactFormUseCase {
 		this.mailPort = mailPort;
 		this.contactFormRecordPort = contactFormRecordPort;
 		this.encryptionPort = encryptionPort;
-
 	}
 
 	@Override
