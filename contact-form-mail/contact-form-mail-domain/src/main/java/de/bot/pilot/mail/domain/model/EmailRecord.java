@@ -13,5 +13,4 @@ public interface EmailRecord {
 	String content();
 	String subject();
 	Instant createdAt();
-	boolean success();
 }

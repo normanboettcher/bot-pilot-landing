@@ -50,11 +50,15 @@ public class ContactFormService implements ContactFormUseCase {
 		String subject = SUBJECT_TEMPLATE.formatted(submission.company());
 		MailMessage message = new MailMessage(subject, submission.message());
 
-		boolean mailSuccess = trySendMail(message);
-
+		try {
+			mailPort.sendNotification(message);
+		} catch (MailDeliveryException e) {
+			LOGGER.error("Mail delivery failed");
+			throw e;
+		}
 		var encrypted = encryptMail(new MailEncryptionInput(submission.message(), subject));
 		EmailRecord emailRecord = ImmutableEmailRecord.builder().content(encrypted.encryptedMessage())
-				.subject(encrypted.encryptedSubject()).createdAt(Instant.now()).success(mailSuccess).build();
+				.subject(encrypted.encryptedSubject()).createdAt(Instant.now()).build();
 		var encryptedCustomer = encryptCustomer(new CustomerEncryptionInput(submission.company(), submission.email(),
 				submission.firstName(), submission.lastName()));
 		Customer customer = ImmutableCustomer.builder().firstName(encryptedCustomer.encryptedFirstName())
@@ -62,16 +66,6 @@ public class ContactFormService implements ContactFormUseCase {
 				.company(encryptedCustomer.encryptedCompany()).build();
 
 		contactFormRecordPort.save(customer, emailRecord);
-	}
-
-	private boolean trySendMail(MailMessage message) {
-		try {
-			mailPort.sendNotification(message);
-			return true;
-		} catch (MailDeliveryException e) {
-			LOGGER.warn("Mail delivery failed");
-			return false;
-		}
 	}
 
 	private CustomerEncryptionOutput encryptCustomer(final CustomerEncryptionInput input) {

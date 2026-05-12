@@ -4,10 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.doThrow;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import de.bot.pilot.mail.domain.error.EncryptionError;
 import de.bot.pilot.mail.domain.exception.CaptchaVerificationException;
@@ -79,7 +76,6 @@ class ContactFormServiceTest {
 		verify(contactFormRecordPort).save(customerCaptor.capture(), emailRecordCaptor.capture());
 		Customer savedCustomer = customerCaptor.getValue();
 		EmailRecord savedRecord = emailRecordCaptor.getValue();
-		assertThat(savedRecord.success()).isTrue();
 		assertThat(savedRecord.content()).isEqualTo("enc:message");
 		assertThat(savedRecord.subject()).isEqualTo("enc:subject");
 		assertThat(savedCustomer.firstName()).isEqualTo("enc:firstName");
@@ -89,20 +85,16 @@ class ContactFormServiceTest {
 	}
 
 	@Test
-	@DisplayName("Mail delivery fails: save is still called with success=false and no exception propagates")
+	@DisplayName("Mail delivery fails: Exception should be thrown and propagates")
 	void submit_mailDeliveryFails_savesRecordWithSuccessFalse() {
 		// given
 		doThrow(new MailDeliveryException("SMTP timeout", new RuntimeException())).when(mailPort)
 				.sendNotification(any());
-		when(encryptionPort.encrypt(any())).thenReturn("enc:value");
-		ArgumentCaptor<EmailRecord> emailRecordCaptor = ArgumentCaptor.forClass(EmailRecord.class);
-
-		// when
-		contactFormService.submit(validSubmission());
 
 		// then
-		verify(contactFormRecordPort).save(any(), emailRecordCaptor.capture());
-		assertThat(emailRecordCaptor.getValue().success()).isFalse();
+		assertThatThrownBy(() -> contactFormService.submit(validSubmission())).isInstanceOf(MailDeliveryException.class)
+				.hasMessage("SMTP timeout");
+		verify(contactFormRecordPort, times(0)).save(any(), any());
 	}
 
 	@Test

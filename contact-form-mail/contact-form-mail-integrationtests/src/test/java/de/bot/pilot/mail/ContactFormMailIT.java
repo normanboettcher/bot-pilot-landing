@@ -3,6 +3,8 @@ package de.bot.pilot.mail;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.willDoNothing;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.when;
@@ -11,19 +13,27 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import de.bot.pilot.mail.domain.exception.CaptchaVerificationException;
 import de.bot.pilot.mail.domain.port.outbound.CaptchaPort;
+import de.bot.pilot.mail.domain.port.outbound.MetricPort;
 import de.bot.pilot.mail.infrastructure.persistence.entity.CustomerPdo;
 import de.bot.pilot.mail.infrastructure.persistence.entity.EmailRequestPdo;
 import de.bot.pilot.mail.infrastructure.persistence.repository.CustomerJpaRepository;
 import de.bot.pilot.mail.infrastructure.persistence.repository.EmailRequestJpaRepository;
+
 import java.util.List;
+import java.util.function.Supplier;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.http.MediaType;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.vault.core.VaultOperations;
 import org.springframework.vault.core.VaultTransitOperations;
@@ -37,6 +47,7 @@ class ContactFormMailIT {
 	private static final String TRANSIT_PATH = "path";
 	private static final String TRANSIT_KEY = "key";
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(ContactFormMailIT.class);
 	private static final String VALID_REQUEST_BODY = """
 			{
 			  "firstName": "Ada",
@@ -63,11 +74,24 @@ class ContactFormMailIT {
 	@Autowired
 	private CaptchaPort captchaPort;
 
+	@Autowired
+	private JavaMailSender mailSender;
+
+	@Autowired
+	private MetricPort metricPort;
+
 	@BeforeEach
 	void setUp() {
 		emailRequestRepository.deleteAll();
 		customerRepository.deleteAll();
-		reset(vaultOperations, captchaPort);
+		reset(vaultOperations, captchaPort, mailSender, metricPort);
+		// time() wraps a Supplier<T> callback. A plain mock silently discards the
+		// supplier and returns null, so the real work (DB writes) never executes.
+		// This answer executes the supplier exactly as a real MetricPort would.
+		when(metricPort.time(any(), any())).thenAnswer(invocation -> {
+			Supplier<?> task = invocation.getArgument(1);
+			return task.get();
+		});
 	}
 
 	@Test
@@ -81,6 +105,8 @@ class ContactFormMailIT {
 				Ciphertext.of("vault:v1:enc:message"), Ciphertext.of("vault:v1:enc:subject"),
 				Ciphertext.of("vault:v1:enc:company"), Ciphertext.of("vault:v1:enc:email"),
 				Ciphertext.of("vault:v1:enc:firstName"), Ciphertext.of("vault:v1:enc:lastName"));
+		willDoNothing().given(mailSender).send(any(SimpleMailMessage.class));
+		willDoNothing().given(metricPort).count(any(), any(), any());
 
 		// when
 		mockMvc.perform(post("/contact").contentType(MediaType.APPLICATION_JSON).content(VALID_REQUEST_BODY))
@@ -100,9 +126,6 @@ class ContactFormMailIT {
 		EmailRequestPdo emailRequest = emailRequests.getFirst();
 		assertThat(emailRequest.getContent()).isEqualTo("vault:v1:enc:message");
 		assertThat(emailRequest.getSubject()).isEqualTo("vault:v1:enc:subject");
-		// No SMTP server on port 25 — MailDeliveryException is swallowed by
-		// trySendMail(), recorded as false
-		assertThat(emailRequest.isSuccess()).isFalse();
 	}
 
 	@Test

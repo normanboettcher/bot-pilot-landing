@@ -16,7 +16,6 @@ public final class EmailRequestPdoMapper {
 		entity.setContent(record.content());
 		entity.setSubject(record.subject());
 		entity.setCreatedAt(Timestamp.from(record.createdAt()));
-		entity.setSuccess(record.success());
 		entity.setCustomer(customer);
 		return entity;
 	}

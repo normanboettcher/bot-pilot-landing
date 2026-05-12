@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
             https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd">
 
-    <include file="db/changelog/migrations/001-initial-schema.xml"/>
-    <include file="/db/changelog/migrations/002-drop-success-column.xml"/>
-
+    <changeSet id="001-create-contact-form-customer" author="norman-ian.boettcher">
+        <dropColumn tableName="email_request" columnName="success"/>
+    </changeSet>
 </databaseChangeLog>

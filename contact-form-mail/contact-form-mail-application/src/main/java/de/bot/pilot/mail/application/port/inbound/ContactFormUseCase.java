@@ -8,6 +8,6 @@ import de.bot.pilot.mail.domain.model.ContactSubmission;
  * interactor.
  */
 public interface ContactFormUseCase {
-
+	// TODO: Use a SendMailResult record instead of void
 	void submit(ContactSubmission submission);
 }
