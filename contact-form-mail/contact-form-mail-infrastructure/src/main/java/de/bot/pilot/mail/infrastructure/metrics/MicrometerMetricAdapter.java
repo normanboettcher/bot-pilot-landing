@@ -4,10 +4,14 @@ import de.bot.pilot.mail.domain.metrics.MetricName;
 import de.bot.pilot.mail.domain.metrics.MetricTag;
 import de.bot.pilot.mail.domain.port.outbound.MetricPort;
 import io.micrometer.core.instrument.MeterRegistry;
+import io.micrometer.core.instrument.Tag;
+import io.micrometer.core.instrument.Tags;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
 import java.util.function.Supplier;
 import java.util.function.ToDoubleFunction;
+import java.util.stream.Stream;
 
 @Component
 public class MicrometerMetricAdapter implements MetricPort {
@@ -20,7 +24,8 @@ public class MicrometerMetricAdapter implements MetricPort {
 
 	@Override
 	public void count(MetricName metricName, MetricTag... tags) {
-		// TODO: Implement metrics with concrete prometheus classes
+		Tags tagPairs = Tags.of(Arrays.stream(tags).map(tag -> Tag.of(tag.key(), tag.value())).toArray(Tag[]::new));
+		this.meterRegistry.counter(metricName.getName(), tagPairs).increment();
 	}
 
 	@Override
