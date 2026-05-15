@@ -10,4 +10,6 @@ public interface ContactFormRecordPort {
 	 * Transactional boundary is owned by the adapter implementation.
 	 */
 	void save(Customer customer, EmailRecord emailRecord);
+
+	long countEmailRecords();
 }

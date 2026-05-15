@@ -1,6 +1,7 @@
 package de.bot.pilot.mail.config;
 
 import de.bot.pilot.mail.application.port.inbound.ContactFormUseCase;
+import de.bot.pilot.mail.application.service.ContactFormMetricsRegistrar;
 import de.bot.pilot.mail.application.service.ContactFormService;
 import de.bot.pilot.mail.application.service.InstrumentedContactFormService;
 import de.bot.pilot.mail.domain.port.outbound.CaptchaPort;
@@ -20,5 +21,11 @@ public class ApplicationBeanConfig {
 		ContactFormUseCase contactFormService = new ContactFormService(captchaPort, mailPort, contactFormRecordPort,
 				encryptionPort);
 		return new InstrumentedContactFormService(contactFormService, metricPort);
+	}
+
+	@Bean
+	public ContactFormMetricsRegistrar contactFormMetricsRegistrar(ContactFormRecordPort recordPort,
+			MetricPort metricPort) {
+		return new ContactFormMetricsRegistrar(recordPort, metricPort);
 	}
 }

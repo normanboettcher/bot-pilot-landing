@@ -31,4 +31,9 @@ public class ContactFormRecordAdapter implements ContactFormRecordPort {
 		EmailRequestPdo emailRequestEntity = EmailRequestPdoMapper.toEntity(emailRecord, savedCustomer);
 		emailRequestRepository.save(emailRequestEntity);
 	}
+
+	@Override
+	public long countEmailRecords() {
+		return emailRequestRepository.count();
+	}
 }

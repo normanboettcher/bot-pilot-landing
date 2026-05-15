@@ -6,14 +6,18 @@ import de.bot.pilot.mail.domain.metrics.MetricName;
 import de.bot.pilot.mail.domain.metrics.MetricTag;
 import de.bot.pilot.mail.domain.model.ContactSubmission;
 import de.bot.pilot.mail.domain.port.outbound.MetricPort;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Supplier;
+import java.util.function.ToDoubleFunction;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
@@ -89,5 +93,40 @@ class InstrumentedContactFormServiceTest {
 		verify(metricPortMock).count(eq(MetricName.CONTACT_FORM_SUBMITTED), eq(new MetricTag("status", "failure")));
 		verify(metricPortMock, never()).count(eq(MetricName.CONTACT_FORM_SUBMITTED),
 				eq(new MetricTag("status", "success")));
+	}
+
+	@Test
+	@DisplayName("should register the active submissions gauge once at construction time")
+	void constructor_registersActiveSubmissionsGauge() {
+		// when
+		underTest = new InstrumentedContactFormService(delegate, metricPortMock);
+
+		// then
+		verify(metricPortMock).gauge(eq(MetricName.ACTIVE_SUBMISSIONS), any(AtomicInteger.class),
+				any(ToDoubleFunction.class));
+	}
+
+	@Test
+	@DisplayName("activeSubmissions gauge returns to 0 after a successful submit")
+	void submit_success_activeSubmissionsReturnsToZero() {
+		// given
+		given(metricPortMock.time(eq(MetricName.MAIL_SENT), any(Supplier.class))).willAnswer(invocation -> {
+			Supplier<Void> task = invocation.getArgument(1);
+			return task.get();
+		});
+		// capture the AtomicInteger registered with the gauge
+		AtomicInteger[] captured = new AtomicInteger[1];
+		doAnswer(invocation -> {
+			captured[0] = invocation.getArgument(1);
+			return null;
+		}).when(metricPortMock).gauge(eq(MetricName.ACTIVE_SUBMISSIONS), any(AtomicInteger.class),
+				any(ToDoubleFunction.class));
+		underTest = new InstrumentedContactFormService(delegate, metricPortMock);
+
+		// when
+		underTest.submit(validSubmission);
+
+		// then
+		assertThat(captured[0].get()).isZero();
 	}
 }
