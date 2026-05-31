@@ -79,7 +79,7 @@ const ContactFormDialog: React.FC<Props> = ({ open, onClose }) => {
     <Box>
       <Dialog open={open} onClose={onClose}>
         <ContactFormCaptcha onVerify={setCaptchaToken} />
-        <DialogTitle>{'Contact Form'}</DialogTitle>
+        <DialogTitle>{'Kontakt aufnehmen'}</DialogTitle>
         <DialogContent>
           <DialogContentText color={'text.primary'} py={2}>
             Wir freuen uns, dass Sie an einem individuellen Chatbot von SNB-Technologies
@@ -105,7 +105,6 @@ const ContactFormDialog: React.FC<Props> = ({ open, onClose }) => {
               <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   slotProps={textFieldSlotPops}
-                  autoFocus
                   required
                   id={'nachname-field'}
                   name={'lastName'}
@@ -119,7 +118,6 @@ const ContactFormDialog: React.FC<Props> = ({ open, onClose }) => {
               <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   slotProps={textFieldSlotPops}
-                  autoFocus
                   required
                   id={'unternehmen-field'}
                   name={'company'}
@@ -133,7 +131,6 @@ const ContactFormDialog: React.FC<Props> = ({ open, onClose }) => {
               <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   slotProps={textFieldSlotPops}
-                  autoFocus
                   required
                   id={'email-field'}
                   name={'email'}
@@ -147,7 +144,6 @@ const ContactFormDialog: React.FC<Props> = ({ open, onClose }) => {
               <Grid size={12}>
                 <TextField
                   slotProps={textFieldSlotPops}
-                  autoFocus
                   minRows={5}
                   multiline
                   required

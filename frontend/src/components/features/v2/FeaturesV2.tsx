@@ -13,7 +13,7 @@ function heading() {
   return (
     <ParagraphHeadingContainer
       heading="BotPilot Features"
-      subheading={'Was für wirklich tolle features'}
+      subheading={'Was BotPilot für Sie täglich übernimmt'}
     ></ParagraphHeadingContainer>
   );
 }

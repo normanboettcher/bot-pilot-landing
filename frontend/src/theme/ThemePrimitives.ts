@@ -1,55 +1,42 @@
 import { alpha } from '@mui/material/styles';
 
-export const blue = {
-  50: 'hsl(210, 100%, 95%)',
-  100: 'hsl(210, 100%, 92%)',
-  200: 'hsl(210, 100%, 80%)',
-  300: 'hsl(210, 100%, 65%)',
-  400: 'hsl(210, 98%, 48%)',
-  500: 'hsl(210, 98%, 42%)',
-  600: 'hsl(210, 98%, 55%)',
-  700: 'hsl(210, 100%, 35%)',
-  800: 'hsl(210, 100%, 16%)',
-  900: 'hsl(210, 100%, 21%)',
+export const navy = {
+  50: '#EEF2F8',
+  100: '#D5E1F0',
+  200: '#B0C7E3',
+  300: '#7AA3CF',
+  400: '#4A7DBB',
+  500: '#2563EB',
+  600: '#1D4ED8',
+  700: '#1E3A6E',
+  800: '#162D57',
+  900: '#0F1D35',
+};
+
+export const amber = {
+  50: '#FFFBEB',
+  100: '#FEF3C7',
+  200: '#FDE68A',
+  300: '#FCD34D',
+  400: '#FBBF24',
+  500: '#F59E0B',
+  600: '#D97706',
+  700: '#B45309',
+  800: '#92400E',
+  900: '#78350F',
 };
 
 export const neutral = {
-  50: 'hsl(0, 0%, 97%)', // sehr helle Sections
-  100: 'hsl(0, 0%, 92%)', // Page Background
-  200: 'hsl(0, 0%, 88%)', // Cards
-  300: 'hsl(0, 0%, 85%)', // <- #D9D9D9
-  400: 'hsl(0, 0%, 80%)', // Borders
-  500: 'hsl(0, 0%, 72%)', // Disabled
-  600: 'hsl(0, 0%, 60%)', // Secondary Text
-  700: 'hsl(0, 0%, 45%)', // Body Text
-  800: 'hsl(0, 0%, 30%)', // Headings
-  900: 'hsl(0, 0%, 15%)', // Strong Text
-};
-
-export const brand = {
-  50: 'hsl(200, 30%, 95%)', // sehr dezente Highlights
-  100: 'hsl(200, 25%, 88%)',
-  200: 'hsl(200, 22%, 78%)',
-  300: 'hsl(200, 20%, 68%)',
-  400: 'hsl(200, 19%, 60%)',
-  500: 'hsl(200, 19%, 55%)', // <- #7593A2
-  600: 'hsl(200, 22%, 45%)', // Hover
-  700: 'hsl(200, 25%, 35%)', // Active
-  800: 'hsl(200, 30%, 25%)', // Strong emphasis
-  900: 'hsl(200, 35%, 18%)', // Dark accents
-};
-
-export const gray = {
-  50: 'hsl(220, 35%, 97%)',
-  100: 'hsl(220, 30%, 94%)',
-  200: 'hsl(220, 20%, 88%)',
-  300: 'hsl(220, 20%, 80%)',
-  400: 'hsl(220, 20%, 65%)',
-  500: 'hsl(220, 20%, 42%)',
-  600: 'hsl(220, 20%, 35%)',
-  700: 'hsl(220, 20%, 25%)',
-  800: 'hsl(220, 30%, 6%)',
-  900: 'hsl(220, 35%, 3%)',
+  50: '#FAFAFA',
+  100: '#F5F5F5',
+  200: '#E5E7EB',
+  300: '#D1D5DB',
+  400: '#9CA3AF',
+  500: '#6B7280',
+  600: '#4B5563',
+  700: '#374151',
+  800: '#1F2937',
+  900: '#111827',
 };
 
 export const green = {
@@ -94,53 +81,54 @@ export const red = {
 export const darkColorSchemes = {
   dark: {
     palette: {
-      background: {
-        default: neutral[900],
-        paper: neutral[800],
-      },
-
-      text: {
-        primary: neutral[50],
-        secondary: neutral[300],
-      },
-
       primary: {
-        main: brand[300],
-        light: brand[200],
-        dark: brand[500],
-        contrastText: neutral[900],
+        main: navy[300],
+        light: navy[200],
+        dark: navy[400],
+        contrastText: navy[900],
       },
       secondary: {
-        main: brand[400],
-        light: brand[300],
-        dark: brand[600],
-        contrastText: neutral[900],
+        main: amber[500],
+        light: amber[400],
+        dark: amber[600],
+        contrastText: navy[900],
       },
-      divider: neutral[700],
-    },
-    info: {
-      contrastText: brand[300],
-      light: brand[500],
-      main: brand[700],
-      dark: brand[900],
-    },
-    warning: {
-      light: orange[400],
-      main: orange[500],
-      dark: orange[700],
-    },
-    error: {
-      light: red[400],
-      main: red[500],
-      dark: red[700],
-    },
-    success: {
-      light: green[400],
-      main: green[500],
-      dark: green[700],
-    },
-    grey: {
-      ...gray,
+      info: {
+        main: navy[400],
+        light: navy[300],
+        dark: navy[600],
+        contrastText: '#FFFFFF',
+      },
+      warning: {
+        light: orange[400],
+        main: orange[500],
+        dark: orange[700],
+      },
+      error: {
+        light: red[400],
+        main: red[500],
+        dark: red[700],
+      },
+      success: {
+        light: green[400],
+        main: green[500],
+        dark: green[700],
+      },
+      background: {
+        default: navy[900],
+        paper: navy[800],
+      },
+      text: {
+        primary: navy[50],
+        secondary: navy[200],
+        heading: '#FFFFFF',
+        subheading: navy[100],
+      },
+      divider: navy[800],
+      action: {
+        hover: alpha(navy[200], 0.08),
+        selected: alpha(navy[200], 0.16),
+      },
     },
   },
 };
@@ -149,22 +137,22 @@ export const lightColorSchemes = {
   light: {
     palette: {
       primary: {
-        main: neutral[500],
-        light: neutral[300],
-        dark: neutral[700],
-        contrastText: brand[50],
+        main: navy[700],
+        light: navy[500],
+        dark: navy[800],
+        contrastText: '#FFFFFF',
       },
       secondary: {
-        main: brand[600],
-        light: brand[400],
-        dark: brand[800],
-        contrastText: neutral[50],
+        main: amber[500],
+        light: amber[400],
+        dark: amber[600],
+        contrastText: navy[900],
       },
       info: {
-        light: brand[100],
-        main: brand[300],
-        dark: brand[600],
-        contrastText: gray[50],
+        main: navy[500],
+        light: navy[300],
+        dark: navy[600],
+        contrastText: '#FFFFFF',
       },
       warning: {
         light: orange[300],
@@ -181,25 +169,20 @@ export const lightColorSchemes = {
         main: green[400],
         dark: green[800],
       },
-      grey: {
-        ...gray,
-      },
-      divider: brand[500],
       background: {
-        default: neutral[300],
-        paper: neutral[400],
+        default: '#F8F9FC',
+        paper: '#FFFFFF',
       },
       text: {
-        primary: brand[900],
-        light: brand[300],
-        dark: brand[700],
-        secondary: brand[500],
-        heading: gray[800],
-        subheading: gray[700],
+        primary: navy[900],
+        secondary: neutral[700],
+        heading: navy[900],
+        subheading: neutral[600],
       },
+      divider: navy[100],
       action: {
-        hover: alpha(neutral[600], 0.7),
-        selected: alpha(brand[800], 0.4),
+        hover: alpha(navy[700], 0.06),
+        selected: alpha(navy[700], 0.12),
       },
     },
   },
