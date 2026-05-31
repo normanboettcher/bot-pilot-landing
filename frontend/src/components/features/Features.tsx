@@ -5,38 +5,44 @@ import { Stack } from '@mui/material';
 import useResponsive from '../../core/useResponsive.ts';
 import FeaturesCard from './FeaturesCard.tsx';
 import featureImage from '../../assets/images/feature1.png';
-import { DevicesRounded } from '@mui/icons-material';
+import { EventAvailableRounded, QuestionAnswerRounded, TuneRounded } from '@mui/icons-material';
 
 export const features: Feature[] = [
   {
-    title: 'Feature 1',
+    title: '24/7 FAQ-Beantwortung',
     imageUrl: featureImage,
     content: (
       <span>
-        Was für ein <TextDecoration>tolles Feature</TextDecoration>
+        Ihr Chatbot kennt Ihre häufigsten Fragen und beantwortet sie sofort – ob zu
+        Öffnungszeiten, Dokumentenanforderungen oder allgemeinen Abläufen. Kein Anruf
+        bleibt <TextDecoration>unbeantwortet</TextDecoration>.
       </span>
     ),
-    icon: <DevicesRounded />,
+    icon: <QuestionAnswerRounded />,
   },
   {
-    title: 'Feature2',
+    title: 'Automatische Terminvergabe',
     imageUrl: featureImage,
     content: (
       <span>
-        Was für ein <TextDecoration>tolles Feature 2</TextDecoration>
+        Mandanten buchen Termine direkt über den Chatbot – ohne Warteschleife, ohne
+        E-Mail-Ping-Pong. BotPilot synchronisiert Ihren Kalender und bestätigt{' '}
+        <TextDecoration>vollautomatisch</TextDecoration>.
       </span>
     ),
-    icon: <DevicesRounded />,
+    icon: <EventAvailableRounded />,
   },
   {
-    title: 'Feature3',
+    title: 'Maßgeschneidert für Sie',
     imageUrl: featureImage,
     content: (
       <span>
-        Was für ein <TextDecoration>tolles Feature 3</TextDecoration>
+        Logo, Farben, Sprache, Inhalte – alles wird auf Ihre Kanzlei oder Praxis
+        abgestimmt. Ob Steuerberatung, Anwaltskanzlei oder Arztpraxis:{' '}
+        <TextDecoration>Ihr Chatbot, Ihre Identität</TextDecoration>.
       </span>
     ),
-    icon: <DevicesRounded />,
+    icon: <TuneRounded />,
   },
 ];
 

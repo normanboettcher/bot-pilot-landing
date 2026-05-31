@@ -151,7 +151,7 @@ const Footer = () => {
             Rechtliches
           </Typography>
           <Link color="text.secondary" variant="body2" href="#">
-            Impressung
+            Impressum
           </Link>
           <Link color="text.secondary" variant="body2" href="#">
             Datenschutz

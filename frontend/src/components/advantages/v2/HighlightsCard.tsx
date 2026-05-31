@@ -12,29 +12,46 @@ const HighlightsCard: React.FC<Props> = ({ highlight }) => {
     <Card
       sx={{
         height: '100%',
+        border: '1px solid',
+        borderColor: 'divider',
+        transition: 'box-shadow 0.2s ease, transform 0.2s ease',
         '&:hover': {
-          backgroundColor: 'action.hover',
+          boxShadow: '0 6px 24px rgba(30,58,110,0.10)',
+          transform: 'translateY(-3px)',
         },
       }}
     >
-      <Stack spacing={1} direction={'column'} p={2}>
-        <Box>{icon}</Box>
-        <Box>
-          <Typography
-            component={'h3'}
-            variant={'h5'}
-            sx={{
-              wordWrap: 'break-word',
-              overflowWrap: 'break-word',
-              hyphens: 'auto',
-            }}
-          >
-            {title}
-          </Typography>
+      <Stack spacing={2} direction={'column'} p={3}>
+        <Box
+          sx={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: 44,
+            height: 44,
+            borderRadius: 1.5,
+            bgcolor: 'primary.main',
+            color: 'secondary.main',
+          }}
+        >
+          {icon}
         </Box>
-        <Box>
-          <Typography variant={'body1'}>{description}</Typography>
-        </Box>
+        <Typography
+          component={'h3'}
+          variant={'h6'}
+          sx={{
+            fontWeight: 700,
+            wordWrap: 'break-word',
+            overflowWrap: 'break-word',
+            hyphens: 'auto',
+            color: 'text.heading',
+          }}
+        >
+          {title}
+        </Typography>
+        <Typography variant={'body2'} color="text.secondary" lineHeight={1.7}>
+          {description}
+        </Typography>
       </Stack>
     </Card>
   );

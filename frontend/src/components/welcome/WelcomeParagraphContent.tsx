@@ -16,17 +16,18 @@ const WelcomeParagraphContent: React.FC = () => {
     >
       <Typography variant={'body1'} textAlign={'justify'}>
         Ein digitaler Assistent, der Ihnen wirklich{' '}
-        <TextDecoration>Arbeit abnimmt</TextDecoration> und das rund um die Uhr! Als
-        Steuerberater stehen Sie täglich zwischen Anfragen, Fristen und Mandanten. Unser
-        intelligenter Chatbot ist mehr als nur ein technisches Tool - er ist ein
-        persönlicher Assistent für Ihre Kanzlei.
+        <TextDecoration>Arbeit abnimmt</TextDecoration> – rund um die Uhr. Ob
+        Steuerberater, Rechtsanwalt oder Arzt: Täglich begegnen Ihnen dieselben
+        wiederkehrenden Anfragen, Terminstress und Mandantenkommunikation. Unser
+        intelligenter Chatbot ist mehr als ein technisches Tool – er ist Ihr persönlicher
+        Assistent.
       </Typography>
       <Typography variant={'body1'} textAlign={'justify'}>
-        Der Chatbot beantwortet wiederkehrende Fragen, filtert Anliegen vor, und gibt
+        BotPilot beantwortet wiederkehrende Fragen, filtert Anliegen vor und gibt
         potenziellen Mandanten sofort das Gefühl, gut aufgehoben zu sein – selbst wenn
         Sie gerade keine Zeit haben. So gewinnen Sie{' '}
         <TextDecoration>Ruhe, Präsenz</TextDecoration> und das Vertrauen{' '}
-        <TextDecoration>Ihrer Zielgruppe</TextDecoration>.{' '}
+        <TextDecoration>Ihrer Zielgruppe</TextDecoration>.
       </Typography>
     </Stack>
   );
