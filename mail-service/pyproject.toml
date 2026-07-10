@@ -18,7 +18,7 @@ fastapi = "0.115.5"
 uvicorn = { version = "0.30.6", extras = ["standard"] }
 
 # --- Email ---
-aiosmtplib = "3.0.2"
+aiosmtplib = "5.1.1"
 email-validator = "2.2.0"
 
 # --- Config ---
